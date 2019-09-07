@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
-  <title>Archives | 风追着云</title>
+  <title>风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="风筝追随着风，风追着云">
-<meta property="og:type" content="website">
+  <meta name="description" content="一直对activity的**onNewIntent**有些困惑，开始时只是知道在activity被重新restart时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论  第一种情况：activity launchMode为singleTask或者singleInstance   1、activitya start activityb2、activityb start activitya">
+<meta property="og:type" content="article">
 <meta property="og:title" content="风追着云">
-<meta property="og:url" content="https://github.com/tuyrt7/archives/index.html">
+<meta property="og:url" content="https://github.com/tuyrt7/2019/09/08/onNewIntent疑惑/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="风筝追随着风，风追着云">
+<meta property="og:description" content="一直对activity的**onNewIntent**有些困惑，开始时只是知道在activity被重新restart时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论  第一种情况：activity launchMode为singleTask或者singleInstance   1、activitya start activityb2、activityb start activitya">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-07T09:13:59.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="风追着云">
-<meta name="twitter:description" content="风筝追随着风，风追着云">
+<meta name="twitter:description" content="一直对activity的**onNewIntent**有些困惑，开始时只是知道在activity被重新restart时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论  第一种情况：activity launchMode为singleTask或者singleInstance   1、activitya start activityb2、activityb start activitya">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -171,150 +172,214 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-onNewIntent疑惑" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一直对<code>activity</code>的<code>**onNewIntent**</code>有些困惑，开始时只是知道在<code>activity</code>被重新<code>restart</code>时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论</p>
+<ul>
+<li>第一种情况：<code>activity launchMode</code>为<code>singleTask</code>或者<code>singleInstance</code></li>
+</ul>
+<blockquote>
+<p>1、activitya start activityb<br>2、activityb start activitya  </p>
+</blockquote>
+<p>在第二步被执行后，<code>activitya</code>就会顺序执行 <code>onNewIntent onRestart onStart onResume</code></p>
+<ul>
+<li>第二种情况：activity launchMode为singleTop singleTask singleInstance  </li>
+</ul>
+<blockquote>
+<p>1、start activitya<br>2、activitya start activitya  </p>
+</blockquote>
+<p>在第二步被执行后，<code>activitya</code>就会顺序执行<code>onPause onNewIntent onResume</code></p>
+<p>第一种情况其实是真正的<code>activity被restart</code>，第二种情况是<code>activity</code>位于栈顶时被再次<code>start</code>就会进入<code>onNewIntent</code> </p>
+<p>其实理解的简单一点，无论什么模式，只有<code>activity</code>是同一个实例的情况下，<code>intent</code>发生了变化，就会进入<code>onNewIntent</code>中，这个方法的作用也是让你来对旧的<code>intent</code>进行保存，对新的<code>intent</code>进行对应的处理。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+      </div>
+    </span>
+  </div>
+</div>
 
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/tuyrt7/2019/09/08/onNewIntent疑惑/" alt="微信分享二维码">
+    </div>
+</div>
 
-
-<a href="/2019/09/08/遇到的Android O 新特性问题 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.948Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/预制视频音乐到sd卡 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.943Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/修改sd卡权限/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.938Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/实现view的滑动/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.928Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/风追着云/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.919Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2019/09/08/String、StringBuffer与StringBuilder之间区别 /" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/07/22/EventBus源码初探/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">EventBus源码解析</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjQwMi8yMjkxMw==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+
+  
+  
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://github.com/tuyrt7/2019/09/08/onNewIntent疑惑/",
+  owner: 'tuyryt7',
+  repo: 'https://tuyrt7.github.io',
+  oauth: {
+    client_id: '671f2fbb5b6516d80412',
+    client_secret: '03a1ee70200184c9255a44aa29cb83f905a5bcb1',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -353,8 +418,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

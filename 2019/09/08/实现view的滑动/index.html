@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
-  <title>Archives | 风追着云</title>
+  <title>风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="风筝追随着风，风追着云">
-<meta property="og:type" content="website">
+  <meta name="description" content="实现View滑动的方式12345671. layout()方法  2. offsetLeftAndRight()和offsetTopAndBotton()  3. LayoutParams改变其属性，最后setLayoutParams()  4. 动画平移(view动画setAnimations() ，属性动画ObjescAnimator.ofLoad())  5. scrollTo(x,y)移动">
+<meta property="og:type" content="article">
 <meta property="og:title" content="风追着云">
-<meta property="og:url" content="https://github.com/tuyrt7/archives/index.html">
+<meta property="og:url" content="https://github.com/tuyrt7/2019/09/08/实现view的滑动/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="风筝追随着风，风追着云">
+<meta property="og:description" content="实现View滑动的方式12345671. layout()方法  2. offsetLeftAndRight()和offsetTopAndBotton()  3. LayoutParams改变其属性，最后setLayoutParams()  4. 动画平移(view动画setAnimations() ，属性动画ObjescAnimator.ofLoad())  5. scrollTo(x,y)移动">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-07T09:15:57.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="风追着云">
-<meta name="twitter:description" content="风筝追随着风，风追着云">
+<meta name="twitter:description" content="实现View滑动的方式12345671. layout()方法  2. offsetLeftAndRight()和offsetTopAndBotton()  3. LayoutParams改变其属性，最后setLayoutParams()  4. 动画平移(view动画setAnimations() ，属性动画ObjescAnimator.ofLoad())  5. scrollTo(x,y)移动">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -171,150 +172,208 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-实现view的滑动" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="实现View滑动的方式"><a href="#实现View滑动的方式" class="headerlink" title="实现View滑动的方式"></a>实现View滑动的方式</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. layout()方法  </span><br><span class="line">2. offsetLeftAndRight()和offsetTopAndBotton()  </span><br><span class="line">3. LayoutParams改变其属性，最后setLayoutParams()  </span><br><span class="line">4. 动画平移(view动画setAnimations() ，属性动画ObjescAnimator.ofLoad())  </span><br><span class="line">5. scrollTo(x,y)移动到坐标点 和 scrollBy(x,y) 移动x,y的负增量  </span><br><span class="line">6. scroller配合computeScroll()平滑移动</span><br></pre></td></tr></table></figure>
+
+<p>的撒</p>
+<h1 id="View的dispatche过程"><a href="#View的dispatche过程" class="headerlink" title="View的dispatche过程"></a>View的dispatche过程</h1><p><img src alt="图"></p>
+<h1 id="常见滑动冲突场景"><a href="#常见滑动冲突场景" class="headerlink" title="常见滑动冲突场景"></a>常见滑动冲突场景</h1><blockquote>
+<p>场景1 —— 外部滑动方向与内部滑动方向不一致，比如ViewPager中包含ListView;<br>场景2 —— 外部滑动方向与内部滑动方向一致，比如ScrollView中包含ListView;<br>场景3 —— 上面两种情况的嵌套  </p>
+</blockquote>
+<h1 id="滑动冲突处理规则？"><a href="#滑动冲突处理规则？" class="headerlink" title="滑动冲突处理规则？"></a>滑动冲突处理规则？</h1><p>通过判断是水平滑动还是竖直滑动来判断到底应该谁来拦截事件；可以根据水平和竖直两个方向的距离差或速度差来做判断</p>
+<h1 id="滑动冲突解决方式？"><a href="#滑动冲突解决方式？" class="headerlink" title="滑动冲突解决方式？"></a>滑动冲突解决方式？</h1><h3 id="外部拦截法"><a href="#外部拦截法" class="headerlink" title="外部拦截法"></a>外部拦截法</h3><p>即点击事件先经过父容器的拦截处理，如果父容器需要此事件就拦截，不需要就不拦截，需要重写父容器的 onInterceptTouchEvent 方法；在 onInterceptTouchEvent 方法中，首先 ACTION_DOWN 这个事件，父容器必须返回 false ,即不拦截 ACTION_DOWN 事件，因为一旦父容器拦截了 ACTION_DOWN ,那么后续的 ACTION_MOVE/ACTION_UP 都会直接交给父容器处理；其次是 ACTION_MOVE ,根据需求来决定是否要拦截;最后 ACTION_UP 事件,这里必须要返回false,在这里没有多大意义。  </p>
+<h3 id="内部拦截法"><a href="#内部拦截法" class="headerlink" title="内部拦截法"></a>内部拦截法</h3><p>所有事件都传递给子元素,如果子元素需要就消耗掉,不需要就交给父元素处理,需要子元素配合 requestDisallowInterceptTouchEvent 方法才能正常工作;父元素需要默认拦截除 ACTION_DOWN 以外的事件,这样子元素调用 parent.requestDisallowInterceptTouchEvent(false) 方法时，父元素才能继续拦截需要的事件。 ACTION_DOWN 事件不受   requestDisallowInterceptTouchEvent 方法影响,所以一旦父元素拦截 ACTION_DOWN 事件,那么所有元素都无法传递到子元素去）。</p>
+<h1 id="requestDisallowInterceptTouchEvent-可以在子元素中干扰父元素的事件分发吗？如果可以，是全部都可以干扰吗？"><a href="#requestDisallowInterceptTouchEvent-可以在子元素中干扰父元素的事件分发吗？如果可以，是全部都可以干扰吗？" class="headerlink" title="requestDisallowInterceptTouchEvent 可以在子元素中干扰父元素的事件分发吗？如果可以，是全部都可以干扰吗？"></a>requestDisallowInterceptTouchEvent 可以在子元素中干扰父元素的事件分发吗？如果可以，是全部都可以干扰吗？</h1><p>可以，但是 down 事件干扰不了。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+      </div>
+    </span>
+  </div>
+</div>
 
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/tuyrt7/2019/09/08/实现view的滑动/" alt="微信分享二维码">
+    </div>
+</div>
 
-
-<a href="/2019/09/08/遇到的Android O 新特性问题 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.948Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/预制视频音乐到sd卡 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.943Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/修改sd卡权限/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.938Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/实现view的滑动/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.928Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/风追着云/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:05:10.919Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2019/09/08/修改sd卡权限/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/09/08/风追着云/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjQwMi8yMjkxMw==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+
+  
+  
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://github.com/tuyrt7/2019/09/08/实现view的滑动/",
+  owner: 'tuyryt7',
+  repo: 'https://tuyrt7.github.io',
+  oauth: {
+    client_id: '671f2fbb5b6516d80412',
+    client_secret: '03a1ee70200184c9255a44aa29cb83f905a5bcb1',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -353,8 +412,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
