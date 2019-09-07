@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
   <title>修改sd卡权限 | 风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="修改sd卡权限 前提是手机须Root。 用具有Root读写权限的文件管理器 编辑root/system/etc/permissions/platform.xml文件。增加一行代码：查找代码：     &amp;lt;permission name=&amp;quot;android.permission.WRITE_EXTERNAL_STORAGE&amp;quot; &amp;gt;   &amp;lt;group gid=&amp;quot">
+  <meta name="description" content="修改sd卡权限 前提是手机须Root。 用具有Root读写权限的文件管理器 编辑root/system/etc/permissions/platform.xml文件。增加一行代码：查找代码：">
 <meta name="keywords" content="blog,定制rom">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修改sd卡权限">
 <meta property="og:url" content="https://github.com/tuyrt7/2019/09/08/修改sd卡权限/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="修改sd卡权限 前提是手机须Root。 用具有Root读写权限的文件管理器 编辑root/system/etc/permissions/platform.xml文件。增加一行代码：查找代码：     &amp;lt;permission name=&amp;quot;android.permission.WRITE_EXTERNAL_STORAGE&amp;quot; &amp;gt;   &amp;lt;group gid=&amp;quot">
+<meta property="og:description" content="修改sd卡权限 前提是手机须Root。 用具有Root读写权限的文件管理器 编辑root/system/etc/permissions/platform.xml文件。增加一行代码：查找代码：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-07T16:19:23.632Z">
+<meta property="og:updated_time" content="2019-09-07T16:47:42.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修改sd卡权限">
-<meta name="twitter:description" content="修改sd卡权限 前提是手机须Root。 用具有Root读写权限的文件管理器 编辑root/system/etc/permissions/platform.xml文件。增加一行代码：查找代码：     &amp;lt;permission name=&amp;quot;android.permission.WRITE_EXTERNAL_STORAGE&amp;quot; &amp;gt;   &amp;lt;group gid=&amp;quot">
+<meta name="twitter:description" content="修改sd卡权限 前提是手机须Root。 用具有Root读写权限的文件管理器 编辑root/system/etc/permissions/platform.xml文件。增加一行代码：查找代码：">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -231,6 +231,8 @@
 <li>前提是手机须Root。</li>
 <li>用具有Root读写权限的文件管理器 编辑<code>root/system/etc/permissions/platform.xml</code>文件。增加一行代码：<br>查找代码：  </li>
 </ul>
+<a id="more"></a> 
+
 <pre><code>
 &lt;permission name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; &gt;
   &lt;group gid=&quot;sdcard_r&quot; /&gt;
