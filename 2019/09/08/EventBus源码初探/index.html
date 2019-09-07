@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
-  <title>Archives: 2016 | 风追着云</title>
+  <title>EventBus源码解析 | 风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="风筝追随着风，风追着云">
-<meta property="og:type" content="website">
-<meta property="og:title" content="风追着云">
-<meta property="og:url" content="https://github.com/tuyrt7/archives/2016/index.html">
+  <meta name="description" content="EventBus构造方法当我们使用 EventBus 时，一般都是通过EventBus.getDefault()获取它的实例对象。函数内的实现如下：   123456789101112public static EventBus getDefault() &amp;#123;	//单例模式，采用双重检查        if (defaultInstance == null) &amp;#123;">
+<meta name="keywords" content="blog,EventBus,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EventBus源码解析">
+<meta property="og:url" content="https://github.com/tuyrt7/2019/09/08/EventBus源码初探/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="风筝追随着风，风追着云">
+<meta property="og:description" content="EventBus构造方法当我们使用 EventBus 时，一般都是通过EventBus.getDefault()获取它的实例对象。函数内的实现如下：   123456789101112public static EventBus getDefault() &amp;#123;	//单例模式，采用双重检查        if (defaultInstance == null) &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-07T16:08:44.205Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风追着云">
-<meta name="twitter:description" content="风筝追随着风，风追着云">
+<meta name="twitter:title" content="EventBus源码解析">
+<meta name="twitter:description" content="EventBus构造方法当我们使用 EventBus 时，一般都是通过EventBus.getDefault()获取它的实例对象。函数内的实现如下：   123456789101112public static EventBus getDefault() &amp;#123;	//单例模式，采用双重检查        if (defaultInstance == null) &amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -171,68 +173,447 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-EventBus源码初探" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2016/07/22/EventBus源码初探/" class="archive-article-date">
-  	<time datetime="2016-07-22T07:08:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/22/EventBus源码初探/">EventBus源码解析</a>
+    <h1 class="article-title" itemprop="name">
+      EventBus源码解析
     </h1>
   
 
-        <div class="article-info info-on-right">
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+
+
+<a href="/2019/09/08/EventBus源码初探/" class="archive-article-date">
+  	<time datetime="2019-09-07T16:08:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+        
+		<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">11分</span>
+      </span>
+    </span>
+</div>
           
+        <!-- 添加完成 -->
+		
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="EventBus构造方法"><a href="#EventBus构造方法" class="headerlink" title="EventBus构造方法"></a>EventBus构造方法</h2><p>当我们使用 EventBus 时，一般都是通过<code>EventBus.getDefault()</code>获取它的实例对象。函数内的实现如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static EventBus getDefault() &#123;</span><br><span class="line">	//单例模式，采用双重检查</span><br><span class="line">        if (defaultInstance == null) &#123;</span><br><span class="line">            synchronized (EventBus.class) &#123;</span><br><span class="line">                if (defaultInstance == null) &#123;</span><br><span class="line">                    defaultInstance = new EventBus();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return defaultInstance;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在此进入其构造函数看看：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public EventBus() &#123;</span><br><span class="line">        this(DEFAULT_BUILDER);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">这里`DEFAULT_BUILDER`默认时`EventBusBuilder`,用来构造`EventBus`:  </span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">private static final EventBusBuilder DEFAULT_BUILDER = new EventBusBuilder();</span><br></pre></td></tr></table></figure>
+
+<p><code>this</code>调用了<code>EventBus</code>的另一个有参构造方法：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">EventBus(EventBusBuilder builder) &#123;</span><br><span class="line">        logger = builder.getLogger();</span><br><span class="line">        subscriptionsByEventType = new HashMap&lt;&gt;();</span><br><span class="line">        typesBySubscriber = new HashMap&lt;&gt;();</span><br><span class="line">        stickyEvents = new ConcurrentHashMap&lt;&gt;();</span><br><span class="line">        mainThreadSupport = builder.getMainThreadSupport();</span><br><span class="line">        mainThreadPoster = mainThreadSupport != null ? mainThreadSupport.createPoster(this) : null;</span><br><span class="line">        backgroundPoster = new BackgroundPoster(this);</span><br><span class="line">        asyncPoster = new AsyncPoster(this);</span><br><span class="line">        indexCount = builder.subscriberInfoIndexes != null ? builder.subscriberInfoIndexes.size() : 0;</span><br><span class="line">        subscriberMethodFinder = new SubscriberMethodFinder(builder.subscriberInfoIndexes,</span><br><span class="line">                builder.strictMethodVerification, builder.ignoreGeneratedIndex);</span><br><span class="line">        logSubscriberExceptions = builder.logSubscriberExceptions;</span><br><span class="line">        logNoSubscriberMessages = builder.logNoSubscriberMessages;</span><br><span class="line">        sendSubscriberExceptionEvent = builder.sendSubscriberExceptionEvent;</span><br><span class="line">        sendNoSubscriberEvent = builder.sendNoSubscriberEvent;</span><br><span class="line">        throwSubscriberException = builder.throwSubscriberException;</span><br><span class="line">        eventInheritance = builder.eventInheritance;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到我们时通过<code>EventBusBuilder</code>来对<code>EventBus</code>进行配置，并初始化一些参数，通过建造者模式。</p>
+<h2 id="订阅者注册"><a href="#订阅者注册" class="headerlink" title="订阅者注册"></a>订阅者注册</h2><p>获取到<code>EventBus</code>的实例后，便可以将订阅者注册到<code>EventBus</code>中，看下<code>register</code>方法：   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public void register(Object subscriber) &#123;</span><br><span class="line">        Class&lt;?&gt; subscriberClass = subscriber.getClass();</span><br><span class="line">        List&lt;SubscriberMethod&gt; subscriberMethods = subscriberMethodFinder.findSubscriberMethods(subscriberClass);//1</span><br><span class="line">        synchronized (this) &#123;</span><br><span class="line">            for (SubscriberMethod subscriberMethod : subscriberMethods) &#123;</span><br><span class="line">                subscribe(subscriber, subscriberMethod);//2</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 查找订阅者的订阅方法</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注释1处的`findSubscriberMethods` 方法找出一个 `SubscriberMethod `的集合，也就是传进来的订阅者的所有订阅方法，接下来就是遍历集合来完成所有订阅者的注册操作。  </span><br><span class="line">从此可以看出，`register`方法完成了**两件事**：  </span><br><span class="line">一是查找订阅者的订阅方法，  </span><br><span class="line">二是订阅者的注册。  </span><br><span class="line"></span><br><span class="line">`SubscriberMethod`类中主要用来保存的`Method`对象、线程模式、事件类型、优先级、是否是粘性事件等属性。  </span><br><span class="line">  </span><br><span class="line">下面看下`findSubscriberMethods`方法：  </span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">List&lt;SubscriberMethod&gt; findSubscriberMethods(Class&lt;?&gt; subscriberClass) &#123;</span><br><span class="line">        List&lt;SubscriberMethod&gt; subscriberMethods = METHOD_CACHE.get(subscriberClass); //1</span><br><span class="line">        if (subscriberMethods != null) &#123;</span><br><span class="line">            return subscriberMethods;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (ignoreGeneratedIndex) &#123;//这个值是EventBusBuilder的属性传递的</span><br><span class="line">            subscriberMethods = findUsingReflection(subscriberClass);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            subscriberMethods = findUsingInfo(subscriberClass); //3</span><br><span class="line">        &#125;</span><br><span class="line">        if (subscriberMethods.isEmpty()) &#123;</span><br><span class="line">            throw new EventBusException(&quot;Subscriber &quot; + subscriberClass</span><br><span class="line">                    + &quot; and its super classes have no public methods with the @Subscribe annotation&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            METHOD_CACHE.put(subscriberClass, subscriberMethods);//2</span><br><span class="line">            return subscriberMethods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注释1处从缓存中查找订阅方法的集合，找到了就马上返回。如果缓存没有根据`ignoreGeneratedIndex` 属性的值来选择采用何种方法来查找订阅方法的集合。`ignoreGeneratedIndex` 的默认值是`false`,可以通过`EventBusBuilder` 来设置。  </span><br><span class="line"></span><br><span class="line">注释2处，把找到的订阅方法的集合放入缓存中，防止下次再次查找。  </span><br><span class="line">我们一般都是用`EventBus`的单例模式来获取实例，所以`ignoreGeneratedIndex`值为`false`,执行`if`语句的`findUsingInfo `方法。</span><br></pre></td></tr></table></figure>
+
+
+<p>private List<subscribermethod> findUsingInfo(Class&lt;?&gt; subscriberClass) {<br>        FindState findState = prepareFindState();<br>        findState.initForSubscriber(subscriberClass);<br>        while (findState.clazz != null) {<br>            findState.subscriberInfo = getSubscriberInfo(findState);//1<br>            if (findState.subscriberInfo != null) {<br>                SubscriberMethod[] array = findState.subscriberInfo.getSubscriberMethods();//2<br>                for (SubscriberMethod subscriberMethod : array) {<br>                    if (findState.checkAdd(subscriberMethod.method, subscriberMethod.eventType)) {<br>                        findState.subscriberMethods.add(subscriberMethod);<br>                    }<br>                }<br>            } else {<br>                findUsingReflectionInSingleClass(findState);//3<br>            }<br>            findState.moveToSuperclass();<br>        }<br>        return getMethodsAndRelease(findState);<br>    }</subscribermethod></p>
+<pre><code>
+
+
+注释1处通过`getSubscriberInfo`获取订阅者信息,如果有就通过订阅者信息去获取所有订阅方法的信息。在我们开始查找订阅方法的时候并没有忽略注解器为我们生成的索引` MyEventBusIndex`,如果通过`EventBusBuilder`配置了`MyEventBusIndex`，  
+执行注释2处的方法，便会获取订阅方法的相关信息；如果没有配置` MyEventBusIndex`，便会执行注释3处的`findUsingReflectionInSingleClass`方法，将订阅方法保存到保存到`findState`中。最后通过`getMethodsAndRelease`方法对`findState`进行回收处理并返回订阅方法的`list`集合。默认是没有配置`MyEventBusIndex`,所以可以进去`findUsingReflectionInSingleClass`方法看看执行过程：
+
+</code></pre><p>private void findUsingReflectionInSingleClass(FindState findState) {<br>       Method[] methods;<br>       try {<br>           methods = findState.clazz.getDeclaredMethods();//1<br>       } catch (Throwable th) {<br>           methods = findState.clazz.getMethods();<br>           findState.skipSuperClasses = true;<br>       }<br>       for (Method method : methods) {<br>           int modifiers = method.getModifiers();<br>           if ((modifiers &amp; Modifier.PUBLIC) != 0 &amp;&amp; (modifiers &amp; MODIFIERS_IGNORE) == 0) {<br>               Class<?>[] parameterTypes = method.getParameterTypes();
+               if (parameterTypes.length == 1) {
+                   Subscribe subscribeAnnotation = method.getAnnotation(Subscribe.class);
+                   if (subscribeAnnotation != null) {
+                       Class<?> eventType = parameterTypes[0];<br>                       if (findState.checkAdd(method, eventType)) {<br>                           ThreadMode threadMode = subscribeAnnotation.threadMode();<br>                           findState.subscriberMethods.add(new SubscriberMethod(method, eventType, threadMode,<br>                                   subscribeAnnotation.priority(), subscribeAnnotation.sticky()));<br>                       }<br>                   }<br>               } </p>
+<pre><code> ......
+}</code></pre><p>   }</p>
+<pre><code>
+
+注释1处通过反射来获取订阅者中的所有订阅方法，并根据方法的类型、参数、注解来找到订阅方法。找到后把订阅方法的相关信息存储到`findState`中。  
+
+### 订阅者的注册
+
+</code></pre><p>// Must be called in synchronized block<br>   private void subscribe(Object subscriber, SubscriberMethod subscriberMethod) {<br>       Class&lt;?&gt; eventType = subscriberMethod.eventType;<br>       Subscription newSubscription = new Subscription(subscriber, subscriberMethod);//1<br>       CopyOnWriteArrayList<subscription> subscriptions = subscriptionsByEventType.get(eventType);//2<br>       if (subscriptions == null) {<br>           subscriptions = new CopyOnWriteArrayList&lt;&gt;();<br>           subscriptionsByEventType.put(eventType, subscriptions);<br>       } else {<br>        //判断订阅者是否已经被注册<br>           if (subscriptions.contains(newSubscription)) {<br>               throw new EventBusException(“Subscriber “ + subscriber.getClass() + “ already registered to event “<br>                       + eventType);<br>           }<br>       }</subscription></p>
+<pre><code>   int size = subscriptions.size();
+   for (int i = 0; i &lt;= size; i++) {
+       if (i == size || subscriberMethod.priority &gt; subscriptions.get(i).subscriberMethod.priority) {
+           subscriptions.add(i, newSubscription);//3
+           break;
+       }
+   }
+
+   List&lt;Class&lt;?&gt;&gt; subscribedEvents = typesBySubscriber.get(subscriber);//4
+   if (subscribedEvents == null) {
+       subscribedEvents = new ArrayList&lt;&gt;();
+       typesBySubscriber.put(subscriber, subscribedEvents);
+   }
+   subscribedEvents.add(eventType);
+
+//粘性事件的处理
+   if (subscriberMethod.sticky) {
+       if (eventInheritance) {
+           Set&lt;Map.Entry&lt;Class&lt;?&gt;, Object&gt;&gt; entries = stickyEvents.entrySet();
+           for (Map.Entry&lt;Class&lt;?&gt;, Object&gt; entry : entries) {
+               Class&lt;?&gt; candidateEventType = entry.getKey();
+               if (eventType.isAssignableFrom(candidateEventType)) {
+                   Object stickyEvent = entry.getValue();
+                   checkPostStickyEventToSubscription(newSubscription, stickyEvent);
+               }
+           }
+       } else {
+           Object stickyEvent = stickyEvents.get(eventType);
+           checkPostStickyEventToSubscription(newSubscription, stickyEvent);
+       }
+   }</code></pre><p>   }</p>
+<pre><code>
+
+
+注释1处根据` subscriber`（订阅者）和`subscriberMethod`（订阅方法）创建了一个`Subscription`(订阅对象)。  
+注释2处根据`eventTpye`(事件类型)获取所有的`Subscription`，判断如果为 `null`则重新创建，并将订阅对象和事件类型保存在` subscriptionsByEventType`（Map集合）。  
+注释3处按照订阅方法的优先级插入到订阅对象集合中，完成订阅方法的注册。  
+注释4处通过`subscriber`，获取subscribedEvents`(事件类型集合),如果为`null`则重新创建，并将`eventType`添加`subscribedEventslist`集合中，并根据`subscriber`,将`subscribedEvents`放进`typesBySubscriber`（Map集合）  
+如果是粘性事件，则从`stickyEvents`事件保存队列中取出该事件类型发送给当前订阅者。
+
+
+
+### 总结  
+
+`subscribe()`主要完成了两件事。  
+
+
+&gt; 1 把订阅对象Subscription根据事件类型eventTpye放进了subscriptionsByEventTypeMap集合，将订阅事件subscribedEvents根据subscriber封装到typesBySubscriberMap集合  
+&gt; 2 粘性事件的处理  
+
+
+## 事件的发送  
+
+
+在获取到EventBus对象时，通过post()把事件提交  
+</code></pre><p>public void post(Object event) {</p>
+<pre><code>    //PostingThreadState 保存着事件队列和线程状态信息
+   PostingThreadState postingState = currentPostingThreadState.get();
+
+//获取事件队列，并将当前事件插入事件队列
+   List&lt;Object&gt; eventQueue = postingState.eventQueue;
+   eventQueue.add(event);
+
+   if (!postingState.isPosting) {
+       postingState.isMainThread = isMainThread();
+       postingState.isPosting = true;
+       if (postingState.canceled) {
+           throw new EventBusException(&quot;Internal error. Abort state was not reset&quot;);
+       }
+       try {
+        //处理事件队列中的所有事件
+           while (!eventQueue.isEmpty()) {
+               postSingleEvent(eventQueue.remove(0), postingState);
+           }
+       } finally {
+           postingState.isPosting = false;
+           postingState.isMainThread = false;
+       }
+   }</code></pre><p>   }</p>
+<pre><code>
+
+首先从`PostingThreadState`对象中取出事件队列，然后将当前事件插入进去，最后将队列中所有事件依次交给`postSingleEvent()`方法处理，并移除该事件。  
+
+</code></pre><p>private void postSingleEvent(Object event, PostingThreadState postingState) throws Error {<br>        Class&lt;?&gt; eventClass = event.getClass();<br>        boolean subscriptionFound = false;</p>
+<pre><code>    //eventInheritance表示是否向上查找事件的父类，默认为true
+    if (eventInheritance) {
+        List&lt;Class&lt;?&gt;&gt; eventTypes = lookupAllEventTypes(eventClass);
+        int countTypes = eventTypes.size();
+        for (int h = 0; h &lt; countTypes; h++) {
+            Class&lt;?&gt; clazz = eventTypes.get(h);
+            subscriptionFound |= postSingleEventForEventType(event, postingState, clazz);
+        }
+    } else {
+        subscriptionFound = postSingleEventForEventType(event, postingState, eventClass);
+    }
+
+    //表示找不到事件时的异常处理
+    if (!subscriptionFound) {
+        if (logNoSubscriberMessages) {
+            logger.log(Level.FINE, &quot;No subscribers registered for event &quot; + eventClass);
+        }
+        if (sendNoSubscriberEvent &amp;&amp; eventClass != NoSubscriberEvent.class &amp;&amp;
+                eventClass != SubscriberExceptionEvent.class) {
+            post(new NoSubscriberEvent(this, event));
+        }
+    }
+}</code></pre><pre><code>
+
+
+
+`eventInheritance `表示是否向上查找事件的父类，默认为 `true` ，可以 `EventBusBuilder` 的构造方法配置。当 `eventInheritance` 为 `true` 时，通过 `lookupAllEventTypes()` 找到所有父类事件并存在`list`,然后通过` postSingleEventForEventType()` 对事件逐一处理。  
+
+`postSingleEventForEventType `方法源码：   
+
+</code></pre><p>private boolean postSingleEventForEventType(Object event, PostingThreadState postingState, Class&lt;?&gt; eventClass) {<br>        CopyOnWriteArrayList<subscription> subscriptions;<br>        synchronized (this) {<br>            subscriptions = subscriptionsByEventType.get(eventClass);//1<br>        }<br>        if (subscriptions != null &amp;&amp; !subscriptions.isEmpty()) {<br>            for (Subscription subscription : subscriptions) {//2<br>                postingState.event = event;<br>                postingState.subscription = subscription;<br>                boolean aborted = false;<br>                try {<br>                    postToSubscription(subscription, event, postingState.isMainThread);<br>                    aborted = postingState.canceled;<br>                } finally {<br>                    postingState.event = null;<br>                    postingState.subscription = null;<br>                    postingState.canceled = false;<br>                }<br>                if (aborted) {<br>                    break;<br>                }<br>            }<br>            return true;<br>        }<br>        return false;<br>    }</subscription></p>
+<pre><code>
+
+
+注释1处同步取出所有` subscriptions `订阅对象集合，然后遍历 将 `event `事件和 `subscription` 订阅对象传递给 `postingState`，并调用 `postToSubscription()` 方法对事件进行处理。  
+
+`postToSubscription` 方法代码：  
+
+</code></pre><p>private void postToSubscription(Subscription subscription, Object event, boolean isMainThread) {<br>        switch (subscription.subscriberMethod.threadMode) {<br>            case POSTING:<br>                invokeSubscriber(subscription, event);<br>                break;<br>            case MAIN:<br>                if (isMainThread) {<br>                    invokeSubscriber(subscription, event);<br>                } else {<br>                    mainThreadPoster.enqueue(subscription, event);<br>                }<br>                break;<br>            case MAIN_ORDERED:<br>                if (mainThreadPoster != null) {<br>                    mainThreadPoster.enqueue(subscription, event);<br>                } else {<br>                    // temporary: technically not correct as poster not decoupled from subscriber<br>                    invokeSubscriber(subscription, event);<br>                }<br>                break;<br>            case BACKGROUND:<br>                if (isMainThread) {<br>                    backgroundPoster.enqueue(subscription, event);<br>                } else {<br>                    invokeSubscriber(subscription, event);<br>                }<br>                break;<br>            case ASYNC:<br>                asyncPoster.enqueue(subscription, event);<br>                break;<br>            default:<br>                throw new IllegalStateException(“Unknown thread mode: “ + subscription.subscriberMethod.threadMode);<br>        }<br>    }</p>
+<pre><code>
+
+取出订阅方法的 `threadMode` 线程模式，根据 `threadMode` 来分别处理，如果时 `MAIN` ,则直接通过反射直接运行订阅的方法，如果不是主线程，则通过` mainThreadPoster` 把我们的订阅事件添加到主线程队列中。`mainThreadPoster` 是 `HandlerPoster` 类型，继承在` Handler `,通过 `Handler` 将订阅方法切换到主线程执行。
+
+
+
+
+## 订阅者取消注册  
+
+
+取消注册调用` unregister() `方法  
+</code></pre><p>public synchronized void unregister(Object subscriber) {<br>        List&lt;Class<?>> subscribedTypes = typesBySubscriber.get(subscriber);//1
+        if (subscribedTypes != null) {
+            for (Class<?> eventType : subscribedTypes) {<br>                unsubscribeByEventType(subscriber, eventType);//2<br>            }<br>            typesBySubscriber.remove(subscriber);//3<br>        } else {<br>            logger.log(Level.WARNING, “Subscriber to unregister was not registered before: “ + subscriber.getClass());<br>        }<br>    }</p>
+<pre><code>
+
+在订阅者注册过程中看到过 typesBySubscriber ，它是一个Map集合。  
+注释1处，通过 subscriber 找到 subscribedTypes 事件类型集合  
+注释3处，把 subscriber 从 subscribedTypes 移除  
+注释2处，遍历 subscribedTypes ，并调用 unsubscribeByEventType()方法   
+</code></pre><p>private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType) {<br>        List<subscription> subscriptions = subscriptionsByEventType.get(eventType);//1<br>        if (subscriptions != null) {<br>            int size = subscriptions.size();<br>            for (int i = 0; i &lt; size; i++) {<br>                Subscription subscription = subscriptions.get(i);<br>                if (subscription.subscriber == subscriber) {<br>                    subscription.active = false;<br>                    subscriptions.remove(i);<br>                    i–;<br>                    size–;<br>                }<br>            }<br>        }<br>}</subscription></p>
+<pre><code>
+
+注释1处通过 `eventType` 来得到对应 `subscriptions` 订阅对象集合，并在 `for` 循环中判断如果订阅对象 `Subscription` 的属性 `subscriber `等于传进来的 `subscriber`,则从`subscriptions`中移除该订阅对象。`
+
+
+![图]()  
+
+
+终于写完了，跟着别人的思路分析源码只能对该部分有一个大概的了解，自己在经过这个跟进与记录的过程中，能对源码有更深一步的了解。  
+最终的目的是学习别人的编程思想来形成自己一套编写规范，从而影响自己编程人生。   
+
+fighting!!!  </code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">黑魔法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">奇淫技巧</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">EventBus</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/tuyrt7/2019/09/08/EventBus源码初探/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/09/08/遇到的Android O 新特性问题 /" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjQwMi8yMjkxMw==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
+
+  
+  
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://github.com/tuyrt7/2019/09/08/EventBus源码初探/",
+  owner: 'tuyryt7',
+  repo: 'https://tuyrt7.github.io',
+  oauth: {
+    client_id: '671f2fbb5b6516d80412',
+    client_secret: '03a1ee70200184c9255a44aa29cb83f905a5bcb1',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -270,8 +651,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -345,6 +726,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">奇淫技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
             
             <div class="clearfix"></div>
