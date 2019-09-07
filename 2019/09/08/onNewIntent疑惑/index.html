@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
-  <title>风追着云</title>
+  <title>onNewIntent疑惑 | 风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一直对activity的**onNewIntent**有些困惑，开始时只是知道在activity被重新restart时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论  第一种情况：activity launchMode为singleTask或者singleInstance   1、activitya start activityb2、activityb start activitya">
+<meta name="keywords" content="blog,基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="风追着云">
+<meta property="og:title" content="onNewIntent疑惑">
 <meta property="og:url" content="https://github.com/tuyrt7/2019/09/08/onNewIntent疑惑/index.html">
 <meta property="og:site_name" content="风追着云">
 <meta property="og:description" content="一直对activity的**onNewIntent**有些困惑，开始时只是知道在activity被重新restart时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论  第一种情况：activity launchMode为singleTask或者singleInstance   1、activitya start activityb2、activityb start activitya">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-07T09:13:59.001Z">
+<meta property="og:updated_time" content="2019-09-07T16:24:23.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风追着云">
+<meta name="twitter:title" content="onNewIntent疑惑">
 <meta name="twitter:description" content="一直对activity的**onNewIntent**有些困惑，开始时只是知道在activity被重新restart时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论  第一种情况：activity launchMode为singleTask或者singleInstance   1、activitya start activityb2、activityb start activitya">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
@@ -175,6 +176,55 @@
             <article id="post-onNewIntent疑惑" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      onNewIntent疑惑
+    </h1>
+  
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+
+
+<a href="/2019/09/08/onNewIntent疑惑/" class="archive-article-date">
+  	<time datetime="2019-09-07T16:24:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+        
+		<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">222字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+		
+		
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <p>一直对<code>activity</code>的<code>**onNewIntent**</code>有些困惑，开始时只是知道在<code>activity</code>被重新<code>restart</code>时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论</p>
@@ -233,7 +283,33 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/android基础//" class="article-tag-list-link color5">android基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -297,15 +373,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/09/08/String、StringBuffer与StringBuilder之间区别 /" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/09/08/EventBus源码初探/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          EventBus源码初探
         
       </div>
     </a>
   
+  
+    <a href="/2019/09/08/String、StringBuffer与StringBuilder之间区别 /" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">String、StringBuffer与StringBuilder之间区别</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -500,6 +581,62 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">新特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">view</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文档</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">说明介绍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">eventbus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">解读</a>
               </li>
             
             <div class="clearfix"></div>

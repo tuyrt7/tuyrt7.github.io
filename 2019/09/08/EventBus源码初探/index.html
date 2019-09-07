@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
-  <title>EventBus源码解析 | 风追着云</title>
+  <title>EventBus源码初探 | 风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="EventBus构造方法当我们使用 EventBus 时，一般都是通过EventBus.getDefault()获取它的实例对象。函数内的实现如下：   123456789101112public static EventBus getDefault() &amp;#123;	//单例模式，采用双重检查        if (defaultInstance == null) &amp;#123;">
-<meta name="keywords" content="blog,EventBus,源码">
+<meta name="keywords" content="blog,eventbus,解读">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EventBus源码解析">
+<meta property="og:title" content="EventBus源码初探">
 <meta property="og:url" content="https://github.com/tuyrt7/2019/09/08/EventBus源码初探/index.html">
 <meta property="og:site_name" content="风追着云">
 <meta property="og:description" content="EventBus构造方法当我们使用 EventBus 时，一般都是通过EventBus.getDefault()获取它的实例对象。函数内的实现如下：   123456789101112public static EventBus getDefault() &amp;#123;	//单例模式，采用双重检查        if (defaultInstance == null) &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-07T16:08:44.205Z">
+<meta property="og:updated_time" content="2019-09-07T16:32:27.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EventBus源码解析">
+<meta name="twitter:title" content="EventBus源码初探">
 <meta name="twitter:description" content="EventBus构造方法当我们使用 EventBus 时，一般都是通过EventBus.getDefault()获取它的实例对象。函数内的实现如下：   123456789101112public static EventBus getDefault() &amp;#123;	//单例模式，采用双重检查        if (defaultInstance == null) &amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
@@ -180,7 +180,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      EventBus源码解析
+      EventBus源码初探
     </h1>
   
 
@@ -195,7 +195,7 @@
 
 
 <a href="/2019/09/08/EventBus源码初探/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:08:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+  	<time datetime="2019-09-07T16:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
 </a>
         
 		<!-- 需要添加的位置 -->
@@ -206,7 +206,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.4k字</span>
+        <span class="post-count">2.5k字</span>
       </span>
     </span>
 
@@ -411,7 +411,7 @@
 注释1处通过 `eventType` 来得到对应 `subscriptions` 订阅对象集合，并在 `for` 循环中判断如果订阅对象 `Subscription` 的属性 `subscriber `等于传进来的 `subscriber`,则从`subscriptions`中移除该订阅对象。`
 
 
-![图]()  
+![图](https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/eventbus.png)  
 
 
 终于写完了，跟着别人的思路分析源码只能对该部分有一个大概的了解，自己在经过这个跟进与记录的过程中，能对源码有更深一步的了解。  
@@ -465,17 +465,28 @@ fighting!!!  </code></pre>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">EventBus</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">eventbus</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">解读</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/源码//" class="article-tag-list-link color3">源码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -540,8 +551,8 @@ fighting!!!  </code></pre>
 <nav id="article-nav">
   
   
-    <a href="/2019/09/08/遇到的Android O 新特性问题 /" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+    <a href="/2019/09/08/onNewIntent疑惑/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">onNewIntent疑惑</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -738,6 +749,62 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">新特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">view</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文档</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">说明介绍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">eventbus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">解读</a>
               </li>
             
             <div class="clearfix"></div>

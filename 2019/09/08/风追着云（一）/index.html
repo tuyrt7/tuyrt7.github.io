@@ -6,18 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
-  <title>风追着云</title>
+  <title>风追着云（一） | 风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="风筝追随着风，风追着云">
-<meta property="og:type" content="website">
-<meta property="og:title" content="风追着云">
-<meta property="og:url" content="https://github.com/tuyrt7/index.html">
+  <meta name="description" content="与其感慨路难行，不如马上出发。 既已决定要：    追逐天边的云，   遥远的星， 梦中的青鸟，    便只顾风雨兼程。">
+<meta name="keywords" content="随笔,生活">
+<meta property="og:type" content="article">
+<meta property="og:title" content="风追着云（一）">
+<meta property="og:url" content="https://github.com/tuyrt7/2019/09/08/风追着云（一）/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="风筝追随着风，风追着云">
+<meta property="og:description" content="与其感慨路难行，不如马上出发。 既已决定要：    追逐天边的云，   遥远的星， 梦中的青鸟，    便只顾风雨兼程。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/cloud_1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/star_1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/far_away.jpg">
+<meta property="og:updated_time" content="2019-09-07T16:30:08.376Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风追着云">
-<meta name="twitter:description" content="风筝追随着风，风追着云">
+<meta name="twitter:title" content="风追着云（一）">
+<meta name="twitter:description" content="与其感慨路难行，不如马上出发。 既已决定要：    追逐天边的云，   遥远的星， 梦中的青鸟，    便只顾风雨兼程。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/cloud_1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -171,26 +177,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-EventBus源码初探" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-风追着云（一）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/EventBus源码初探/">EventBus源码初探</a>
+    <h1 class="article-title" itemprop="name">
+      风追着云（一）
     </h1>
   
 
         
         
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
 
 
 
-<a href="/2019/09/08/EventBus源码初探/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+
+<a href="/2019/09/08/风追着云（一）/" class="archive-article-date">
+  	<time datetime="2019-09-07T16:22:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
 </a>
         
 		<!-- 需要添加的位置 -->
@@ -201,318 +210,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-		
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="EventBus构造方法"><a href="#EventBus构造方法" class="headerlink" title="EventBus构造方法"></a>EventBus构造方法</h2><p>当我们使用 EventBus 时，一般都是通过<code>EventBus.getDefault()</code>获取它的实例对象。函数内的实现如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static EventBus getDefault() &#123;</span><br><span class="line">	//单例模式，采用双重检查</span><br><span class="line">        if (defaultInstance == null) &#123;</span><br><span class="line">            synchronized (EventBus.class) &#123;</span><br><span class="line">                if (defaultInstance == null) &#123;</span><br><span class="line">                    defaultInstance = new EventBus();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return defaultInstance;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>在此进入其构造函数看看：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public EventBus() &#123;</span><br><span class="line">        this(DEFAULT_BUILDER);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">这里`DEFAULT_BUILDER`默认时`EventBusBuilder`,用来构造`EventBus`:  </span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">private static final EventBusBuilder DEFAULT_BUILDER = new EventBusBuilder();</span><br></pre></td></tr></table></figure>
-
-<p><code>this</code>调用了<code>EventBus</code>的另一个有参构造方法：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">EventBus(EventBusBuilder builder) &#123;</span><br><span class="line">        logger = builder.getLogger();</span><br><span class="line">        subscriptionsByEventType = new HashMap&lt;&gt;();</span><br><span class="line">        typesBySubscriber = new HashMap&lt;&gt;();</span><br><span class="line">        stickyEvents = new ConcurrentHashMap&lt;&gt;();</span><br><span class="line">        mainThreadSupport = builder.getMainThreadSupport();</span><br><span class="line">        mainThreadPoster = mainThreadSupport != null ? mainThreadSupport.createPoster(this) : null;</span><br><span class="line">        backgroundPoster = new BackgroundPoster(this);</span><br><span class="line">        asyncPoster = new AsyncPoster(this);</span><br><span class="line">        indexCount = builder.subscriberInfoIndexes != null ? builder.subscriberInfoIndexes.size() : 0;</span><br><span class="line">        subscriberMethodFinder = new SubscriberMethodFinder(builder.subscriberInfoIndexes,</span><br><span class="line">                builder.strictMethodVerification, builder.ignoreGeneratedIndex);</span><br><span class="line">        logSubscriberExceptions = builder.logSubscriberExceptions;</span><br><span class="line">        logNoSubscriberMessages = builder.logNoSubscriberMessages;</span><br><span class="line">        sendSubscriberExceptionEvent = builder.sendSubscriberExceptionEvent;</span><br><span class="line">        sendNoSubscriberEvent = builder.sendNoSubscriberEvent;</span><br><span class="line">        throwSubscriberException = builder.throwSubscriberException;</span><br><span class="line">        eventInheritance = builder.eventInheritance;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到我们时通过<code>EventBusBuilder</code>来对<code>EventBus</code>进行配置，并初始化一些参数，通过建造者模式。</p>
-<h2 id="订阅者注册"><a href="#订阅者注册" class="headerlink" title="订阅者注册"></a>订阅者注册</h2><p>获取到<code>EventBus</code>的实例后，便可以将订阅者注册到<code>EventBus</code>中，看下<code>register</code>方法：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public void register(Object subscriber) &#123;</span><br><span class="line">        Class&lt;?&gt; subscriberClass = subscriber.getClass();</span><br><span class="line">        List&lt;SubscriberMethod&gt; subscriberMethods = subscriberMethodFinder.findSubscriberMethods(subscriberClass);//1</span><br><span class="line">        synchronized (this) &#123;</span><br><span class="line">            for (SubscriberMethod subscriberMethod : subscriberMethods) &#123;</span><br><span class="line">                subscribe(subscriber, subscriberMethod);//2</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 查找订阅者的订阅方法</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注释1处的`findSubscriberMethods` 方法找出一个 `SubscriberMethod `的集合，也就是传进来的订阅者的所有订阅方法，接下来就是遍历集合来完成所有订阅者的注册操作。  </span><br><span class="line">从此可以看出，`register`方法完成了**两件事**：  </span><br><span class="line">一是查找订阅者的订阅方法，  </span><br><span class="line">二是订阅者的注册。  </span><br><span class="line"></span><br><span class="line">`SubscriberMethod`类中主要用来保存的`Method`对象、线程模式、事件类型、优先级、是否是粘性事件等属性。  </span><br><span class="line">  </span><br><span class="line">下面看下`findSubscriberMethods`方法：  </span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">List&lt;SubscriberMethod&gt; findSubscriberMethods(Class&lt;?&gt; subscriberClass) &#123;</span><br><span class="line">        List&lt;SubscriberMethod&gt; subscriberMethods = METHOD_CACHE.get(subscriberClass); //1</span><br><span class="line">        if (subscriberMethods != null) &#123;</span><br><span class="line">            return subscriberMethods;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (ignoreGeneratedIndex) &#123;//这个值是EventBusBuilder的属性传递的</span><br><span class="line">            subscriberMethods = findUsingReflection(subscriberClass);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            subscriberMethods = findUsingInfo(subscriberClass); //3</span><br><span class="line">        &#125;</span><br><span class="line">        if (subscriberMethods.isEmpty()) &#123;</span><br><span class="line">            throw new EventBusException(&quot;Subscriber &quot; + subscriberClass</span><br><span class="line">                    + &quot; and its super classes have no public methods with the @Subscribe annotation&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            METHOD_CACHE.put(subscriberClass, subscriberMethods);//2</span><br><span class="line">            return subscriberMethods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注释1处从缓存中查找订阅方法的集合，找到了就马上返回。如果缓存没有根据`ignoreGeneratedIndex` 属性的值来选择采用何种方法来查找订阅方法的集合。`ignoreGeneratedIndex` 的默认值是`false`,可以通过`EventBusBuilder` 来设置。  </span><br><span class="line"></span><br><span class="line">注释2处，把找到的订阅方法的集合放入缓存中，防止下次再次查找。  </span><br><span class="line">我们一般都是用`EventBus`的单例模式来获取实例，所以`ignoreGeneratedIndex`值为`false`,执行`if`语句的`findUsingInfo `方法。</span><br></pre></td></tr></table></figure>
-
-
-<p>private List<subscribermethod> findUsingInfo(Class&lt;?&gt; subscriberClass) {<br>        FindState findState = prepareFindState();<br>        findState.initForSubscriber(subscriberClass);<br>        while (findState.clazz != null) {<br>            findState.subscriberInfo = getSubscriberInfo(findState);//1<br>            if (findState.subscriberInfo != null) {<br>                SubscriberMethod[] array = findState.subscriberInfo.getSubscriberMethods();//2<br>                for (SubscriberMethod subscriberMethod : array) {<br>                    if (findState.checkAdd(subscriberMethod.method, subscriberMethod.eventType)) {<br>                        findState.subscriberMethods.add(subscriberMethod);<br>                    }<br>                }<br>            } else {<br>                findUsingReflectionInSingleClass(findState);//3<br>            }<br>            findState.moveToSuperclass();<br>        }<br>        return getMethodsAndRelease(findState);<br>    }</subscribermethod></p>
-<pre><code>
-
-
-注释1处通过`getSubscriberInfo`获取订阅者信息,如果有就通过订阅者信息去获取所有订阅方法的信息。在我们开始查找订阅方法的时候并没有忽略注解器为我们生成的索引` MyEventBusIndex`,如果通过`EventBusBuilder`配置了`MyEventBusIndex`，  
-执行注释2处的方法，便会获取订阅方法的相关信息；如果没有配置` MyEventBusIndex`，便会执行注释3处的`findUsingReflectionInSingleClass`方法，将订阅方法保存到保存到`findState`中。最后通过`getMethodsAndRelease`方法对`findState`进行回收处理并返回订阅方法的`list`集合。默认是没有配置`MyEventBusIndex`,所以可以进去`findUsingReflectionInSingleClass`方法看看执行过程：
-
-</code></pre><p>private void findUsingReflectionInSingleClass(FindState findState) {<br>       Method[] methods;<br>       try {<br>           methods = findState.clazz.getDeclaredMethods();//1<br>       } catch (Throwable th) {<br>           methods = findState.clazz.getMethods();<br>           findState.skipSuperClasses = true;<br>       }<br>       for (Method method : methods) {<br>           int modifiers = method.getModifiers();<br>           if ((modifiers &amp; Modifier.PUBLIC) != 0 &amp;&amp; (modifiers &amp; MODIFIERS_IGNORE) == 0) {<br>               Class<?>[] parameterTypes = method.getParameterTypes();
-               if (parameterTypes.length == 1) {
-                   Subscribe subscribeAnnotation = method.getAnnotation(Subscribe.class);
-                   if (subscribeAnnotation != null) {
-                       Class<?> eventType = parameterTypes[0];<br>                       if (findState.checkAdd(method, eventType)) {<br>                           ThreadMode threadMode = subscribeAnnotation.threadMode();<br>                           findState.subscriberMethods.add(new SubscriberMethod(method, eventType, threadMode,<br>                                   subscribeAnnotation.priority(), subscribeAnnotation.sticky()));<br>                       }<br>                   }<br>               } </p>
-<pre><code> ......
-}</code></pre><p>   }</p>
-<pre><code>
-
-注释1处通过反射来获取订阅者中的所有订阅方法，并根据方法的类型、参数、注解来找到订阅方法。找到后把订阅方法的相关信息存储到`findState`中。  
-
-### 订阅者的注册
-
-</code></pre><p>// Must be called in synchronized block<br>   private void subscribe(Object subscriber, SubscriberMethod subscriberMethod) {<br>       Class&lt;?&gt; eventType = subscriberMethod.eventType;<br>       Subscription newSubscription = new Subscription(subscriber, subscriberMethod);//1<br>       CopyOnWriteArrayList<subscription> subscriptions = subscriptionsByEventType.get(eventType);//2<br>       if (subscriptions == null) {<br>           subscriptions = new CopyOnWriteArrayList&lt;&gt;();<br>           subscriptionsByEventType.put(eventType, subscriptions);<br>       } else {<br>        //判断订阅者是否已经被注册<br>           if (subscriptions.contains(newSubscription)) {<br>               throw new EventBusException(“Subscriber “ + subscriber.getClass() + “ already registered to event “<br>                       + eventType);<br>           }<br>       }</subscription></p>
-<pre><code>   int size = subscriptions.size();
-   for (int i = 0; i &lt;= size; i++) {
-       if (i == size || subscriberMethod.priority &gt; subscriptions.get(i).subscriberMethod.priority) {
-           subscriptions.add(i, newSubscription);//3
-           break;
-       }
-   }
-
-   List&lt;Class&lt;?&gt;&gt; subscribedEvents = typesBySubscriber.get(subscriber);//4
-   if (subscribedEvents == null) {
-       subscribedEvents = new ArrayList&lt;&gt;();
-       typesBySubscriber.put(subscriber, subscribedEvents);
-   }
-   subscribedEvents.add(eventType);
-
-//粘性事件的处理
-   if (subscriberMethod.sticky) {
-       if (eventInheritance) {
-           Set&lt;Map.Entry&lt;Class&lt;?&gt;, Object&gt;&gt; entries = stickyEvents.entrySet();
-           for (Map.Entry&lt;Class&lt;?&gt;, Object&gt; entry : entries) {
-               Class&lt;?&gt; candidateEventType = entry.getKey();
-               if (eventType.isAssignableFrom(candidateEventType)) {
-                   Object stickyEvent = entry.getValue();
-                   checkPostStickyEventToSubscription(newSubscription, stickyEvent);
-               }
-           }
-       } else {
-           Object stickyEvent = stickyEvents.get(eventType);
-           checkPostStickyEventToSubscription(newSubscription, stickyEvent);
-       }
-   }</code></pre><p>   }</p>
-<pre><code>
-
-
-注释1处根据` subscriber`（订阅者）和`subscriberMethod`（订阅方法）创建了一个`Subscription`(订阅对象)。  
-注释2处根据`eventTpye`(事件类型)获取所有的`Subscription`，判断如果为 `null`则重新创建，并将订阅对象和事件类型保存在` subscriptionsByEventType`（Map集合）。  
-注释3处按照订阅方法的优先级插入到订阅对象集合中，完成订阅方法的注册。  
-注释4处通过`subscriber`，获取subscribedEvents`(事件类型集合),如果为`null`则重新创建，并将`eventType`添加`subscribedEventslist`集合中，并根据`subscriber`,将`subscribedEvents`放进`typesBySubscriber`（Map集合）  
-如果是粘性事件，则从`stickyEvents`事件保存队列中取出该事件类型发送给当前订阅者。
-
-
-
-### 总结  
-
-`subscribe()`主要完成了两件事。  
-
-
-&gt; 1 把订阅对象Subscription根据事件类型eventTpye放进了subscriptionsByEventTypeMap集合，将订阅事件subscribedEvents根据subscriber封装到typesBySubscriberMap集合  
-&gt; 2 粘性事件的处理  
-
-
-## 事件的发送  
-
-
-在获取到EventBus对象时，通过post()把事件提交  
-</code></pre><p>public void post(Object event) {</p>
-<pre><code>    //PostingThreadState 保存着事件队列和线程状态信息
-   PostingThreadState postingState = currentPostingThreadState.get();
-
-//获取事件队列，并将当前事件插入事件队列
-   List&lt;Object&gt; eventQueue = postingState.eventQueue;
-   eventQueue.add(event);
-
-   if (!postingState.isPosting) {
-       postingState.isMainThread = isMainThread();
-       postingState.isPosting = true;
-       if (postingState.canceled) {
-           throw new EventBusException(&quot;Internal error. Abort state was not reset&quot;);
-       }
-       try {
-        //处理事件队列中的所有事件
-           while (!eventQueue.isEmpty()) {
-               postSingleEvent(eventQueue.remove(0), postingState);
-           }
-       } finally {
-           postingState.isPosting = false;
-           postingState.isMainThread = false;
-       }
-   }</code></pre><p>   }</p>
-<pre><code>
-
-首先从`PostingThreadState`对象中取出事件队列，然后将当前事件插入进去，最后将队列中所有事件依次交给`postSingleEvent()`方法处理，并移除该事件。  
-
-</code></pre><p>private void postSingleEvent(Object event, PostingThreadState postingState) throws Error {<br>        Class&lt;?&gt; eventClass = event.getClass();<br>        boolean subscriptionFound = false;</p>
-<pre><code>    //eventInheritance表示是否向上查找事件的父类，默认为true
-    if (eventInheritance) {
-        List&lt;Class&lt;?&gt;&gt; eventTypes = lookupAllEventTypes(eventClass);
-        int countTypes = eventTypes.size();
-        for (int h = 0; h &lt; countTypes; h++) {
-            Class&lt;?&gt; clazz = eventTypes.get(h);
-            subscriptionFound |= postSingleEventForEventType(event, postingState, clazz);
-        }
-    } else {
-        subscriptionFound = postSingleEventForEventType(event, postingState, eventClass);
-    }
-
-    //表示找不到事件时的异常处理
-    if (!subscriptionFound) {
-        if (logNoSubscriberMessages) {
-            logger.log(Level.FINE, &quot;No subscribers registered for event &quot; + eventClass);
-        }
-        if (sendNoSubscriberEvent &amp;&amp; eventClass != NoSubscriberEvent.class &amp;&amp;
-                eventClass != SubscriberExceptionEvent.class) {
-            post(new NoSubscriberEvent(this, event));
-        }
-    }
-}</code></pre><pre><code>
-
-
-
-`eventInheritance `表示是否向上查找事件的父类，默认为 `true` ，可以 `EventBusBuilder` 的构造方法配置。当 `eventInheritance` 为 `true` 时，通过 `lookupAllEventTypes()` 找到所有父类事件并存在`list`,然后通过` postSingleEventForEventType()` 对事件逐一处理。  
-
-`postSingleEventForEventType `方法源码：   
-
-</code></pre><p>private boolean postSingleEventForEventType(Object event, PostingThreadState postingState, Class&lt;?&gt; eventClass) {<br>        CopyOnWriteArrayList<subscription> subscriptions;<br>        synchronized (this) {<br>            subscriptions = subscriptionsByEventType.get(eventClass);//1<br>        }<br>        if (subscriptions != null &amp;&amp; !subscriptions.isEmpty()) {<br>            for (Subscription subscription : subscriptions) {//2<br>                postingState.event = event;<br>                postingState.subscription = subscription;<br>                boolean aborted = false;<br>                try {<br>                    postToSubscription(subscription, event, postingState.isMainThread);<br>                    aborted = postingState.canceled;<br>                } finally {<br>                    postingState.event = null;<br>                    postingState.subscription = null;<br>                    postingState.canceled = false;<br>                }<br>                if (aborted) {<br>                    break;<br>                }<br>            }<br>            return true;<br>        }<br>        return false;<br>    }</subscription></p>
-<pre><code>
-
-
-注释1处同步取出所有` subscriptions `订阅对象集合，然后遍历 将 `event `事件和 `subscription` 订阅对象传递给 `postingState`，并调用 `postToSubscription()` 方法对事件进行处理。  
-
-`postToSubscription` 方法代码：  
-
-</code></pre><p>private void postToSubscription(Subscription subscription, Object event, boolean isMainThread) {<br>        switch (subscription.subscriberMethod.threadMode) {<br>            case POSTING:<br>                invokeSubscriber(subscription, event);<br>                break;<br>            case MAIN:<br>                if (isMainThread) {<br>                    invokeSubscriber(subscription, event);<br>                } else {<br>                    mainThreadPoster.enqueue(subscription, event);<br>                }<br>                break;<br>            case MAIN_ORDERED:<br>                if (mainThreadPoster != null) {<br>                    mainThreadPoster.enqueue(subscription, event);<br>                } else {<br>                    // temporary: technically not correct as poster not decoupled from subscriber<br>                    invokeSubscriber(subscription, event);<br>                }<br>                break;<br>            case BACKGROUND:<br>                if (isMainThread) {<br>                    backgroundPoster.enqueue(subscription, event);<br>                } else {<br>                    invokeSubscriber(subscription, event);<br>                }<br>                break;<br>            case ASYNC:<br>                asyncPoster.enqueue(subscription, event);<br>                break;<br>            default:<br>                throw new IllegalStateException(“Unknown thread mode: “ + subscription.subscriberMethod.threadMode);<br>        }<br>    }</p>
-<pre><code>
-
-取出订阅方法的 `threadMode` 线程模式，根据 `threadMode` 来分别处理，如果时 `MAIN` ,则直接通过反射直接运行订阅的方法，如果不是主线程，则通过` mainThreadPoster` 把我们的订阅事件添加到主线程队列中。`mainThreadPoster` 是 `HandlerPoster` 类型，继承在` Handler `,通过 `Handler` 将订阅方法切换到主线程执行。
-
-
-
-
-## 订阅者取消注册  
-
-
-取消注册调用` unregister() `方法  
-</code></pre><p>public synchronized void unregister(Object subscriber) {<br>        List&lt;Class<?>> subscribedTypes = typesBySubscriber.get(subscriber);//1
-        if (subscribedTypes != null) {
-            for (Class<?> eventType : subscribedTypes) {<br>                unsubscribeByEventType(subscriber, eventType);//2<br>            }<br>            typesBySubscriber.remove(subscriber);//3<br>        } else {<br>            logger.log(Level.WARNING, “Subscriber to unregister was not registered before: “ + subscriber.getClass());<br>        }<br>    }</p>
-<pre><code>
-
-在订阅者注册过程中看到过 typesBySubscriber ，它是一个Map集合。  
-注释1处，通过 subscriber 找到 subscribedTypes 事件类型集合  
-注释3处，把 subscriber 从 subscribedTypes 移除  
-注释2处，遍历 subscribedTypes ，并调用 unsubscribeByEventType()方法   
-</code></pre><p>private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType) {<br>        List<subscription> subscriptions = subscriptionsByEventType.get(eventType);//1<br>        if (subscriptions != null) {<br>            int size = subscriptions.size();<br>            for (int i = 0; i &lt; size; i++) {<br>                Subscription subscription = subscriptions.get(i);<br>                if (subscription.subscriber == subscriber) {<br>                    subscription.active = false;<br>                    subscriptions.remove(i);<br>                    i–;<br>                    size–;<br>                }<br>            }<br>        }<br>}</subscription></p>
-<pre><code>
-
-注释1处通过 `eventType` 来得到对应 `subscriptions` 订阅对象集合，并在 `for` 循环中判断如果订阅对象 `Subscription` 的属性 `subscriber `等于传进来的 `subscriber`,则从`subscriptions`中移除该订阅对象。`
-
-
-![图](https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/eventbus.png)  
-
-
-终于写完了，跟着别人的思路分析源码只能对该部分有一个大概的了解，自己在经过这个跟进与记录的过程中，能对源码有更深一步的了解。  
-最终的目的是学习别人的编程思想来形成自己一套编写规范，从而影响自己编程人生。   
-
-fighting!!!  </code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">eventbus</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">解读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/源码//" class="article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/EventBus源码初探/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-onNewIntent疑惑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/onNewIntent疑惑/">onNewIntent疑惑</a>
-    </h1>
-  
-
-        
-        
-
-
-
-<a href="/2019/09/08/onNewIntent疑惑/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:24:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-		<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">222字</span>
+        <span class="post-count">40字</span>
       </span>
     </span>
 
@@ -533,26 +231,49 @@ fighting!!!  </code></pre>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一直对<code>activity</code>的<code>**onNewIntent**</code>有些困惑，开始时只是知道在<code>activity</code>被重新<code>restart</code>时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论</p>
-<ul>
-<li>第一种情况：<code>activity launchMode</code>为<code>singleTask</code>或者<code>singleInstance</code></li>
-</ul>
-<blockquote>
-<p>1、activitya start activityb<br>2、activityb start activitya  </p>
-</blockquote>
-<p>在第二步被执行后，<code>activitya</code>就会顺序执行 <code>onNewIntent onRestart onStart onResume</code></p>
-<ul>
-<li>第二种情况：activity launchMode为singleTop singleTask singleInstance  </li>
-</ul>
-<blockquote>
-<p>1、start activitya<br>2、activitya start activitya  </p>
-</blockquote>
-<p>在第二步被执行后，<code>activitya</code>就会顺序执行<code>onPause onNewIntent onResume</code></p>
-<p>第一种情况其实是真正的<code>activity被restart</code>，第二种情况是<code>activity</code>位于栈顶时被再次<code>start</code>就会进入<code>onNewIntent</code> </p>
-<p>其实理解的简单一点，无论什么模式，只有<code>activity</code>是同一个实例的情况下，<code>intent</code>发生了变化，就会进入<code>onNewIntent</code>中，这个方法的作用也是让你来对旧的<code>intent</code>进行保存，对新的<code>intent</code>进行对应的处理。</p>
+        <p>与其感慨路难行，不如马上出发。</p>
+<p>既已决定要：</p>
+<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/cloud_1.jpg" alt="天边的云">  </p>
+<p>追逐天边的云，</p>
+<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/star_1.jpg" alt="遥远的星"> </p>
+<p>遥远的星，</p>
+<p>梦中的青鸟，</p>
+<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/far_away.jpg" alt="远方">  </p>
+<p>便只顾风雨兼程。</p>
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -563,473 +284,97 @@ fighting!!!  </code></pre>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/android基础//" class="article-tag-list-link color5">android基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/onNewIntent疑惑/">展开全文 >></a>
-        </p>
       
 
       
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
         
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-String、StringBuffer与StringBuilder之间区别 " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/String、StringBuffer与StringBuilder之间区别 /">String、StringBuffer与StringBuilder之间区别</a>
-    </h1>
-  
-
-        
-        
-
-
-
-<a href="/2019/09/08/String、StringBuffer与StringBuilder之间区别 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:24:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-		<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">716字</span>
-      </span>
+      </div>
     </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
-      </span>
-    </span>
+  </div>
 </div>
-          
-        <!-- 添加完成 -->
-		
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p><a href="https://www.cnblogs.com/Wilange/p/7570633.html" target="_blank" rel="noopener">https://www.cnblogs.com/Wilange/p/7570633.html</a><br>String,StringBuffer,StringBuilder的区别及其源码分析(一)<br><a href="https://www.cnblogs.com/Wilange/p/7572125.html" target="_blank" rel="noopener">https://www.cnblogs.com/Wilange/p/7572125.html</a><br>String,StringBuffer,StringBuilder的区别及其源码分析(二)    </p>
-<p>类别|效率|线程安全<br>String|效率慢|<br>StringBuffer|效率快|线程安全<br>StringBuilder|效率快|线程不安全  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">String str =new String(&quot;Hello&quot;);  </span><br><span class="line">str=str+&quot;nihao&quot;;</span><br></pre></td></tr></table></figure>
 
-<p>首先，创建值为 ”Hello” 的 str对象 ，后来对 str 对象追加字符串 “nihao” ,形成新的 str对象 ，咦？不是说字符串一旦创建，不能更改吗？   </p>
-<p>其实，第一行代码是我们程序员自己创建了 str对象，但当执行到第二行代码时，因为 str值一旦创建不能更改，而我们代码中仍然使用 str这个变量名，系统内部又重新创建新的 str对象，（用 str=”值” 方式进行赋值，在编译前就会在常量池中创建好）对之前的 str对象 进行覆盖，而之前的 str对象 将由GC进行回收。<br>那试想，如果进行频繁的字符串更改,对内存是无比的浪费啊，而 <code>StringBuffer</code>和<code>StringBuilder</code>正好解决此问题，创建一个此类对象，可以在原内存中对对象进行更改,类似于普通类对于属性的操作。   </p>
-<h2 id="借助jvm内存分析来深入理解String"><a href="#借助jvm内存分析来深入理解String" class="headerlink" title="借助jvm内存分析来深入理解String"></a>借助jvm内存分析来深入理解String</h2><p>jvm为了节省字符串重复创建而造成内存浪费，特别维互一个叫常量池的区域，当使用 <code>String str =”值”</code>形式创建字符串对象时，就会去查找常量池中有无这个的值，如有，直接引用返回，如果没有系统会在常量池创建，然后引用返回。当使用<code>String str =new String(“值”)</code>时，既然有new关键词，势必会在进行堆中进行new对象3步骤（1.在堆中开辟内存空间 2，调用构造器初始化对象 3.返回引用地址值），每次new都会产生新的对象。  </p>
-<p>Sring对象的更改（主要指new方式创建），会频繁的在堆中开垦内存，造成内存浪费，效率也会大大在降低，并且会有很多脏屁股让GC去帮忙擦。 StingBuffer和StingBuilder不同，一个对象只需要开辟一块内存空间，那效率就会高很多。<br>但要细说StringBuffer和StringBuilder，它们在效率上应该不会有大的区别，但因为StringBuffer内中的方法，很多用了synchronized锁，所有在多线程下，会稍慢于StringBuilder.    </p>
-<p>也正因为 StringBuffer类中方法中多代有synchronized，线程安全，所有在多线程环境下，我们要舍StringBuilder而用StringBuffer    </p>
-<p><strong>使用总结</strong>：  </p>
-<blockquote>
-<p>（1）如果要操作少量的数据用 String；<br>（2）多线程操作字符串缓冲区下操作大量数据 StringBuffer；<br>（3）单线程操作字符串缓冲区下操作大量数据 StringBuilder。  </p>
-</blockquote>
-
-      
-
-      
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/tuyrt7/2019/09/08/风追着云（一）/" alt="微信分享二维码">
     </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/String、StringBuffer与StringBuilder之间区别 /">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Studio常用快捷键 " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/Studio常用快捷键 /">Studio常用快捷键</a>
-    </h1>
-  
-
-        
-        
-
-
-
-<a href="/2019/09/08/Studio常用快捷键 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:23:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-		<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
 </div>
-          
-        <!-- 添加完成 -->
-		
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Android-Studio常用快捷键"><a href="#Android-Studio常用快捷键" class="headerlink" title="Android Studio常用快捷键"></a>Android Studio常用快捷键</h1><p>Android Studio 是谷歌基于IntelliJ IDEA开发的安卓开发工具，有点类似 Eclipse ADT，Android Studio 提供了集成的 Android 开发工具用于开发和调试，基于Gradle的构建支持。  </p>
-<p>Android Studio常用快捷键   </p>
-<ul>
-<li><p>Ctrl+D： 集合了复制和粘贴两个操作，如果有选中的部分就复制选中的部分，并在选中部分的后面 粘贴出来，如果没有选中的部分，就复制光标所在的行，并在此行的下面粘贴出来。 </p>
-</li>
-<li><p>Ctrl+空格： 输入代码时按此组合键会列出与之相匹配的类、方法名、成员变量等，起智能提示的作用。 在编辑XML文件一样有用。</p>
-</li>
-<li><p>Ctrl+向下箭头 或Ctrl+向上箭头：在有自动匹配下拉列表时，此快捷键会自动关掉下拉列表， 光标移动到下/上一行。 </p>
-</li>
-<li><p>自动匹配下拉列表的排列方式的切换：在自动匹配下拉列表的右下角有个“π”图标，点击后可选 是按:实用性、字母两种排列方式。 </p>
-</li>
-<li><p>Ctrl+斜杠 、Ctrl+shift+斜杠： Ctrl+斜杠：注释或取消注释当前行或选中的代码块，以双斜杠的方式即“//” Ctrl+shift+斜杠:注释或取消注释选中的代码块，以“/……/”方式注释， </p>
-</li>
-<li><p>Ctrl+shift+Enter：自动匹配相对应的语法结构，比如if，do-while，try-catch等结构。 </p>
-</li>
-<li><p>Ctrl+F：搜索 </p>
-</li>
-<li><p>Ctrl+句点：在自动匹配下拉列表中，选中第一个item </p>
-</li>
-<li><p>感叹号：在自动匹配下拉列表中，上下键选中一个返回结果为boolean的item，按感叹号会自动取反： </p>
-</li>
-<li><p>Ctrl+Enter :在自动匹配下拉列表中，在没有选中的item时，默认选中第一个item。 </p>
-</li>
-<li><p>Ctrl+shift+A：快速查找android studio中的菜单。 </p>
-</li>
-<li><p>Ctrl+N：快速查找类名、文件 </p>
-</li>
-<li><p>Ctrl+B：直接跳转到类、方法、成员变量定义的地方。与Ctrl+鼠标左键效果一样 </p>
-</li>
-<li><p>Ctrl+Alt+B：查询有哪些类实现了光标所在的接口。 </p>
-</li>
-<li><p>Ctrl+Alt+shift+I：检测代码,比如检测一些定义了，但没有使用过的变量或方法。检测的目的是为了提高代码效率。 </p>
-</li>
-<li><p>Ctrl+Alt+shift+N ：快速打开输入的方法或变量。 </p>
-</li>
-<li><p>Ctrl+shift+F7：以高亮的形式标志处一些相关的东西，这里主要由三种情况：<br>　　- 光标的位置在implement时，会把类实现了接口的方法名给标志出来；<br>　　- 光标的位置在return时，会标志出方法的所有退出的地方；<br>　　- 光标在try或者throws关键字处时，会标志出会产生异常的语句。 </p>
-</li>
-<li><p>shift+鼠标滚动：可实现编辑界面的横向滚动。 </p>
-</li>
-<li><p>Ctrl+Alt+V：调用方法时传入的参数是比较复杂的表达式时，可用此组合键重构变量，以简化代码的复杂度。<br>　　<br>在组合键之前要先选中表达式。  </p>
-</li>
-<li><p>Ctrl+D：比较两个jar文件，在同一工程中，选中两个jar文件，按此组合键</p>
-</li>
-<li><p>Ctrl+O：子类想重写父类的方法时，按此组合键可显示所有父类的方法。接口对应的组合键时Ctrl+I。</p>
-</li>
-<li><p>Ctrl+shift+I:快速查看方法体，想查看一个方法是如何实现的，可把光标移至方法处，按此组合键。</p>
-</li>
-<li><p>Ctrl+Q：把光标移至方法处，按此组合键可快速查看方法的说明文档。</p>
-</li>
-<li><p>Ctrl+~:切换编辑界面的风格，快捷键设计</p>
-</li>
-<li><p>Alt+shift+C：查看工程的最近修改。</p>
-</li>
-<li><p>Ctrl+E：快速查看最近打开打开过的文件。</p>
-</li>
-<li><p>shift+F6：可对类、方法、变量进行重命名，使用的地方会自动更新名字。</p>
-</li>
-<li><p>Alt+F1：快速打开project view、structure view 等查看相应的元素。</p>
-</li>
-<li><p>Ctrl+Alt+F7:查看一个类、方法、成员变量在整个工程中的使用情况。</p>
-</li>
-<li><p>Ctrl+shift+空格：在赋值或者是在方法中要传入参数时，列出类型匹配的方法名、成员变量名。</p>
-</li>
-<li><p>Ctrl+Alt+T：选中一块代码，按此组合键，可快速添加if 、for、try/catch等语句。</p>
-</li>
-<li><p>Ctrl+Tab：打开界面切换窗口，保持按住Ctrl键，选中相应的要打开的窗口。</p>
-</li>
-<li><p>Ctrl+W：选中光标所在的所在的单词（一个成员变量或者是一个方法名），多按一次会选中所在的语句， 再多按一次会选中所在的代码块。。。依次类推，每增加一次会扩大一级选中的范围。</p>
-</li>
-<li><p>Alt+回车 导入包,自动修正</p>
-</li>
-<li><p>Ctrl+N 查找类</p>
-</li>
-<li><p>Ctrl+Shift+N 查找文件</p>
-</li>
-<li><p>Ctrl+Alt+L 格式化代码</p>
-</li>
-<li><p>Ctrl+Alt+O 优化导入的类和包</p>
-</li>
-<li><p>Alt+Insert 生成代码(如get,set方法,构造函数等)</p>
-</li>
-<li><p>Ctrl+E或者Alt+Shift+C 最近更改的代码</p>
-</li>
-<li><p>Ctrl+R 替换文本</p>
-</li>
-<li><p>Ctrl+F 查找文本</p>
-</li>
-<li><p>Ctrl+Shift+Space 自动补全代码</p>
-</li>
-<li><p>Ctrl+空格 代码提示</p>
-</li>
-<li><p>Ctrl+Alt+Space 类名或接口名提示</p>
-</li>
-<li><p>Ctrl+P 方法参数提示</p>
-</li>
-<li><p>Ctrl+Shift+Alt+N 查找类中的方法或变量</p>
-</li>
-<li><p>Alt+Shift+C 对比最近修改的代码</p>
-</li>
-<li><p>Shift+F6 重构-重命名</p>
-</li>
-<li><p>Ctrl+Shift+先上键</p>
-</li>
-<li><p>Ctrl+X 删除行</p>
-</li>
-<li><p>Ctrl+D 复制行</p>
-</li>
-<li><p>Ctrl+/ 或 Ctrl+Shift+/ 注释（// 或者/…/ ）</p>
-</li>
-<li><p>Ctrl+J 自动代码</p>
-</li>
-<li><p>Ctrl+E 最近打开的文件</p>
-</li>
-<li><p>Ctrl+H 显示类结构图</p>
-</li>
-<li><p>Ctrl+Q 显示注释文档</p>
-</li>
-<li><p>Alt+F1 查找代码所在位置</p>
-</li>
-<li><p>Alt+1 快速打开或隐藏工程面板</p>
-</li>
-<li><p>Ctrl+Alt+ left/right 返回至上次浏览的位置</p>
-</li>
-<li><p>Alt+ left/right 切换代码视图</p>
-</li>
-<li><p>Alt+ Up/Down 在方法间快速移动定位</p>
-</li>
-<li><p>Ctrl+Shift+Up/Down 代码向上/下移动。</p>
-</li>
-<li><p>F2 或Shift+F2 高亮错误或警告快速定位</p>
-</li>
-<li><p>代码标签输入完成后，按Tab，生成代码。</p>
-</li>
-<li><p>选中文本，按Ctrl+Shift+F7 ，高亮显示所有该文本，按Esc高亮消失。</p>
-</li>
-<li><p>Ctrl+W 选中代码，连续按会有其他效果</p>
-</li>
-<li><p>选中文本，按Alt+F3 ，逐个往下查找相同文本，并高亮显示。</p>
-</li>
-<li><p>Ctrl+Up/Down 光标跳转到第一行或最后一行下</p>
-</li>
-<li><p>Ctrl+B 快速打开光标处的类或方法 </p>
-</li>
-</ul>
-<h2 id="最常用快捷键"><a href="#最常用快捷键" class="headerlink" title="最常用快捷键"></a>最常用快捷键</h2><ul>
-<li>Ctrl＋E，可以显示最近编辑的文件列表 </li>
-<li>Shift＋Click可以关闭文件 </li>
-<li>Ctrl＋[或]可以跳到大括号的开头结尾 </li>
-<li>Ctrl＋Shift＋Backspace可以跳转到上次编辑的地方 </li>
-<li>Ctrl＋F12，可以显示当前文件的结构</li>
-<li>Ctrl＋F7可以查询当前元素在当前文件中的引用，然后按F3可以选择 </li>
-<li>Ctrl＋N，可以快速打开类 </li>
-<li>Ctrl＋Shift＋N，可以快速打开文件</li>
-<li>Alt＋Q可以看到当前方法的声明 </li>
-<li>Ctrl＋W可以选择单词继而语句继而行继而函数 </li>
-<li>Alt＋F1可以将正在编辑的元素在各个面板中定位 </li>
-<li>Ctrl＋P，可以显示参数信息 </li>
-<li>Ctrl＋Shift＋Insert可以选择剪贴板内容并插入 </li>
-<li>Alt＋Insert可以生成构造器/Getter/Setter等 </li>
-<li>Ctrl＋Alt＋V 可以引入变量。例如把括号内的SQL赋成一个变量</li>
-<li>Ctrl＋Alt＋T可以把代码包在一块内，例如try/catch </li>
-<li>Alt＋Up and Alt＋Down可在方法间快速移动</li>
-</ul>
-<p>下面的不是很有用</p>
-<ul>
-<li>在一些地方按Alt＋Enter可以得到一些Intention Action，例如将”==”改为”equals()” </li>
-<li>Ctrl＋Shift＋Alt＋N可以快速打开符号</li>
-<li>Ctrl＋Shift＋Space在很多时候都能够给出Smart提示 </li>
-<li>Alt＋F3可以快速寻找 </li>
-<li>Ctrl＋/和Ctrl＋Shift＋/可以注释代码 </li>
-<li>Ctrl＋Alt＋B可以跳转到抽象方法的实现</li>
-<li>Ctrl＋O可以选择父类的方法进行重写 </li>
-<li>Ctrl＋Q可以看JavaDoc</li>
-<li>Ctrl＋Alt＋Space是类名自动完成 </li>
-<li>快速打开类/文件/符号时，可以使用通配符，也可以使用缩写</li>
-<li>Live Templates! Ctrl＋J</li>
-<li>Ctrl＋Shift＋F7可以高亮当前元素在当前文件中的使用 </li>
-<li>Ctrl＋Alt＋Up /Ctrl＋Alt＋Down可以快速跳转搜索结果</li>
-<li>Ctrl＋Shift＋J可以整合两行 </li>
-<li>Alt＋F8是计算变量值  </li>
-</ul>
-<p>在独处的过程中激发思考的力量……</p>
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">studio</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/快捷键//" class="article-tag-list-link color4">快捷键</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/Studio常用快捷键 /">展开全文 >></a>
-        </p>
-      
-
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/09/08/本体文档 /" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          本体文档
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/08/实现view的滑动/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">View的滑动</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -1050,467 +395,52 @@ fighting!!!  </code></pre>
 
 
 
-  
-    <article id="post-本体文档 " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/本体文档 /">本体文档</a>
-    </h1>
-  
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjQwMi8yMjkxMw==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
 
-        
-        
+       if (typeof LivereTower === 'function') { return; }
 
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
 
-
-<a href="/2019/09/08/本体文档 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:22:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-		<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
 </div>
-          
-        <!-- 添加完成 -->
-		
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="项目结构："><a href="#项目结构：" class="headerlink" title="项目结构："></a>项目结构：</h1><p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/kid_1.png" alt="本体端-项目结构">  </p>
-<h1 id="项目入口："><a href="#项目入口：" class="headerlink" title="项目入口："></a>项目入口：</h1><p><code>application</code> 在 <code>onCreate</code> 初始化  </p>
-<pre><code>
-CrashReport.initCrashReport(getContext(), BUGLY_APPID, true);
-DemoHelper.getInstance().init(this);  //环信
-//全局异常捕获 防止crash  一般的是点击
-// (必须onCreate执行完成之后才能捕获) 现在先别加了, 后期上线再加吧
-//initNoCrash();
-
-Utils.init(this);//工具类
-initMusic(); //音乐服务
-setupGreenDao(); //db
-initFont();// 字体
-testDebug();//debug leak
-initManager(); //设备底层串口通讯、sp本地存储
-initMqttService();//开启服务 初始化did 机智云
-initAlarm();//开启每天晚上12点的闹钟 用来设置数据,更改数据 在EveryDayReveiver中
-initJPush(); //初始化jpush 极光推送  </code></pre><h1 id="App绑定："><a href="#App绑定：" class="headerlink" title="App绑定："></a>App绑定：</h1><p>在application 启动 ReceiveMqttService 服务，在服务中初始化机智云设备SDK–JGAgent。<br>在服务中，初始化JGAgent并设置MyCallback监听收到的信息。  </p>
-<pre><code>
-startService(new Intent(this, ReceiveMqttService.class));  </code></pre><p><em>ReceiveMqttService</em> 的 <em>onCreate</em> 函数中初始化 _JAGent_。   </p>
-<pre><code>
-fileName = &quot;gw.xml&quot;;
-fileOutName = (getFilesDir().getAbsolutePath() +&quot;/&quot;+ fileName);
-copyJson();
-test.setMyCallback(new MyCallback());//设置监听收到消息
-
-initdata(test);
-
-//通过gw.xml 文件 初始化jagent
-private void initdata(final JGAgent test) {
-
-       if(did == null){
-           did = test.initDevice(fileOutName, MacUtil.getMacAddress());
-           System.out.println(&quot;kidrobotlog  did:&quot;+did);
-            if(did != null){
-                Log.e(&quot;get the cloud did:&quot;, did);
-            }
-            System.out.println(&quot;check ota!&quot;);
-            test.checkOTA(did);
-                // run the device
-            test.tickLoop();
-        }
-}
-</code></pre><h1 id="扫码："><a href="#扫码：" class="headerlink" title="扫码："></a>扫码：</h1><p>用的是<code>zxing</code>，扫描页面为 <code>ui/</code> 目录下 <code>CaptureActivity</code>，<code>zxing</code>的相关代码在 <code>module/</code> 目录下。其中关于调用摄像头并分析采集数据的代码已经用 <strong>USB</strong> 摄像头 调用库 类 <code>CameraCapture</code> 中的接口替换 <code>android Camera</code> 中的函数 。主要修改的地方是在 <code>zxing/</code> 目录下的<code>CameraManager</code>类中。</p>
-<pre><code>
-//初始化摄像头、开启摄像头
-  mCameraCap =  ScanCamera.getInstance();
-  mCameraCap.initCameraAndStart(context,holder);
-
-   //关闭摄像头
-    if (mCameraCap != null) {
-          mCameraCap.closeCamera();
-          mCameraCap = null;
-      }
-
-  //预览
-    if (mCameraCap != null) {
-         mCameraCap.startCap();
-     }</code></pre><h1 id="主页："><a href="#主页：" class="headerlink" title="主页："></a>主页：</h1><p>主页<code>HomeActivity</code>是6大模块、每日任务、设置的入口。 </p>
-<ul>
-<li>商品中心：已完成功能  </li>
-<li>任务中心：已完成功能   </li>
-<li>音乐中心：已完成功能（视频暂时砍掉，项目里有一个jiecaovideoplayer的库依赖，用于视频播放，这些页面暂- 时放在module里面的video/目录下）  </li>
-<li>成长中心：完成当前设计的UI显示，勋章、成长数据后台没有（可能会推翻当前设计）  </li>
-<li>拍摄中心：通过USB摄像头完成拍照，后台保存照片，录像和视频管理未做  </li>
-<li>游戏中心：完成一个页面主框架，各页面细分还未有设计，互动类的线下游戏设计没完成  </li>
-<li>每日任务：已完成功能  </li>
-<li>设置中心：已完成重置wifi、升级、关于等功能，其余界面UI按照目前设计已完成UI填充，内容展示目前没有内容  </li>
-</ul>
-<h1 id="与App通讯："><a href="#与App通讯：" class="headerlink" title="与App通讯："></a>与App通讯：</h1><p>通过机智云透传消息的接口与App进行通讯。通讯分为上行（上报）、下行（下发），通讯接口的调用都在net/ 包下。与App的通讯协议是项目根目录下文件：<strong>本体和app通讯协议.MD</strong> ，此协议目前还不完整，以后如果有新的指令需要根据协议目前的json格式再加进去。  </p>
-<p>指令上行<code>ReportHelper</code><br>通过<code>JGAgent</code>的<code>sendData</code>接口发送状态到App端 </p>
-<pre><code>
-/**
-    * did:  设备向云端注册得到的唯一标识
-    * data: 设备上报给app的数据内容
-    * type: 传输的类型，1：为使用机智云P0协议，2：使用透传方式传输数据内容
-    */
-   public native int sendData(String did, String data, String type);  </code></pre><p>例：上报健康值饥饿值  </p>
-<pre><code>
-String HungerAndHealthReport = &quot;{ &quot;key&quot;: &quot;HungerAndHealthReport&quot;, &quot;value&quot;:{&quot;hungerValue&quot;:%s,&quot;healthValue&quot;:%s}}&quot;;
-String format = String.format(HungerAndHealthReport, currentHungerValue, currentHealthValue);
-mJGAgent.sendData(ChildApp.getSpManager().getDid(), format, &quot;2&quot;);  </code></pre><p>指令下发<code>IssuedHelperJson</code><br>通过<code>JGAgent</code>的<code>setMyCallback</code>来接收App端发来的数据<code>byte[]</code>,然后转换成<code>string</code>再根据协议去解析数据指令  </p>
-<pre><code>
-MyCallback() {
-
-  @Override
-  public void func(String pk, String did, byte action, byte[] arrays) {
-      int length = arrays.length;
-       if (length == 0) {
-           return;
-       }
-        String s = HexToStringUtils.HexToString(arrays);////////////这个就是发送过来的Stirng ArsII值
-        String jsonString = HexToStringUtils.hexStr2Str(s);// 这个就是转换的jsonstring
-
-         Message messag = Message.obtain();
-         messag.obj = jsonString;
-         hand.sendMessage(messag);   //发往主线程去解析           
-   }
-});
-
-
-
-Handler hand = new Handler(){
-       public void handleMessage(android.os.Message msg) {
-           String s = (String) msg.obj;
-           IssuedHelperJson.parseJson(s);
-           Pop.showSafe(s);
-       };
-   };
-</code></pre><p>透传协议格式<br>通讯协议定位<code>json</code>格式，通过<code>key</code>值的变化，区分不同的指令，再解析<code>value</code>的具体内容<br>例如以下两个接口:</p>
-<pre><code>
-1.1 静默开始和结束时间
-    flag： Silence
-    说明： h.m.s暂时为Long 主要就是当app设置静默时间段的时候,需要上报给服务器 startTime: 是自             1970 年 1 月 1 日起的绝对时间 Long值 endTime: 是自 1970 年 1 月 1 日起的绝对时间 Long值
-      { &quot;key&quot;: &quot;Silence&quot;, &quot;value&quot;:{&quot;StartTime&quot;:12312,&quot;EndTime&quot;:123123}}
-
-2.2 重启机器人
-      flag： RobotRestart
-      说明： value为boolean
-        { &quot;key&quot;: &quot;RobotRestart&quot;, &quot;value&quot;:true}</code></pre><h1 id="视频通话："><a href="#视频通话：" class="headerlink" title="视频通话："></a>视频通话：</h1><p>用的是环信SDK，从环信官网的demo项目里面把关于初始化、注册账号、登陆、视频通话的代码扣下来完成本体与App的视频连接。环信的接口都封装在<code>module/</code>目录下的类<code>DemoHelper</code>中。</p>
-<pre><code>DemoHelper.getInstance().init(this);  //在application ,环信初始化
-
-//注册、登陆，再根据环信连接状态来做保持上线的操作
- if (!DemoHelper.getInstance().isEmRegister()) {
-            DemoHelper.getInstance().registerEM(EM_NAME);
-        } else {
-            if (!DemoHelper.getInstance().isLoginIn()) {
-                DemoHelper.getInstance().loginEM(EM_NAME);
-            } else if (!DemoHelper.getInstance().isConnEmServer()) {
-                EMClient.getInstance().logout(true);
-                DemoHelper.getInstance().loginEM(EM_NAME);
-            }
-        }
-
-//环信账号是否在线
- EMClient.getInstance().addConnectionListener(emConnectListener);
-
-
-//在广播接收者CallReceiver 中接收来电通知时，启动是视频通话页面VideoCallActivity
-    context.startActivity(new Intent(context, VideoCallActivity.class).
-                putExtra(&quot;username&quot;, from).putExtra(&quot;isComingCall&quot;, true).
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));</code></pre><p>由于摄像头不是android 标准的摄像头，采用的USB的摄像头来采集视频数据，所以视频通话也做了相应改变 </p>
-<pre><code>//设置视频通话 自采集外部数据（在接通视频通话前）
- EMClient.getInstance().callManager().getCallOptions().setEnableExternalVideoData(true);
-
-//配置环信外部视频数据的分辨率,buffer为一帧数据
- EMClient.getInstance().callManager().inputExternalVideoData(data,w , h, 90);   </code></pre><p>鉴于目前的摄像头分辨率不是屏幕的分辨率，以后可能会有改动采集数据数据宽 w,高h  </p>
-<h1 id="设备控制："><a href="#设备控制：" class="headerlink" title="设备控制："></a>设备控制：</h1><p>设备控制功能都写在项目依赖的<code>devicelib</code>模块里。讯飞语音的接口也写到这个库模块<code>ifly/</code>目录下。设备通过串口控制硬件在<code>control/</code>目录下。所有设备控制的接口各自对应的有封装工具类，工具类的对象获取都在<code>lib包</code>名下<code>ApiDevice</code>中，由它来创建对象，调用接口，做到统一处理。  </p>
-<p>初始化：   </p>
-<pre><code>
-// application 中初始化设备库接口管理
-mApiManager = ApiDevice.newInstance(getContext());
-
-//获取设备控制
-ApiDevice apiManager = ChildApp.getApiManager();
-</code></pre><p>获取各种工具接口管理示例：  </p>
-<pre><code>
-mSubControl = ChildApp.getApiManager().getSubControl();//底板串口管理
-mBoard = ChildApp.getApiManager().getBodyControl();//胳膊、串口管理
-mUart = ChildApp.getApiManager().getUartUtils();//讯飞板唤醒窗口管理</code></pre><ul>
-<li>讯飞语音<br>由于调用讯飞SDK的接口结果都是在回调里面，而且接口比较多，所以我另行封装了一层。听写–类<code>IDictate</code>、合成语音—类<code>ISynthetic</code>、理解—类<code>IUnderstand</code>，这3个功能调用又统一在类<code>IFlyManager</code>公开给主模块调用。   </li>
-</ul>
-<pre><code>
- // 听写功能，开始听写、停止听写
- public void write(IDictateListener listener) {
-        if (mIDictate == null) {
-            mIDictate = new IDictate(mContext);
-        }
-        mIDictate.dictate(listener);
-    }
-
-  public void stopWrite() {
-        if (mIDictate != null)
-            mIDictate.stopDictate();
-    }
-
-
-// 合成功能，开始合成、停止合成、设置合成人、合成音量
-    /**
-     * 合成语音
-     *
-     * @param content  合成内容
-     * @param listener 合成结束监听
-     */
-    public void speak(String content, ISyntheticListener listener) {
-        if (TextUtils.isEmpty(content)) {
-            content = &quot;没有合成语音内容&quot;;
-        }
-        getISynthetic();
-        mISynthetic.syntheticVoice(content, listener);
-    }
-
-   public void stopSpeak() {
-        if (mISynthetic != null)
-            mISynthetic.stopSynthetic();
-    }
-
-    public void setNicker(String nicker) {
-        getISynthetic();
-        mISynthetic.setNicker(nicker);
-    }
-
-    public void setVolume(String volume) {
-        getISynthetic();
-        mISynthetic.setVolume(volume);
-    }
-
-
-//语义理解功能，开始、停止理解（目前是实时采集音频进行语义理解，如果需要文本语义功能，需要修改调用IUnderstand的接口，文本理解的接口也提炼在 类IUnderstand）
- public void understand(ISpeechUndListener listener) {
-        getIUnderstand();
-        mIUnderstand.speechUnderstand(listener);
-    }
-
-    public void stopUnderStand() {
-        if (mIUnderstand != null)
-            mIUnderstand.stopUnderStand();
-    }   </code></pre><ul>
-<li>设备控制硬件<br>硬件控制都是通过JNI 调用串口来实现，JNI 的源码都在招朋和郝建华那里。目前关于控制底盘轮子行走，前进、后退、转向、头部表情控制和超声等传感器状态获取的接口是郝建华封装给我的，招朋完成接下来手臂控制、头部转向、俯仰、讯飞唤醒串口通知、手环zigbee信号控制收发命令的接口。</li>
-</ul>
-<blockquote>
-<p>底盘控 — <code>SubControlBoard</code><br>so库，JNI 层的java层的调用接口的<code>SubBoardActivity</code>,这个文件放在项目主模块的<code>ui/test/</code>目录下，我根据郝工的demo接口，稍稍修改了一下，写了一个工具类<code>SubControlUtils</code>，此工具类在<code>control/</code>包下，具体如何使用对照着代码一看就知。  </p>
-</blockquote>
-<blockquote>
-<p>手臂、头部控制 — <code>BodyControlBoard</code><br>demo项目源码，包括编写so库的c文件，demo名称<code>bodyMoveControlBoard1</code>，其接口和<code>SubControlBoard</code>类似，为了简化调用也已稍稍封装接口–类名<code>BodyControlUtils</code>  </p>
-</blockquote>
-<blockquote>
-<p>讯飞板唤醒串口通知Java层 — <code>UartRead</code><br>demo 项目源码，包括编写so库的c文件，demo名称voiceUart,接口与之前类似，简化后封装工具类 <code>UartUtils</code><br>……  </p>
-</blockquote>
-<p>其一般调用方式：  </p>
-<pre><code>
-// 创建对象，初始化打开串口
-     mBoard = new SubControlBoard();
-      int ret = mBoard.subBoard_hardware_init();
-      isInitBoard = ret == 0 ? true : false;
-       if (isInitBoard) {
-          Log.e(TAG, &quot;initBoard:  success&quot;);
-       }
-
-  // 通过串口发送协议指令
- int ret = mBoard .subBoard_msg_send(mBoard .CHASSIC_BOARD, mBoard .CHASSIC_CMD_SET_BACKUP, param1, 2);
-
-//关闭串口
-mBoard .subBoard_hardware_exit();  </code></pre><h1 id="拍摄："><a href="#拍摄：" class="headerlink" title="拍摄："></a>拍摄：</h1><p>由于用USB摄像头替换标准摄像头，android SDK 的类<code>Camera</code> 不能使用，拍照功能需要通过 JNI 的方式去使用USB摄像头库来的接口来采集数据，生成照片。拍摄中心 — <code>ShotCenterActivity</code><br>对中航王晶王工提供的库进行封装工具类 – <code>CameraPreview</code>和<code>CameraPreview2</code> 使用。 </p>
-<pre><code>
- //获取展示的SurfaceView关联的Holder
-   mHolder1 = mVideo1.getHolder();
-       mHolder1.addCallback(new SurfaceHolder.Callback() {
-           @Override
-           public void surfaceCreated(SurfaceHolder holder) {
-               mHolder1 = holder;
-           }
-
-           @Override
-           public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-           }
-
-           @Override
-           public void surfaceDestroyed(SurfaceHolder holder) {
-               mHolder1 = null;
-               mCamera1.stop();
-           }
-       });
-       mHolder1.setType(SurfaceHolder.SURFACE_TYPE_NORMAL);
-
-
- //开启摄像头1
- mCamera1 = new CameraPreview.Builder()
-               .handler(mHandler)
-               .isPreview(true)
-               .holder(mHolder1)
-               .build();
-       mCamera1.open();
-
- //开始摄像头2
- mCamera2 = new CameraPreview2.Builder()
-               .handler(mHandler)
-               .isPreview(true)
-               .holder(mHolder2)
-               .build();
-       mCamera2.open();
-
-
-//停止摄像头使用
-  mCamera1.stop();
-   mCamera2.stop();
-
-//拍照
-    final String path = Environment.getExternalStorageDirectory().getAbsolutePath() + &quot;/&quot; + &quot;left&quot; + &quot;.jpg&quot;;
-     mCamera1.takePicture(path, new PicListener() {
-
-           @Override
-           public void onSuccess() {
-               Log.i(TAG, &quot;onSuccess: &quot;);
-
-               //上传文件
-               uploadAndRecordPictureToCloud(path);
-           }
-
-           @Override
-           public void onFailed() {
-               Log.i(TAG, &quot;onFailed: &quot;);
-           }
-       });  </code></pre><h1 id="游戏："><a href="#游戏：" class="headerlink" title="游戏："></a>游戏：</h1><p>游戏分为线上游戏和线下互动游戏.线上游戏是指直接在设备上通过触屏就可以玩的游戏；互动游戏是指需要小孩儿完成某些动作的游戏。  </p>
-<ol>
-<li>线上游戏<br>目前根据中航之前提供的UI和资源写了一个过家家游戏，其页面都在ui/activity/game/ 目录下。但是根据中航王工说UI设计未通过，他们会重新设计，加一些动态效果…   </li>
-<li>线下游戏<br>与中航边部沟通时他的想法<br>游戏标准：<blockquote>
-<p>有根据“完成时间长短”（可每10分钟为完成差距）获取分数，区分完成差异<br>游戏要有趣，不需要特别精准 </p>
-</blockquote>
-</li>
-</ol>
-<ul>
-<li>木头人：<br>1） 宠物运动检测 —– 识别小孩运动变化<br>2）人脸识别 —— 识别人脸框位置变化，识别人脸表情变化，识别相似度变化  </li>
-</ul>
-<pre><code>** 边部提出说王总之前承诺过可找到识别资源  
-** 我未找到免费可应用于项目的表情识别库，识别人脸框也是库直接画在屏幕上，没有实际的位置信息，相似度的功能已找到一个   
-** 王晶试过百度识别人脸，有表情变化，需要企业认证开发者账号，已在认证，得3-5天认证成功才能下载
-sdk和demo   </code></pre><ul>
-<li>跟屁虫：<br>双目检测——–双目检测深度变化，1s内，3-5次，取最近点的深度变化（提出找不到就找不到）<br>我提出：双摄像头获取的数据的帧率不一样（一个摄像头可能是7-12，一个摄像头只有2-4）；双目不一定能够检测到“腿”这个障碍物；做不到识别前后次照片同一个“腿” 这个障碍物所表示的数据<br>游戏意外情况——-机器人在桌子上</li>
-</ul>
-<p>** 红外防跌落预警时，实在无法跟踪，就语音提示跟不上   </p>
-<ul>
-<li><p>捉迷藏:<br>zigbee手环串口通信——–试探式移动，根据手环信号强度变化确定方位，行进途中自主避障<br>完成条件：识别到人脸（孩子的人脸图片先预设好）<br>找不到：语音提示  </p>
-</li>
-<li><p>跟我做<br>机器人做动作，音效提示，图片提示，一定时间后，就算完成   </p>
-</li>
-</ul>
-<p><strong>最近几周我的尝试</strong>：  </p>
-<ol>
-<li>木头人，用宠物的库试过，没试成功；百度人脸识别用其android SDK采集数据解析不了，和王工沟通应该是usb摄像头采集数据格式 nv21 ,而百度的SDK不是识别的这种格式。也尝试过王工说的Java SDK 的人脸识别，这个是通过识别照片文件来采集数据了，好像是可以拿到识别信息。必须有网，而且这个识别信息获取的时间很慢大概最少10s时间，不知道是否能满足要求</li>
-<li>跟屁虫，应该是无法用以上方案（双目视觉算法）去实现效果</li>
-<li>捉迷藏，zigbee手环通信刚刚实现通信控制，信号强度没在手环发送的数据里面看到</li>
-<li>跟我做，从音效和画面，肢体动作的丰富来弥补互动的缺失，需要设计一个详细的执行流程和炫酷的页面效果，需要中航给出具体的方案和ui设计  </li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文档</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">说明介绍</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/work//" class="article-tag-list-link color5">work</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/本体文档 /">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
+<!-- City版安装代码已完成 -->
+  
 
 
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://github.com/tuyrt7/2019/09/08/风追着云（一）/",
+  owner: 'tuyryt7',
+  repo: 'https://tuyrt7.github.io',
+  oauth: {
+    client_id: '671f2fbb5b6516d80412',
+    client_secret: '03a1ee70200184c9255a44aa29cb83f905a5bcb1',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -1548,8 +478,8 @@ sdk和demo   </code></pre><ul>
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
