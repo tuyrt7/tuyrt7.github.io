@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="风追着云">
 <meta property="og:description" content="要写蓝牙通信，可以看看下面的博客 Android蓝牙通信过程详解https://www.jianshu.com/p/3080fddc315b   android蓝牙BLE（四） —— 实战https://www.jianshu.com/p/a8adcee1f02e   Android蓝牙开发（三）之蓝牙通信https://blog.csdn.net/huangliniqng/article/det">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth_2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth_1.png">
-<meta property="og:updated_time" content="2019-09-09T15:01:50.805Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth-2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth-1.png">
+<meta property="og:updated_time" content="2019-09-09T15:08:29.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蓝牙BlueTooth">
 <meta name="twitter:description" content="要写蓝牙通信，可以看看下面的博客 Android蓝牙通信过程详解https://www.jianshu.com/p/3080fddc315b   android蓝牙BLE（四） —— 实战https://www.jianshu.com/p/a8adcee1f02e   Android蓝牙开发（三）之蓝牙通信https://blog.csdn.net/huangliniqng/article/det">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth_2.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth-2.png">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -236,7 +236,7 @@
 <p>Android蓝牙开发（三）之蓝牙通信<a href="https://blog.csdn.net/huangliniqng/article/details/82189735" target="_blank" rel="noopener">https://blog.csdn.net/huangliniqng/article/details/82189735</a></p>
 <a id="more"></a>
 
-<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth_2.png" alt="蓝牙优缺点">  </p>
+<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth-2.png" alt="蓝牙优缺点">  </p>
 <h2 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h2><p>关于蓝牙通信，之前项目用到过。蓝牙连接在android设备上是通过BluetoothSocket连接，然后io流读写数据，所以可以传数据也可以传文件。<br>Android实现蓝牙通信涉及到的主要API有<code>BluetoothManager</code>、<code>BluetoothAdapter</code> 、<code>BluetoothDevice</code>、<code>BluetoothSocket</code>。</p>
 <h2 id="蓝牙BLE"><a href="#蓝牙BLE" class="headerlink" title="蓝牙BLE"></a>蓝牙BLE</h2><p>蓝牙低能耗（Bluetooth Low Energy，或称Bluetooth LE、BLE，旧商标Bluetooth Smart）也称低功耗蓝牙，是蓝牙技术联盟设计和销售的一种个人局域网技术，旨在用于医疗保健、运动健身、信标、安防、家庭娱乐等领域的新兴应用。相较经典蓝牙，低功耗蓝牙旨在保持同等通信范围的同时显著降低功耗和成本  </p>
 <p>我有印象的是之前看过的智能戒烟打火机，儿童项目时有个手环还是轮椅项目中的一个单独模块都实现过蓝牙通信</p>
@@ -248,7 +248,7 @@
 <li>准备连接(initiating):发起连接状态，在ADV_IND或者ADV_DIRECT_IND之后，会发送CONNECTT_REQ包，从而建立连接</li>
 <li>已连接(connected):根据连接时约定的参数，发送CONNECT_EVENT，保持连接不断</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth_1.png" alt="蓝牙通信完整流程"></p>
+<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/bluetooth-1.png" alt="蓝牙通信完整流程"></p>
 <p>具体工作流程如下：  </p>
 <ol>
 <li>可被连接的设备（Advertiser），按照一定的周期广播ADV_IND或者ADV_DIRECT_IND包（可参考“蓝牙协议分析(5)_BLE广播通信相关的技术分析”）。</li>
