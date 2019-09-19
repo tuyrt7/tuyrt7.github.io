@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
-  <title>Archives | 风追着云</title>
+  <title>预制视频音乐到sd卡 | 风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="风筝追随着风，风追着云">
-<meta property="og:type" content="website">
-<meta property="og:title" content="风追着云">
-<meta property="og:url" content="https://github.com/tuyrt7/archives/page/3/index.html">
+  <meta name="description" content="Rom定制，最常见的就是内置客户提供的视频音乐等文件了，并且要求删除后恢复出厂设置资源还在，对于此类问题，貌似MTK也提供了方法，不过mtk给的方法，代码不好管控    我们可以把资源随Rom放到手机里，再拷到storage目录里">
+<meta name="keywords" content="blog,定制rom,music">
+<meta property="og:type" content="article">
+<meta property="og:title" content="预制视频音乐到sd卡">
+<meta property="og:url" content="https://github.com/tuyrt7/2019/09/09/预制视频音乐到sd卡/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="风筝追随着风，风追着云">
+<meta property="og:description" content="Rom定制，最常见的就是内置客户提供的视频音乐等文件了，并且要求删除后恢复出厂设置资源还在，对于此类问题，貌似MTK也提供了方法，不过mtk给的方法，代码不好管控    我们可以把资源随Rom放到手机里，再拷到storage目录里">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-19T00:05:40.803Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风追着云">
-<meta name="twitter:description" content="风筝追随着风，风追着云">
+<meta name="twitter:title" content="预制视频音乐到sd卡">
+<meta name="twitter:description" content="Rom定制，最常见的就是内置客户提供的视频音乐等文件了，并且要求删除后恢复出厂设置资源还在，对于此类问题，貌似MTK也提供了方法，不过mtk给的方法，代码不好管控    我们可以把资源随Rom放到手机里，再拷到storage目录里">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -171,269 +173,259 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-预制视频音乐到sd卡" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      预制视频音乐到sd卡
+    </h1>
+  
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+
+
+<a href="/2019/09/09/预制视频音乐到sd卡/" class="archive-article-date">
+  	<time datetime="2019-09-09T00:04:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
+</a>
+        
+		<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">689字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+		
+		
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Rom定制，最常见的就是内置客户提供的视频音乐等文件了，并且要求删除后恢复出厂设置资源还在，对于此类问题，貌似MTK也提供了方法，不过mtk给的方法，代码不好管控   </p>
+<p>我们可以把资源随Rom放到手机里，再拷到storage目录里  </p>
+<a id="more"></a> 
+
+
+<ul>
+<li>在<code>system/media/resource</code>放个<code>Android.mk</code>文件，用于拷贝到<code>out</code>的<code>system/media</code>（此路径可以通过获取 Environment.getRootDirectory().getPath() -&gt; /system ）<br>每次开机完成的时候，<code>MediaProvider的MediaScannerReceiver.Java</code> 都会去接收开机完成的广播，我们可以在这里面进行文件拷贝  </li>
+</ul>
+<p><code>packages/providers/MediaProvider/src/com/android/providers/media/MediaScannerReceiver.java</code>   </p>
+<pre><code>
+@Override
+public void onReceive(Context context, Intent intent) {
+     sharedPreferences = context.getSharedPreferences(&quot;first_boot&quot;,Context.MODE_PRIVATE);
+     //如果是第一次开机，则sharedPreferences 的值为空，赋值true
+     boolean first_boot= sharedPreferences.getBoolean(&quot;first_boot&quot;, true);
+     if (first_boot) {
+        Intent activityIntent = new Intent();
+        activityIntent.setClassName(&quot;com.android.providers.media&quot;, &quot;com.android.providers.media.CopyFileService&quot;);
+        //启动拷贝文件的Services，由于文件比较大，
+        //onReceive方法里不能做耗时操作，可以用service解决
+        context.startService(activityIntent);
+    }
+     SharedPreferences.Editor editor = sharedPreferences.edit();
+     editor.putBoolean(&quot;first_boot&quot;, false);//赋值false，表示下次开机不用再拷贝了
+     editor.commit();
+} 
+</code></pre><p>至于<code>CopyFileService.java</code>代码，就是一个文件拷贝过程，从<code>/system/media/resource</code>拷贝到<code>/storage/sdcard0</code>的过程  </p>
+<pre><code>
+//调用CopyFileService.java的copyFolder()方法copy
+private void start() {
+Intent activityIntent = new Intent();
+activityIntent.setClassName(“com.smile.weathertest”, “com.android.providers.media.CopyFileService”);
+startService(activityIntent);
+}  
+</code></pre><p>//CopyFileService.java 代码:</p>
+<pre><code>
+package com.android.providers.media;
+
+public class CopyFileService extends Service {
+
+    private final static String TAG = CopyFileService.class.getSimpleName();
+
+        private static String PRELOAD_SRC = Environment.getRootDirectory()+&quot;/loadmedia&quot;;//*** 这个路径是/system/loadmedia
+        private static String PRELOAD_DEST = &quot;/storage/sdcard0/preload&quot;;
+
+    private CopyThread mCopyThread;
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if (mCopyThread == null) {
+            mCopyThread = new CopyThread();
+            mCopyThread.start();
+        }
+        return Service.START_REDELIVER_INTENT;
+    }
+
+
+    public class CopyThread extends Thread {
+        @Override
+        public void run() {
+            if (copyFolder(new File(PRELOAD_SRC), new File(PRELOAD_DEST))) {
+                Log.e(TAG, &quot;doPreloadMedia success !&quot;);
+            } else {
+                Log.e(TAG, &quot;doPreloadMedia failed 。&quot;);
+            }
+            stopSelf();
+        }
+    }
+
+    public boolean copyFolder(File srcFile, File destFile) {
+        if (!srcFile.isDirectory()) {
+            Log.i(TAG, &quot;srcFile no isDirectory :&quot;+srcFile.getName());
+            return false;
+        }
+        if (!srcFile.canRead()) {
+            Log.i(TAG, &quot;no canRead :&quot;+srcFile.getName());
+
+        }
+        if (!srcFile.canWrite()) {
+            Log.i(TAG, &quot;no canWrite :&quot;+srcFile.getName());
+        }
+
+        if (!destFile.exists()) {
+            boolean r = false;
+            synchronized (this) {
+                r = destFile.mkdirs();
+            }
+            Log.i(TAG, &quot;destFile:exists &quot; + r);
+        }
+        boolean result = true;
+        File[] list = srcFile.listFiles();
+
+        if (list == null) {
+            Log.i(TAG, &quot;copyFolder: list null =&quot; + srcFile.getName());
+            return false;
+        }
+        for (File f : list) {
+            if (f.isDirectory()) {
+                result &amp;= copyFolder(f, new File(destFile, f.getName()));
+            } else if(f.isFile()){
+                result &amp;= copyFile(f, new File(destFile, f.getName()));
+            }
+        }
+        return result;
+    }
+
+    public boolean copyFile(File srcFile, File destFile) {
+        boolean result = false;
+        try {
+            InputStream in = new FileInputStream(srcFile);
+            try {
+                result = copyToFile(in, destFile);
+            } finally {
+                in.close();
+            }
+        } catch (IOException e) {
+            result = false;
+        }
+        return result;
+    }
+
+    /**
+     * Copy data from a source stream to destFile.
+     * Return true if succeed, return false if failed.
+     */
+    public boolean copyToFile(InputStream inputStream, File destFile) {
+        try {
+                if (destFile.exists()) {
+                    destFile.delete();
+                }
+                FileOutputStream out = new FileOutputStream(destFile);
+                try {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    while ((bytesRead = inputStream.read(buffer)) &gt;= 0) {
+                        out.write(buffer, 0, bytesRead);
+                    }
+                } finally {
+                    out.flush();
+                    try {
+                        out.getFD().sync();
+                    } catch (IOException e) {
+                }
+                out.close();
+            }
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+}</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/Studio常用快捷键 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:23:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/Studio常用快捷键 /">Studio常用快捷键</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">studio</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/快捷键//" class="article-tag-list-link color4">快捷键</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/本体文档 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:22:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/本体文档 /">本体文档</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文档</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">说明介绍</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/work//" class="article-tag-list-link color5">work</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/风追着云（一）/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:22:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/风追着云（一）/">风追着云（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/实现view的滑动/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/实现view的滑动/">View的滑动</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">view</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/android//" class="article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/修改sd卡权限/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:19:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/修改sd卡权限/">修改sd卡权限</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -445,37 +437,161 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">定制rom</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/android定制//" class="article-tag-list-link color5">android定制</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">music</a>
         		</li>
       		
 		</ul>
 	</div>
 
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/tuyrt7/2019/09/09/预制视频音乐到sd卡/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/09/09/蓝牙回顾/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          蓝牙BlueTooth
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/09/08/git/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git 常用命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjQwMi8yMjkxMw==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+
+  
+  
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://github.com/tuyrt7/2019/09/09/预制视频音乐到sd卡/",
+  owner: 'tuyryt7',
+  repo: 'https://tuyrt7.github.io',
+  oauth: {
+    client_id: '671f2fbb5b6516d80412',
+    client_secret: '03a1ee70200184c9255a44aa29cb83f905a5bcb1',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -514,8 +630,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
