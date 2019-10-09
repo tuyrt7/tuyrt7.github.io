@@ -225,57 +225,12 @@
         <p>##阻塞队列 </p>
 <p>以arrayBlockingQueue为例<br> ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true);<br> LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000);<br> /**</p>
 <ul>
-<li><p>往队列中放入数据</p>
-</li>
-<li><p>/<br>arrayBlockingQueue.offer(new Object());//加入缓存队列，blockingqueue可以容纳返回ture,否则false,不阻塞当前线程<br>try {<br>  //加入缓存队列，设置超时时间<br>  arrayBlockingQueue.offer(new Object(), 5, TimeUnit.SECONDS);<br>  //加入缓存队列，如果队列没有空间，调用方法的线程被阻塞，直到队列里有控件再继续<br>  arrayBlockingQueue.put(new Object());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</p>
-<p>/**</p>
-</li>
-<li><p>从队列中获取数据</p>
-</li>
-<li><p>/<br>try {<br>  //取走队列中排在首位的对象,取不到返回null<br>  arrayBlockingQueue.poll();<br>  //取走队列中排在首位的对象，如果不能立即取出，可以等待超时时间，取不到返回null<br>  arrayBlockingQueue.poll(5, TimeUnit.SECONDS);<br>  //取走队列中的排在首位的对象，若队列为空，则阻断进入等待状态，知道队列有新的数据被加入<br>  arrayBlockingQueue.take();<br>  //一次性从队列中获取所有可用的数据对象，可以加个参数来指定获取的个数，可提升获取数据的效率，无须多次分批加锁或释放锁<br>  arrayBlockingQueue.drainTo(new ArrayList());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</p>
-</li>
+<li>往队列中放入数据</li>
+<li>/<br>arrayBlockingQueue.offer(new Object());//加入缓存队列，blockingqueue可以容纳返回ture,否则false,不阻塞当前线程<br>try {<br>  //加入缓存队列，设置超时时间<br>  arrayBlockingQueue.offer(new Object(), 5, TimeUnit.SECONDS);<br>  //加入缓存队列，如果队列没有空间，调用方法的线程被阻塞，直到队列里有控件再继续<br>  arrayBlockingQueue.put(new Object());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</li>
 </ul>
-<p>我目前遇到Android常用的前两个<br>ArrayListBlockingQueue:数组结构组成的有界阻塞队列<br>先进先出对元素进行排序<br>保证公平的访问队列，会降低吞吐量（公平的访问队列也就是：先阻塞的线程生产者线程先插入，先阻塞的消费者线程先拿取队列的元素）<br>（默认情况下不保证线程公平的访问队列）但是可以配置公平访问队列：<br>ArrayListBlockingQueue fairQueue = new ArrayListBlockingQueue(2000,true);</p>
-<p>LinkedBlockingQueue：链表结构组成的有界队列<br>先进先出对元素进行排序<br>内部维持着一个数据缓冲队列（链表组成的队列），生成者放入数据时，队列中缓存，生产者立即返回。<br>只有当缓冲区达到缓存容量的最大值时（构造时可指定容量），才会阻塞生产者队列，直到消费者从缓存队列消耗掉一份数据时，生产者线程才会被唤醒</p>
-<p>PriorityBlockQueue:支持优先级的无界队列<br>DelayQueue:支持延迟获取元素的无界阻塞队列<br>SynchronousQueue:不存储元素的阻塞队列<br>LinkedTransferQueue:由链表组成的无界阻塞TransferQueue队列，实现重要接口TransferQueue，接口的5个方法有3个重要方法，transfer、trytransfer(o)、trytransfer(o,timeout,unit)</p>
-<p> if (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.LOLLIPOP) {<br>            LinkedTransferQueue transferQueue = new LinkedTransferQueue(new LinkedList());<br>            try {<br>                //如果存在正在获取数据的消费者线程，立即传递元素过去，如果没有，则将元素插入队列尾部，进入阻塞等待被消费者拿去数据<br>                transferQueue.transfer(new Object());<br>                //如果存在正在获取数据的消费者线程，立即传递元素过去，如果没有，则立即返回false，<br>                // 不阻塞线程，不管有没有消费者接受数据，都会立即返回<br>                transferQueue.tryTransfer(new Object());<br>                //如果存在正在获取数据的消费者线程，立即传递元素过去，如果没有，在队列尾部插入元素，<br>                // 等待超时时间，未被获取则返回false，被获取返回true<br>                transferQueue.tryTransfer(new Object(), 5, TimeUnit.SECONDS);</p>
-<pre><code>    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
-}</code></pre><p>创建线程池的5种方法：</p>
-<p>   private void createThreadPool() {<br>        int cpuCount = Runtime.getRuntime().availableProcessors();</p>
-<pre><code>    int corePoolSize = cpuCount + 1;
-    int maximumPoolSize = cpuCount * 2 + 1;
-    int keepAliveTime = 10;
-    ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(128);
-    ThreadFactory factory = new ThreadFactory() {
-        private final AtomicInteger mAtomicCount = new AtomicInteger(1);
-
-        @Override
-        public Thread newThread(Runnable r) {
-            return new Thread(r, &quot;thread-&quot; + mAtomicCount);
-        }
-    };
-    mExecutorService = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.SECONDS,
-            arrayBlockingQueue,factory,new ThreadPoolExecutor.AbortPolicy());
-
-    //确保都是核心线程去执行任务
-    mExecutorService1 = Executors.newFixedThreadPool(5);
-
-    //没有核心线程，每当又任务都是立即转给一般消费线程去执行，所以适合大量立即处理且耗时少的任务
-    mExecutorService2 = Executors.newCachedThreadPool();
-
-    //只有单一的核心线程，保证任务按照添加顺序执行
-    mExecutorService3 = Executors.newSingleThreadExecutor();
-
-    //里面的阻塞队列是DelayedWorkQueue，所以适合执行定时或者周期性的任务
-    mExecutorService4 = Executors.newScheduledThreadPool(10);
-
-
-}</code></pre><p>关于AsyncTask的内容：<br>内部实现也是通过线程池事项，线程池任务容量有限，核心线程(Math.max(2, Math.min(CPU_COUNT - 1, 4)))+阻塞队列(128) </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    //串行执行任务，通过SerialExecutor来实现一个任务执行完毕之后才执行下一个</span><br><span class="line">    new MyAsyncTask().execute();</span><br><span class="line"></span><br><span class="line">    //asyncTask 做并行线程处理可以自己传入线程池，</span><br><span class="line">    new MyAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, &quot;&quot;);</span><br><span class="line">    //...或者传入自定的线程池</span><br><span class="line">    new MyAsyncTask().executeOnExecutor(Executors.newCachedThreadPool(), &quot;&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyAsyncTask extends AsyncTask&lt;String, Void, String&gt; &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected String doInBackground(String... strings) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+        
+          <a class="article-more-a" href="/2019/10/09/多线程相关/#more">more >></a>
+        
       
 
       
@@ -906,7 +861,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -918,7 +873,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -930,15 +889,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">retrofit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">view</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -950,19 +913,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mvp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">view</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">andorid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -971,6 +922,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">蓝牙</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">andorid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -987,10 +946,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
   <title>多线程相关 | 风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##阻塞队列  以arrayBlockingQueue为例 ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true); LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000); /**  往队列中放入数据  /array">
+  <meta name="description" content="##阻塞队列  以arrayBlockingQueue为例 ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true); LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000); /**  往队列中放入数据 /arrayB">
 <meta name="keywords" content="线程池,android基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程相关">
 <meta property="og:url" content="https://github.com/tuyrt7/2019/10/09/多线程相关/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="##阻塞队列  以arrayBlockingQueue为例 ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true); LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000); /**  往队列中放入数据  /array">
+<meta property="og:description" content="##阻塞队列  以arrayBlockingQueue为例 ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true); LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000); /**  往队列中放入数据 /arrayB">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-09T01:53:10.188Z">
+<meta property="og:updated_time" content="2019-10-09T01:55:37.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程相关">
-<meta name="twitter:description" content="##阻塞队列  以arrayBlockingQueue为例 ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true); LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000); /**  往队列中放入数据  /array">
+<meta name="twitter:description" content="##阻塞队列  以arrayBlockingQueue为例 ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true); LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000); /**  往队列中放入数据 /arrayB">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -230,15 +230,14 @@
         <p>##阻塞队列 </p>
 <p>以arrayBlockingQueue为例<br> ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true);<br> LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000);<br> /**</p>
 <ul>
-<li><p>往队列中放入数据</p>
-</li>
-<li><p>/<br>arrayBlockingQueue.offer(new Object());//加入缓存队列，blockingqueue可以容纳返回ture,否则false,不阻塞当前线程<br>try {<br>  //加入缓存队列，设置超时时间<br>  arrayBlockingQueue.offer(new Object(), 5, TimeUnit.SECONDS);<br>  //加入缓存队列，如果队列没有空间，调用方法的线程被阻塞，直到队列里有控件再继续<br>  arrayBlockingQueue.put(new Object());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</p>
-<p>/**</p>
-</li>
-<li><p>从队列中获取数据</p>
-</li>
-<li><p>/<br>try {<br>  //取走队列中排在首位的对象,取不到返回null<br>  arrayBlockingQueue.poll();<br>  //取走队列中排在首位的对象，如果不能立即取出，可以等待超时时间，取不到返回null<br>  arrayBlockingQueue.poll(5, TimeUnit.SECONDS);<br>  //取走队列中的排在首位的对象，若队列为空，则阻断进入等待状态，知道队列有新的数据被加入<br>  arrayBlockingQueue.take();<br>  //一次性从队列中获取所有可用的数据对象，可以加个参数来指定获取的个数，可提升获取数据的效率，无须多次分批加锁或释放锁<br>  arrayBlockingQueue.drainTo(new ArrayList());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</p>
-</li>
+<li>往队列中放入数据</li>
+<li>/<br>arrayBlockingQueue.offer(new Object());//加入缓存队列，blockingqueue可以容纳返回ture,否则false,不阻塞当前线程<br>try {<br>  //加入缓存队列，设置超时时间<br>  arrayBlockingQueue.offer(new Object(), 5, TimeUnit.SECONDS);<br>  //加入缓存队列，如果队列没有空间，调用方法的线程被阻塞，直到队列里有控件再继续<br>  arrayBlockingQueue.put(new Object());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</li>
+</ul>
+<a id="more"></a>
+<p>  /**</p>
+<ul>
+<li>从队列中获取数据</li>
+<li>/<br>try {<br>  //取走队列中排在首位的对象,取不到返回null<br>  arrayBlockingQueue.poll();<br>  //取走队列中排在首位的对象，如果不能立即取出，可以等待超时时间，取不到返回null<br>  arrayBlockingQueue.poll(5, TimeUnit.SECONDS);<br>  //取走队列中的排在首位的对象，若队列为空，则阻断进入等待状态，知道队列有新的数据被加入<br>  arrayBlockingQueue.take();<br>  //一次性从队列中获取所有可用的数据对象，可以加个参数来指定获取的个数，可提升获取数据的效率，无须多次分批加锁或释放锁<br>  arrayBlockingQueue.drainTo(new ArrayList());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</li>
 </ul>
 <p>我目前遇到Android常用的前两个<br>ArrayListBlockingQueue:数组结构组成的有界阻塞队列<br>先进先出对元素进行排序<br>保证公平的访问队列，会降低吞吐量（公平的访问队列也就是：先阻塞的线程生产者线程先插入，先阻塞的消费者线程先拿取队列的元素）<br>（默认情况下不保证线程公平的访问队列）但是可以配置公平访问队列：<br>ArrayListBlockingQueue fairQueue = new ArrayListBlockingQueue(2000,true);</p>
 <p>LinkedBlockingQueue：链表结构组成的有界队列<br>先进先出对元素进行排序<br>内部维持着一个数据缓冲队列（链表组成的队列），生成者放入数据时，队列中缓存，生产者立即返回。<br>只有当缓冲区达到缓存容量的最大值时（构造时可指定容量），才会阻塞生产者队列，直到消费者从缓存队列消耗掉一份数据时，生产者线程才会被唤醒</p>
@@ -588,7 +587,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,7 +599,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,15 +615,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">retrofit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">view</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,19 +639,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mvp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">view</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">andorid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,6 +648,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">蓝牙</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">andorid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,10 +672,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
               </li>
              
               <li class="article-tag-list-item">
