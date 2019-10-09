@@ -173,6 +173,139 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-github-clone很慢" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/19/github-clone很慢/">github clone很慢</a>
+    </h1>
+  
+
+        
+        
+
+
+
+<a href="/2019/09/19/github-clone很慢/" class="archive-article-date">
+  	<time datetime="2019-09-18T23:51:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
+</a>
+        
+		<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">198字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+		
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在天朝，经常会出现访问Github 异常慢，尤其在clone远程代码的时候，几KiB/s的速度在遭遇几十上百M的代码后，让大家苦不堪言。</p>
+<p>下面就介绍一种方法，绝对包治百病，亲测速度可以达到接近1M。</p>
+<ol>
+<li>获取Github相关网站的ip</li>
+</ol>
+<p>访问<a href="https://www.ipaddress.com，找到页面中下方的“IP" target="_blank" rel="noopener">https://www.ipaddress.com，找到页面中下方的“IP</a> Address Tools - Quick Links”，分别输入github.global.ssl.fastly.net和github.com，查询ip地址。</p>
+<ol start="2">
+<li>修改本地host文件</li>
+</ol>
+<p>以windows为例，打开host文件，c/windows/System32/drivers/etc/hosts</p>
+<ol start="3">
+<li>增加host映射  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.5.194 github.global.ssl.fastly.net</span><br><span class="line">140.82.113.4 github.com</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>更新DNS缓存</li>
+</ol>
+<p>命令行输入：ipcongit /flushdns，使增加的映射生效。</p>
+<ol start="5">
+<li>大功告成</li>
+</ol>
+<p>接下来就可以随意访问Github和clone代码了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">answer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/19/github-clone很慢/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-androidx-v4-v7冲突" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -635,120 +768,6 @@
 
 
   
-    <article id="post-预制视频音乐到sd卡" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/09/预制视频音乐到sd卡/">预制视频音乐到sd卡</a>
-    </h1>
-  
-
-        
-        
-
-
-
-<a href="/2019/09/09/预制视频音乐到sd卡/" class="archive-article-date">
-  	<time datetime="2019-09-09T00:04:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-        
-		<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">689字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-		
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Rom定制，最常见的就是内置客户提供的视频音乐等文件了，并且要求删除后恢复出厂设置资源还在，对于此类问题，貌似MTK也提供了方法，不过mtk给的方法，代码不好管控   </p>
-<p>我们可以把资源随Rom放到手机里，再拷到storage目录里  </p>
-        
-          <a class="article-more-a" href="/2019/09/09/预制视频音乐到sd卡/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">定制rom</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">music</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/09/预制视频音乐到sd卡/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -869,18 +888,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
@@ -893,7 +900,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">retrofit</a>
+                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -902,6 +909,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">answer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">retrofit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">android基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -929,6 +956,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">新特性</a>
               </li>
              
@@ -938,14 +973,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
