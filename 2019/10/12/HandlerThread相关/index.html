@@ -17,7 +17,7 @@
 <meta property="og:description" content="不管是子线程发还是主线程发送消息，接收都在子线程，内部持有looper,不调用其 quit()接口，就一直存在 子线程和子线程之间的通信：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/handler-thread.png">
-<meta property="og:updated_time" content="2019-10-12T15:34:46.073Z">
+<meta property="og:updated_time" content="2019-10-12T15:39:44.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HandlerThread相关">
 <meta name="twitter:description" content="不管是子线程发还是主线程发送消息，接收都在子线程，内部持有looper,不调用其 quit()接口，就一直存在 子线程和子线程之间的通信：">
@@ -217,7 +217,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
 </div>
@@ -238,13 +238,22 @@
 <p>注意：写在Looper.loop()之后的代码不会被执行，这个函数内部应该是一个循环，当调用mHandler.getLooper().quit()后，loop才会中止，其后的代码才能得以运行。</p>
 </blockquote>
 <p>然而这一切都可以用HandlerThread类来帮我们做这些逻辑操作。</p>
-<h4 id="HandlerThread"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</h4><p>HandlerThread本质上就是一个普通Thread,只不过内部建立了Looper.</p>
-<h4 id="HandlerThread的常规用法"><a href="#HandlerThread的常规用法" class="headerlink" title="HandlerThread的常规用法"></a>HandlerThread的常规用法</h4><ul>
+<h3 id="HandlerThread"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</h3><p>HandlerThread本质上就是一个普通Thread,只不过内部建立了Looper.</p>
+<h3 id="HandlerThread的常规用法"><a href="#HandlerThread的常规用法" class="headerlink" title="HandlerThread的常规用法"></a>HandlerThread的常规用法</h3><ul>
 <li>创建一个HandlerThread </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mThread = new HandlerThread(&quot;handler_thread&quot;);``` </span><br><span class="line"></span><br><span class="line">- 启动一个HandlerThread</span><br></pre></td></tr></table></figure>
+<p><code>mThread = new HandlerThread(&quot;handler_thread&quot;);</code></p>
+<ul>
+<li>启动一个HandlerThread</li>
+</ul>
+<p><code>mThread.start();</code></p>
+<ul>
+<li>退出循环 </li>
+</ul>
+<p>Looper是通过调用loop方法驱动着消息循环的进行: 从MessageQueue中阻塞式地取出一个消息，然后让Handler处理该消息，周而复始，loop方法是个死循环方法。</p>
+<p>那如何终止消息循环呢？我们可以调用Looper的quit方法或quitSafely方法，二者稍有不同。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line">   * Quits the looper.</span><br><span class="line">   * &lt;p&gt;</span><br><span class="line">   * Causes the &#123;@link #loop&#125; method to terminate without processing any</span><br><span class="line">   * more messages in the message queue.</span><br><span class="line">   * &lt;/p&gt;&lt;p&gt;</span><br><span class="line">   * Any attempt to post messages to the queue after the looper is asked to quit will fail.</span><br><span class="line">   * For example, the &#123;@link Handler#sendMessage(Message)&#125; method will return false.</span><br><span class="line">   * &lt;/p&gt;&lt;p class=&quot;note&quot;&gt;</span><br><span class="line">   * Using this method may be unsafe because some messages may not be delivered</span><br><span class="line">   * before the looper terminates.  Consider using &#123;@link #quitSafely&#125; instead to ensure</span><br><span class="line">   * that all pending work is completed in an orderly manner.</span><br><span class="line">   * &lt;/p&gt;</span><br><span class="line">   *</span><br><span class="line">   * @see #quitSafely</span><br><span class="line">   */</span><br><span class="line">  public void quit() &#123;</span><br><span class="line">      mQueue.quit(false);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * Quits the looper safely.</span><br><span class="line">   * &lt;p&gt;</span><br><span class="line">   * Causes the &#123;@link #loop&#125; method to terminate as soon as all remaining messages</span><br><span class="line">   * in the message queue that are already due to be delivered have been handled.</span><br><span class="line">   * However pending delayed messages with due times in the future will not be</span><br><span class="line">   * delivered before the loop terminates.</span><br><span class="line">   * &lt;/p&gt;&lt;p&gt;</span><br><span class="line">   * Any attempt to post messages to the queue after the looper is asked to quit will fail.</span><br><span class="line">   * For example, the &#123;@link Handler#sendMessage(Message)&#125; method will return false.</span><br><span class="line">   * &lt;/p&gt;</span><br><span class="line">   */</span><br><span class="line">  public void quitSafely() &#123;</span><br><span class="line">      mQueue.quit(true);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
-<p>mThread.start();<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 退出循环 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Looper是通过调用loop方法驱动着消息循环的进行: 从MessageQueue中阻塞式地取出一个消息，然后让Handler处理该消息，周而复始，loop方法是个死循环方法。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">那如何终止消息循环呢？我们可以调用Looper的quit方法或quitSafely方法，二者稍有不同。 </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line"> 	/**</span><br><span class="line">     * Quits the looper.</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * Causes the &#123;@link #loop&#125; method to terminate without processing any</span><br><span class="line">     * more messages in the message queue.</span><br><span class="line">     * &lt;/p&gt;&lt;p&gt;</span><br><span class="line">     * Any attempt to post messages to the queue after the looper is asked to quit will fail.</span><br><span class="line">     * For example, the &#123;@link Handler#sendMessage(Message)&#125; method will return false.</span><br><span class="line">     * &lt;/p&gt;&lt;p class=&quot;note&quot;&gt;</span><br><span class="line">     * Using this method may be unsafe because some messages may not be delivered</span><br><span class="line">     * before the looper terminates.  Consider using &#123;@link #quitSafely&#125; instead to ensure</span><br><span class="line">     * that all pending work is completed in an orderly manner.</span><br><span class="line">     * &lt;/p&gt;</span><br><span class="line">     *</span><br><span class="line">     * @see #quitSafely</span><br><span class="line">     */</span><br><span class="line">    public void quit() &#123;</span><br><span class="line">        mQueue.quit(false);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Quits the looper safely.</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * Causes the &#123;@link #loop&#125; method to terminate as soon as all remaining messages</span><br><span class="line">     * in the message queue that are already due to be delivered have been handled.</span><br><span class="line">     * However pending delayed messages with due times in the future will not be</span><br><span class="line">     * delivered before the loop terminates.</span><br><span class="line">     * &lt;/p&gt;&lt;p&gt;</span><br><span class="line">     * Any attempt to post messages to the queue after the looper is asked to quit will fail.</span><br><span class="line">     * For example, the &#123;@link Handler#sendMessage(Message)&#125; method will return false.</span><br><span class="line">     * &lt;/p&gt;</span><br><span class="line">     */</span><br><span class="line">    public void quitSafely() &#123;</span><br><span class="line">        mQueue.quit(true);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="相同点："><a href="#相同点：" class="headerlink" title="相同点："></a>相同点：</h4><p>将不在接受新的事件加入消息队列。</p>
 <h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h4><p>当我们调用Looper的quit方法时，实际上执行了MessageQueue中的removeAllMessagesLocked方法，该方法的作用是把MessageQueue消息池中所有的消息全部清空，无论是延迟消息（延迟消息是指通过sendMessageDelayed或通过postDelayed等方法发送的需要延迟执行的消息）还是非延迟消息。</p>
 <p>当我们调用Looper的quitSafely方法时，实际上执行了MessageQueue中的removeAllFutureMessagesLocked方法，通过名字就可以看出，该方法只会清空MessageQueue消息池中所有的延迟消息，并将消息池中所有的非延迟消息派发出去让Handler去处理，quitSafely相比于quit方法安全之处在于清空消息之前会派发所有的非延迟消息。 </p>
@@ -305,18 +314,18 @@ protected void onDestroy() {
     myHandlerThread.quit() ;
 } }  
 
-</code></pre><p>运行效果：</p>
+</code></pre><p>运行效果：  </p>
 <blockquote>
-<p>/com.app D/handler: 消息： 1  线程： handler-thread<br>/com.app D/handler: 消息： 2  线程： handler-thread</p>
+<p>handler: 消息： 1  线程： handler-thread<br>handler: 消息： 2  线程： handler-thread</p>
 </blockquote>
 <h3 id="HandlerThread的特点"><a href="#HandlerThread的特点" class="headerlink" title="HandlerThread的特点"></a>HandlerThread的特点</h3><p>HandlerThread将loop转到子线程中处理，说白了就是将分担MainLooper的工作量，降低了主线程的压力，使主界面更流畅。</p>
 <p>开启一个线程起到多个线程的作用。处理任务是串行执行，按消息发送顺序进行处理。HandlerThread本质是一个线程，在线程内部，代码是串行处理的。</p>
 <p>但是由于每一个任务都将以队列的方式逐个被执行到，一旦队列中有某个任务执行时间过长，那么就会导致后续的任务都会被延迟处理。</p>
 <p>HandlerThread拥有自己的消息队列，它不会干扰或阻塞UI线程。</p>
 <p>对于网络IO操作，HandlerThread并不适合，因为它只有一个线程，还得排队一个一个等着。</p>
-<p>参考文章：<br><a href="http://www.cnblogs.com/zhaoyanjun/p/5546843.html" target="_blank" rel="noopener">Android Handler、Loop 的简单使用</a>  </p>
-<p><a href="http://www.cnblogs.com/zhaoyanjun/p/5981386.html" target="_blank" rel="noopener">Android 如何有效的解决内存泄漏的问题</a>  </p>
-<p><a href="http://www.cnblogs.com/zhaoyanjun/p/5546683.html" target="_blank" rel="noopener">Android 更新UI的几种方式</a> </p>
+<p>参考文章：<br>Android Handler、Loop 的简单使用 <a href="http://www.cnblogs.com/zhaoyanjun/p/5546843.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhaoyanjun/p/5546843.html</a>  </p>
+<p>Android 如何有效的解决内存泄漏的问题 <a href="http://www.cnblogs.com/zhaoyanjun/p/5981386.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhaoyanjun/p/5981386.html</a> </p>
+<p>Android 更新UI的几种方式 <a href="http://www.cnblogs.com/zhaoyanjun/p/5546683.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhaoyanjun/p/5546683.html</a></p>
 
       
 
