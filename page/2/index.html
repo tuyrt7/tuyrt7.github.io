@@ -173,6 +173,120 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-多线程相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/09/多线程相关/">多线程相关</a>
+    </h1>
+  
+
+        
+        
+
+
+
+<a href="/2019/10/09/多线程相关/" class="archive-article-date">
+  	<time datetime="2019-10-09T01:52:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-09</time>
+</a>
+        
+		<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+		
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##阻塞队列 </p>
+<p>以arrayBlockingQueue为例<br> ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true);<br> LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000);<br> /**</p>
+<ul>
+<li>往队列中放入数据</li>
+<li>/<br>arrayBlockingQueue.offer(new Object());//加入缓存队列，blockingqueue可以容纳返回ture,否则false,不阻塞当前线程<br>try {<br>  //加入缓存队列，设置超时时间<br>  arrayBlockingQueue.offer(new Object(), 5, TimeUnit.SECONDS);<br>  //加入缓存队列，如果队列没有空间，调用方法的线程被阻塞，直到队列里有控件再继续<br>  arrayBlockingQueue.put(new Object());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/10/09/多线程相关/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线程池</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">android基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/09/多线程相关/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关于mvp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -598,139 +712,6 @@ getData(id, s); </code></pre>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/19/被fragment覆盖的控件显示在上层问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-github-clone很慢" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/github-clone很慢/">github clone很慢</a>
-    </h1>
-  
-
-        
-        
-
-
-
-<a href="/2019/09/19/github-clone很慢/" class="archive-article-date">
-  	<time datetime="2019-09-18T23:51:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-		<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">198字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-		
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在天朝，经常会出现访问Github 异常慢，尤其在clone远程代码的时候，几KiB/s的速度在遭遇几十上百M的代码后，让大家苦不堪言。</p>
-<p>下面就介绍一种方法，绝对包治百病，亲测速度可以达到接近1M。</p>
-<ol>
-<li>获取Github相关网站的ip</li>
-</ol>
-<p>访问<a href="https://www.ipaddress.com，找到页面中下方的“IP" target="_blank" rel="noopener">https://www.ipaddress.com，找到页面中下方的“IP</a> Address Tools - Quick Links”，分别输入github.global.ssl.fastly.net和github.com，查询ip地址。</p>
-<ol start="2">
-<li>修改本地host文件</li>
-</ol>
-<p>以windows为例，打开host文件，c/windows/System32/drivers/etc/hosts</p>
-<ol start="3">
-<li>增加host映射  </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.5.194 github.global.ssl.fastly.net</span><br><span class="line">140.82.113.4 github.com</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>更新DNS缓存</li>
-</ol>
-<p>命令行输入：ipconfig /flushdns，使增加的映射生效。</p>
-<ol start="5">
-<li>大功告成</li>
-</ol>
-<p>接下来就可以随意访问Github和clone代码了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">answer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/github-clone很慢/">展开全文 >></a>
         </p>
       
 
