@@ -201,7 +201,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">242字</span>
+        <span class="post-count">238字</span>
       </span>
     </span>
 
@@ -235,11 +235,20 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public enum Event &#123;</span><br><span class="line">        ON_CREATE,</span><br><span class="line">        ON_START,</span><br><span class="line">        ON_RESUME,</span><br><span class="line">        ON_PAUSE,</span><br><span class="line">        ON_STOP,</span><br><span class="line">        ON_DESTROY,</span><br><span class="line">        ON_ANY</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>State枚举：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public enum State &#123;</span><br><span class="line">        DESTROYED,</span><br><span class="line">        INITIALIZED,</span><br><span class="line">        CREATED,</span><br><span class="line">        STARTED,</span><br><span class="line">        RESUMED;</span><br><span class="line">        public boolean isAtLeast(@NonNull State state) &#123;</span><br><span class="line">            return compareTo(state) &gt;= 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>State和Event的对应关系：   </p>
-<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/lifecycle.jpg" alt="对应关系"> </p>
-
+<pre><code>public enum State {
+        DESTROYED,
+        INITIALIZED,
+        CREATED,
+        STARTED,
+        RESUMED;
+        public boolean isAtLeast(@NonNull State state) {
+            return compareTo(state) &gt;= 0;
+        }
+    }
+</code></pre>
+        
+          <a class="article-more-a" href="/2019/11/21/lifecycle/#more">more >></a>
+        
       
 
       

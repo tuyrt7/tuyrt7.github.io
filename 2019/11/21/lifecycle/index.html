@@ -17,7 +17,7 @@
 <meta property="og:description" content="Lifecycle学习笔记（未完）Lifecycle管理生命周期也是观察者模式，其中主要涉及到以下几个类：LifecycleObserver、LifecycleOwner、Lifecycle、State、Event    LifecycleObserver：Lifecycle观察者。我们需要自定义类实现LifecycleObserver，通过注解的方式可观察生命周期方法。  LifecycleOw">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/lifecycle.jpg">
-<meta property="og:updated_time" content="2019-11-21T01:00:29.013Z">
+<meta property="og:updated_time" content="2019-11-21T01:05:10.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lifecycle">
 <meta name="twitter:description" content="Lifecycle学习笔记（未完）Lifecycle管理生命周期也是观察者模式，其中主要涉及到以下几个类：LifecycleObserver、LifecycleOwner、Lifecycle、State、Event    LifecycleObserver：Lifecycle观察者。我们需要自定义类实现LifecycleObserver，通过注解的方式可观察生命周期方法。  LifecycleOw">
@@ -208,7 +208,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">242字</span>
+        <span class="post-count">238字</span>
       </span>
     </span>
 
@@ -242,7 +242,17 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public enum Event &#123;</span><br><span class="line">        ON_CREATE,</span><br><span class="line">        ON_START,</span><br><span class="line">        ON_RESUME,</span><br><span class="line">        ON_PAUSE,</span><br><span class="line">        ON_STOP,</span><br><span class="line">        ON_DESTROY,</span><br><span class="line">        ON_ANY</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>State枚举：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public enum State &#123;</span><br><span class="line">        DESTROYED,</span><br><span class="line">        INITIALIZED,</span><br><span class="line">        CREATED,</span><br><span class="line">        STARTED,</span><br><span class="line">        RESUMED;</span><br><span class="line">        public boolean isAtLeast(@NonNull State state) &#123;</span><br><span class="line">            return compareTo(state) &gt;= 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<pre><code>public enum State {
+        DESTROYED,
+        INITIALIZED,
+        CREATED,
+        STARTED,
+        RESUMED;
+        public boolean isAtLeast(@NonNull State state) {
+            return compareTo(state) &gt;= 0;
+        }
+    }
+</code></pre><a id="more"></a> 
 
 <p>State和Event的对应关系：   </p>
 <p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/lifecycle.jpg" alt="对应关系"> </p>
