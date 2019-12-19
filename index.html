@@ -173,6 +173,67 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-TextView加粗" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="TextView里面设置字体粗体"><a href="#TextView里面设置字体粗体" class="headerlink" title="TextView里面设置字体粗体"></a>TextView里面设置字体粗体</h2><h1 id="动态："><a href="#动态：" class="headerlink" title="动态："></a>动态：</h1><ol>
+<li><p>不建议这种方式，这种方式比较操蛋，结果效果显示除了被选中的Item的字体被加粗外，其他未被选中的两个Item（随机的）也被加粗。而且加粗效果还不明显！！！</p>
+<blockquote>
+<p>ps:所以最好不要用这种。  </p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    //android中为textview动态设置字体为粗体</span><br><span class="line">     TextView textView = (TextView)findViewById(R.id.textView);</span><br><span class="line">     TextPaint tp = textView .getPaint();</span><br><span class="line">     tp.setFakeBoldText(true);  </span><br><span class="line">```   </span><br><span class="line">2. 推荐这种方式，这种方式完美的解决的我需要选中的Item字体加粗。</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">//android中为textview动态设置字体为粗体</span><br><span class="line"> TextView textView = (TextView)findViewById(R.id.textView);</span><br><span class="line"> textView .setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));</span><br><span class="line">//设置不为加粗</span><br><span class="line"> textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));</span><br><span class="line">  ```  </span><br><span class="line"># 静态：  </span><br><span class="line"></span><br><span class="line">### 这种是最直接的方式，在xml文件里面直接添加一个TextView的属性值。但这不能解决我的需求，在这里只是给大家介绍一下！</span><br></pre></td></tr></table></figure>
+
+<pre><code>android:textStyle=&quot;bold&quot;   
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 网上提供了这两种方式，是英文加粗的，我没试过，大家可以试一下！  </span><br><span class="line">    英文设置加粗可以在xml里面设置:  </span><br><span class="line">    代码如下:  </span><br><span class="line">    </span><br><span class="line">    ``` </span><br><span class="line">    &lt;SPAN style=&quot;FONT-SIZE: 18px&quot;&gt;android:textStyle=&quot;bold&quot;&lt;/SPAN&gt;</span><br></pre></td></tr></table></figure></code></pre><p>英文还可以直接在String文件里面直接这样填写:<br>代码如下:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;string name=&quot;styled_text&quot;&gt;Plain, &lt;b&gt;bold&lt;/b&gt;, &lt;i&gt;italic&lt;/i&gt;, &lt;b&gt;&lt;i&gt;bold-italic&lt;/i&gt;&lt;/b&gt;&lt;/string&gt;</span><br></pre></td></tr></table></figure>
+
+<p>b代码加粗,i代表倾斜 </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/19/TextView加粗/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-lifecycle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -664,121 +725,6 @@
 
 
   
-    <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/22/设计模式/">设计模式</a>
-    </h1>
-  
-
-        
-        
-
-
-
-<a href="/2019/10/22/设计模式/" class="archive-article-date">
-  	<time datetime="2019-10-22T13:36:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
-</a>
-        
-		<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.2k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-		
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>六大原则：单一职责原则、开放封闭原则、里氏替换原则、依赖倒置原则、迪米特原则、接口隔离原则</p>
-<h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><p>就一个类而言，应该仅有一个能引起它变化的原因<br>开发：避免一个类承担过多的职责</p>
-<h2 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h2><p>类、模块、函数等对扩展开发，对修改关闭<br>开发：面对经常变更的功能可以用抽象或接口的方式来设置抽象功能接口，当修改时，只需要增加抽象接口和接口的子类，具体的实现类不改变</p>
-<h2 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h2><p>所有引用父类的地方都可以使用其子类对象的引用替换，是实现开放封闭原则的具体手段之一<br>开发：程序设计时，尽量把父类设置成抽象或接口，让子类继续或实现父接口，在运行时子类实例替换父类实例</p>
-<h2 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h2><p>高层模块不应该依赖低层模块，两者都应该依赖于抽象；抽象不依赖于细节，细节依赖于抽象<br>开发：模块间的依赖都通过抽象发生，实现类之间不发生直接依赖关系，mvp中view和model间的相互隔离，当之一改变时不影响其他</p>
-<h2 id="迪米特原则"><a href="#迪米特原则" class="headerlink" title="迪米特原则"></a>迪米特原则</h2><p>一个软件实体应该尽可能少的与其他实现发生相互作用<br>引入合理的第三者降低现有两个对象之间的耦合度，</p>
-<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>一个类对另一个类的依赖应该建立在最小的接口上（细化接口，区分接口职责）</p>
-        
-          <a class="article-more-a" href="/2019/10/22/设计模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/22/设计模式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -895,10 +841,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ui</a>
               </li>
              
@@ -907,19 +849,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jetpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color5">开发问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -927,7 +857,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -939,7 +869,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">retrofit</a>
+                <a href="javascript:void(0)" class="js-tag color3">jetpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -955,15 +897,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
+                <a href="javascript:void(0)" class="js-tag color4">retrofit</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mvp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">view</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -975,19 +913,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">andorid</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">studio插件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">view</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">蓝牙</a>
+                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">andorid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -999,7 +937,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">蓝牙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1008,6 +950,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
               </li>
              
               <li class="article-tag-list-item">

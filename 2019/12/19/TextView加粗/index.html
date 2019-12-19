@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
-  <title>Tag: ui | 风追着云</title>
+  <title>风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="风筝追随着风，风追着云">
-<meta property="og:type" content="website">
+  <meta name="description" content="TextView里面设置字体粗体动态： 不建议这种方式，这种方式比较操蛋，结果效果显示除了被选中的Item的字体被加粗外，其他未被选中的两个Item（随机的）也被加粗。而且加粗效果还不明显！！！  ps:所以最好不要用这种。      1234567891011121314151617    //android中为textview动态设置字体为粗体     TextView textView =">
+<meta property="og:type" content="article">
 <meta property="og:title" content="风追着云">
-<meta property="og:url" content="https://github.com/tuyrt7/tags/ui/index.html">
+<meta property="og:url" content="https://github.com/tuyrt7/2019/12/19/TextView加粗/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="风筝追随着风，风追着云">
+<meta property="og:description" content="TextView里面设置字体粗体动态： 不建议这种方式，这种方式比较操蛋，结果效果显示除了被选中的Item的字体被加粗外，其他未被选中的两个Item（随机的）也被加粗。而且加粗效果还不明显！！！  ps:所以最好不要用这种。      1234567891011121314151617    //android中为textview动态设置字体为粗体     TextView textView =">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-19T10:31:15.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="风追着云">
-<meta name="twitter:description" content="风筝追随着风，风追着云">
+<meta name="twitter:description" content="TextView里面设置字体粗体动态： 不建议这种方式，这种方式比较操蛋，结果效果显示除了被选中的Item的字体被加粗外，其他未被选中的两个Item（随机的）也被加粗。而且加粗效果还不明显！！！  ps:所以最好不要用这种。      1234567891011121314151617    //android中为textview动态设置字体为粗体     TextView textView =">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -171,118 +172,203 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-TextView加粗" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="TextView里面设置字体粗体"><a href="#TextView里面设置字体粗体" class="headerlink" title="TextView里面设置字体粗体"></a>TextView里面设置字体粗体</h2><h1 id="动态："><a href="#动态：" class="headerlink" title="动态："></a>动态：</h1><ol>
+<li><p>不建议这种方式，这种方式比较操蛋，结果效果显示除了被选中的Item的字体被加粗外，其他未被选中的两个Item（随机的）也被加粗。而且加粗效果还不明显！！！</p>
+<blockquote>
+<p>ps:所以最好不要用这种。  </p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    //android中为textview动态设置字体为粗体</span><br><span class="line">     TextView textView = (TextView)findViewById(R.id.textView);</span><br><span class="line">     TextPaint tp = textView .getPaint();</span><br><span class="line">     tp.setFakeBoldText(true);  </span><br><span class="line">```   </span><br><span class="line">2. 推荐这种方式，这种方式完美的解决的我需要选中的Item字体加粗。</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">//android中为textview动态设置字体为粗体</span><br><span class="line"> TextView textView = (TextView)findViewById(R.id.textView);</span><br><span class="line"> textView .setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));</span><br><span class="line">//设置不为加粗</span><br><span class="line"> textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));</span><br><span class="line">  ```  </span><br><span class="line"># 静态：  </span><br><span class="line"></span><br><span class="line">### 这种是最直接的方式，在xml文件里面直接添加一个TextView的属性值。但这不能解决我的需求，在这里只是给大家介绍一下！</span><br></pre></td></tr></table></figure>
+
+<pre><code>android:textStyle=&quot;bold&quot;   
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 网上提供了这两种方式，是英文加粗的，我没试过，大家可以试一下！  </span><br><span class="line">    英文设置加粗可以在xml里面设置:  </span><br><span class="line">    代码如下:  </span><br><span class="line">    </span><br><span class="line">    ``` </span><br><span class="line">    &lt;SPAN style=&quot;FONT-SIZE: 18px&quot;&gt;android:textStyle=&quot;bold&quot;&lt;/SPAN&gt;</span><br></pre></td></tr></table></figure></code></pre><p>英文还可以直接在String文件里面直接这样填写:<br>代码如下:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;string name=&quot;styled_text&quot;&gt;Plain, &lt;b&gt;bold&lt;/b&gt;, &lt;i&gt;italic&lt;/i&gt;, &lt;b&gt;&lt;i&gt;bold-italic&lt;/i&gt;&lt;/b&gt;&lt;/string&gt;</span><br></pre></td></tr></table></figure>
+
+<p>b代码加粗,i代表倾斜 </p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+      </div>
+    </span>
+  </div>
+</div>
 
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/tuyrt7/2019/12/19/TextView加粗/" alt="微信分享二维码">
+    </div>
+</div>
 
-
-<a href="/2019/09/24/Android通过参数动态设置ImageView/" class="archive-article-date">
-  	<time datetime="2019-09-24T01:40:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/Android通过参数动态设置ImageView/">Android通过参数动态设置ImageView</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ui</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/21/lifecycle/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">lifecycle</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-
-<a href="/2019/09/19/被fragment覆盖的控件显示在上层问题/" class="archive-article-date">
-  	<time datetime="2019-09-19T11:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/19/被fragment覆盖的控件显示在上层问题/">被fragment覆盖的控件显示在上层问题</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjQwMi8yMjkxMw==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ui</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">andorid</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://github.com/tuyrt7/2019/12/19/TextView加粗/",
+  owner: 'tuyryt7',
+  repo: 'https://tuyrt7.github.io',
+  oauth: {
+    client_id: '671f2fbb5b6516d80412',
+    client_secret: '03a1ee70200184c9255a44aa29cb83f905a5bcb1',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -320,9 +406,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
