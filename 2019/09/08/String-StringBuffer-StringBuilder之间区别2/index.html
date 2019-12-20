@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://github.com/tuyrt7">
-  <title>Archives: 2019 | 风追着云</title>
+  <title>String-StringBuffer-StringBuilder之间区别 | 风追着云</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="风筝追随着风，风追着云">
-<meta property="og:type" content="website">
-<meta property="og:title" content="风追着云">
-<meta property="og:url" content="https://github.com/tuyrt7/archives/2019/page/6/index.html">
+  <meta name="description" content="源码分析https://www.cnblogs.com/Wilange/p/7570633.htmlString,StringBuffer,StringBuilder的区别及其源码分析(一)https://www.cnblogs.com/Wilange/p/7572125.htmlString,StringBuffer,StringBuilder的区别及其源码分析(二)">
+<meta name="keywords" content="blog,基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="String-StringBuffer-StringBuilder之间区别">
+<meta property="og:url" content="https://github.com/tuyrt7/2019/09/08/String-StringBuffer-StringBuilder之间区别2/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="风筝追随着风，风追着云">
+<meta property="og:description" content="源码分析https://www.cnblogs.com/Wilange/p/7570633.htmlString,StringBuffer,StringBuilder的区别及其源码分析(一)https://www.cnblogs.com/Wilange/p/7572125.htmlString,StringBuffer,StringBuilder的区别及其源码分析(二)">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-20T04:33:25.815Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风追着云">
-<meta name="twitter:description" content="风筝追随着风，风追着云">
+<meta name="twitter:title" content="String-StringBuffer-StringBuilder之间区别">
+<meta name="twitter:description" content="源码分析https://www.cnblogs.com/Wilange/p/7570633.htmlString,StringBuffer,StringBuilder的区别及其源码分析(一)https://www.cnblogs.com/Wilange/p/7572125.htmlString,StringBuffer,StringBuilder的区别及其源码分析(二)">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -171,200 +173,114 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-String-StringBuffer-StringBuilder之间区别2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      String-StringBuffer-StringBuilder之间区别
+    </h1>
+  
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+
+
+<a href="/2019/09/08/String-StringBuffer-StringBuilder之间区别2/" class="archive-article-date">
+  	<time datetime="2019-09-07T16:24:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+        
+		<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">716字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+		
+		
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p><a href="https://www.cnblogs.com/Wilange/p/7570633.html" target="_blank" rel="noopener">https://www.cnblogs.com/Wilange/p/7570633.html</a><br>String,StringBuffer,StringBuilder的区别及其源码分析(一)<br><a href="https://www.cnblogs.com/Wilange/p/7572125.html" target="_blank" rel="noopener">https://www.cnblogs.com/Wilange/p/7572125.html</a><br>String,StringBuffer,StringBuilder的区别及其源码分析(二)    </p>
+<a id="more"></a>  
+
+<p>类别|效率|线程安全<br>String|效率慢|<br>StringBuffer|效率快|线程安全<br>StringBuilder|效率快|线程不安全  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">String str =new String(&quot;Hello&quot;);  </span><br><span class="line">str=str+&quot;nihao&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>首先，创建值为 ”Hello” 的 str对象 ，后来对 str 对象追加字符串 “nihao” ,形成新的 str对象 ，咦？不是说字符串一旦创建，不能更改吗？   </p>
+<p>其实，第一行代码是我们程序员自己创建了 str对象，但当执行到第二行代码时，因为 str值一旦创建不能更改，而我们代码中仍然使用 str这个变量名，系统内部又重新创建新的 str对象，（用 str=”值” 方式进行赋值，在编译前就会在常量池中创建好）对之前的 str对象 进行覆盖，而之前的 str对象 将由GC进行回收。<br>那试想，如果进行频繁的字符串更改,对内存是无比的浪费啊，而 <code>StringBuffer</code>和<code>StringBuilder</code>正好解决此问题，创建一个此类对象，可以在原内存中对对象进行更改,类似于普通类对于属性的操作。   </p>
+<h2 id="借助jvm内存分析来深入理解String"><a href="#借助jvm内存分析来深入理解String" class="headerlink" title="借助jvm内存分析来深入理解String"></a>借助jvm内存分析来深入理解String</h2><p>jvm为了节省字符串重复创建而造成内存浪费，特别维互一个叫常量池的区域，当使用 <code>String str =”值”</code>形式创建字符串对象时，就会去查找常量池中有无这个的值，如有，直接引用返回，如果没有系统会在常量池创建，然后引用返回。当使用<code>String str =new String(“值”)</code>时，既然有new关键词，势必会在进行堆中进行new对象3步骤（1.在堆中开辟内存空间 2，调用构造器初始化对象 3.返回引用地址值），每次new都会产生新的对象。  </p>
+<p>Sring对象的更改（主要指new方式创建），会频繁的在堆中开垦内存，造成内存浪费，效率也会大大在降低，并且会有很多脏屁股让GC去帮忙擦。 StingBuffer和StingBuilder不同，一个对象只需要开辟一块内存空间，那效率就会高很多。<br>但要细说StringBuffer和StringBuilder，它们在效率上应该不会有大的区别，但因为StringBuffer内中的方法，很多用了synchronized锁，所有在多线程下，会稍慢于StringBuilder.    </p>
+<p>也正因为 StringBuffer类中方法中多代有synchronized，线程安全，所有在多线程环境下，我们要舍StringBuilder而用StringBuffer    </p>
+<p><strong>使用总结</strong>：  </p>
+<blockquote>
+<p>（1）如果要操作少量的数据用 String；<br>（2）多线程操作字符串缓冲区下操作大量数据 StringBuffer；<br>（3）单线程操作字符串缓冲区下操作大量数据 StringBuilder。  </p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/uploads/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/Studio常用快捷键/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:23:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/Studio常用快捷键/">Studio常用快捷键</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">blog - studio - 工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/快捷键//" class="article-tag-list-link color4">快捷键</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/本体文档 /" class="archive-article-date">
-  	<time datetime="2019-09-07T16:22:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/本体文档 /">本体文档</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文档</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">说明介绍</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/work//" class="article-tag-list-link color5">work</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/风追着云（一）/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:22:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/风追着云（一）/">风追着云（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-
-<a href="/2019/09/08/实现view的滑动/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/实现view的滑动/">View的滑动</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -376,98 +292,168 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">view</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/android//" class="article-tag-list-link color3">android</a>
+        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/tuyrt7/2019/09/08/String-StringBuffer-StringBuilder之间区别2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+<nav id="article-nav">
+  
+    <a href="/2019/09/08/EventBus源码初探/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          EventBus源码初探
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/08/Studio常用快捷键/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Studio常用快捷键</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-
-<a href="/2019/09/08/修改sd卡权限/" class="archive-article-date">
-  	<time datetime="2019-09-07T16:19:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/修改sd卡权限/">修改sd卡权限</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">定制rom</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/android定制//" class="article-tag-list-link color5">android定制</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
+
+
+ 
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjQwMi8yMjkxMw==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/page/5/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/4/">4</a><a class="page-number" href="/archives/2019/page/5/">5</a><span class="page-number current">6</span>
-    </nav>
+
+  
+  
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://github.com/tuyrt7/2019/09/08/String-StringBuffer-StringBuilder之间区别2/",
+  owner: 'tuyryt7',
+  repo: 'https://tuyrt7.github.io',
+  oauth: {
+    client_id: '671f2fbb5b6516d80412',
+    client_secret: '03a1ee70200184c9255a44aa29cb83f905a5bcb1',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -506,8 +492,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
