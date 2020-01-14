@@ -173,6 +173,281 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Git常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/14/Git常用命令/">Git常用命令</a>
+    </h1>
+  
+
+        
+        
+
+
+
+<a href="/2020/01/14/Git常用命令/" class="archive-article-date">
+  	<time datetime="2020-01-14T06:24:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-14</time>
+</a>
+        
+		<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">7分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+		
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>配置用户名：git config –global user.name “Your Name”</li>
+<li>配置邮箱：git config –global user.email “<a href="mailto:email@example.com" target="_blank" rel="noopener">email@example.com</a>“</li>
+</ul>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><ul>
+<li>Git仓库创建：git init</li>
+</ul>
+<h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><ul>
+<li>添加：git add <file></file></li>
+<li>提交：git commit -m <message></message></li>
+<li>查看工作区：git status</li>
+<li>查看修改内容：git diff</li>
+<li>查看修改内容：git diff HEAD – <file> （查看当前版本库与共工作区的file不同）</file></li>
+</ul>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><ul>
+<li>回退上一个版本：git reset –hard HEAD^（<code>HEAD^^</code>就是上上版本，<code>HEAD~100</code> 回退100次）</li>
+<li>回退指定版本：git reset –hard commit_id (commit_id只要前6位就可以)</li>
+<li>查看提交历史：git log</li>
+<li>查看提交历史：git log –pretty=oneline（添加–pretty=oneline，一行显示一次提交信息）</li>
+<li>查看命令历史：git reflog （可以用来查看提交commit id，在回退后反悔）</li>
+</ul>
+<h2 id="git工作区、暂存区、版本库"><a href="#git工作区、暂存区、版本库" class="headerlink" title="git工作区、暂存区、版本库"></a>git工作区、暂存区、版本库</h2><ul>
+<li><p>第一步：git add（把文件添加进去，实际上就是把文件修改添加到暂存区）</p>
+</li>
+<li><p>第二步：git commit（提交更改，实际上就是把暂存区的所有内容提交到当前分支）</p>
+</li>
+</ul>
+<blockquote>
+<p>例如1：第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git commit<br>结果2： 第一次的修改被提交了，第二次的修改不会被提交  </p>
+</blockquote>
+<blockquote>
+<p>例如1：第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git add -&gt; git commit<br>结果2：第一、二次修改提交</p>
+</blockquote>
+<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><ul>
+<li>丢弃工作区的修改：git checkout – file （回到最近一次git commit或git add时的状态）</li>
+</ul>
+<blockquote>
+<p>例如：命令git checkout – readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；<br>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。  </p>
+</blockquote>
+<ul>
+<li>丢弃暂存区修改：第一步：git reset HEAD <file>，第二步：git checkout – file。</file></li>
+</ul>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
+<li>删除（提交暂存区）: git rm <file> （先手动删除文件，然后使用git rm <file>和git add<file>效果是一样的）</file></file></file></li>
+<li>git checkout – <file> （可以撤销工作区文件手动删除）</file></li>
+</ul>
+<h2 id="关联远程、推送"><a href="#关联远程、推送" class="headerlink" title="关联远程、推送"></a>关联远程、推送</h2><ul>
+<li><p>关联一个远程库：git remote add origin git@server-name:path/repo-name.git</p>
+</li>
+<li><p>关联后第一次推送：git push -u origin master （第一次推送master分支的所有内容）</p>
+</li>
+<li><p>之后推送修改：git push origin master</p>
+</li>
+</ul>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><ul>
+<li>克隆项目： git clone <url> （url是远程地址 SSH:git@server-name:path/repo-name.git）</url></li>
+</ul>
+<h2 id="Git分支操作"><a href="#Git分支操作" class="headerlink" title="Git分支操作"></a>Git分支操作</h2><ul>
+<li><p>查看分支：git branch</p>
+</li>
+<li><p>创建分支：git branch <name></name></p>
+</li>
+<li><p>切换分支：git checkout <name>或者git switch <name></name></name></p>
+</li>
+<li><p>创建+切换分支：git checkout -b <name>或者git switch -c <name></name></name></p>
+</li>
+<li><p>合并分支（分支没有历史信息）：git merge <name></name></p>
+</li>
+<li><p>删除分支：git branch -d <name></name></p>
+</li>
+</ul>
+<blockquote>
+<p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。<br>解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交。 </p>
+</blockquote>
+<ul>
+<li><p>显示分支合并图: git log –graph –pretty=oneline –abbrev-commit</p>
+</li>
+<li><p>合并分支（分支有历史信息）：git merge –no-ff -m “merge with no-ff” <name> （-m 提交合并信息；–no-ff 禁用Fast forward）</name></p>
+</li>
+</ul>
+<blockquote>
+<p>结果：如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。<br>如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。 </p>
+</blockquote>
+<h2 id="bug分支操作"><a href="#bug分支操作" class="headerlink" title="bug分支操作"></a>bug分支操作</h2><ul>
+<li><p>保存当前工作现场：git stash</p>
+</li>
+<li><p>恢复现场：git stash pop</p>
+</li>
+</ul>
+<blockquote>
+<p>流程：<br>git stash（保存工作分支）     ..-&gt;     git stash list（查看保存）    -&gt;         git checkout master（切换发布分支）        -&gt;         git checkout -b issue-101 （创建并切换bug分支）        -&gt;         ..add .. commit（修复bug）        -&gt;         git switch master（切换发布分支）        -&gt;         git merge –no-ff -m “merged bug fix 101” issue-101（合并bug分支）        -&gt;         git switch dev（切换工作分支）        ..-&gt;         git stash list（查看保存）        -&gt;         git stash pop（恢复保存）</p>
+</blockquote>
+<blockquote>
+<p>注意：<br>一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；<br>另一种方式是用git stash pop，恢复的同时把stash内容也删了：  </p>
+</blockquote>
+<ul>
+<li>恢复指定（stash@{0}）保存：git stash apply stash@{0}</li>
+</ul>
+<p>master分支上修复的bug，想要合并到当前dev分支，把bug提交的修改“复制”到当前分支，避免重复劳动。</p>
+<ul>
+<li>合并到当前dev分支：git cherry-pick <commit> （commit_id是bug分支issue-101的commit_id）</commit></li>
+</ul>
+<h2 id="feature分支"><a href="#feature分支" class="headerlink" title="feature分支"></a>feature分支</h2><p>开发一个新feature，最好新建一个分支；</p>
+<ul>
+<li>强行删除：git branch -D <name> （丢弃一个没有被合并过的分支，D要大写）</name></li>
+</ul>
+<h2 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h2><ul>
+<li><p>查看远程：git remote</p>
+</li>
+<li><p>查看远程（详细信息）：git remote -v </p>
+</li>
+</ul>
+<blockquote>
+<p>结果：<br>origin  <a href="mailto:git@github.com">git@github.com</a>:michaelliao/learngit.git (fetch) （表示抓取地址）<br>origin  <a href="mailto:git@github.com">git@github.com</a>:michaelliao/learngit.git (push)    （表示推送地址）  </p>
+</blockquote>
+<ul>
+<li><p>推送本地master分支： git push origin master</p>
+</li>
+<li><p>推送本地dev分支： git push origin dev</p>
+</li>
+</ul>
+<p>应用：</p>
+<blockquote>
+<p>master分支是主分支，因此要时刻与远程同步；<br>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；<br>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；<br>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。  </p>
+</blockquote>
+<p>_多人协作的工作模式_：</p>
+<p>1、试图用git push origin <branch-name>推送自己的修改；</branch-name></p>
+<p>2、如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；</p>
+<p>3、如果合并有冲突，则解决冲突，并在本地提交；</p>
+<p>4、没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！</branch-name></p>
+<ul>
+<li><p>本地分支和远程分支的建立链接关系：git branch –set-upstream-to <branch-name> origin/<branch-name>（如果git pull提示no tracking information，则说明无链接关系）</branch-name></branch-name></p>
+</li>
+<li><p>本地创建和远程分支对应的分支：git checkout -b branch-name origin/branch-nam（本地和远程分支的名称最好一致）</p>
+</li>
+<li><p>建立本地分支和远程分支的关联：git branch –set-upstream branch-name origin/branch-name；</p>
+</li>
+</ul>
+<p>从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。</p>
+<h2 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h2><ul>
+<li>提交历史分叉转直线：git rebase</li>
+</ul>
+<p>rebase操作可以把本地未push的分叉提交历史整理成直线；<br>rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>标签用来管理发布版本，发布时版本tag v1.2，按照tag v1.2查找commit就能导出那时发布 v1.2时源码</p>
+<blockquote>
+<p>注意：标签总是和某个commit挂钩。如果这个commit既出现在master分支，又出现在dev分支，那么在这两个分支上都可以看到这个标签。</p>
+</blockquote>
+<ul>
+<li><p>新建标签：git tag <tagname> （默认为HEAD，也可以指定一个commit id）</tagname></p>
+</li>
+<li><p>新建标签：git tag -a <tagname> -m “blablabla…” （-a指定标签名，-m指定标签信息）</tagname></p>
+</li>
+<li><p>查看所有标签：git tag</p>
+</li>
+<li><p>推送本地标签：git push origin <tagname></tagname></p>
+</li>
+<li><p>推送全部未推送过的本地标签：git push origin –tags</p>
+</li>
+<li><p>删除本地标签：git tag -d <tagname></tagname></p>
+</li>
+<li><p>删除一个远程标签：git push origin :refs/tags/<tagname></tagname></p>
+</li>
+</ul>
+<h2 id="简写命令"><a href="#简写命令" class="headerlink" title="简写命令"></a>简写命令</h2><blockquote>
+<p>配置方法：<br>$ git config –global alias.st status （st就表示statu，）<br>$ git config –global alias.co checkout （co表示checkout）<br>$ git config –global alias.ci commit （ci表示commit）<br>$ git config –global alias.br branch （br表示branch）<br>$ git config –global alias.unstage ‘reset HEAD’<br>$ git config –global alias.last ‘log -1’<br>$ git config –global alias.lg “log –color –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit”  </p>
+</blockquote>
+<blockquote>
+<p>配置后：<br>git st ====  git status<br>git co master ====  git checkout master<br>git ci -m “add” ====  git commit -m “add”<br>git br ====  git branch<br>git unstage test.py  ====  git reset HEAD test.py<br>git last ====  git log -1<br>git lg ====   </p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/14/Git常用命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-TextView加粗" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -377,11 +652,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jetpack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jetpack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
         		</li>
       		
 		</ul>
@@ -666,123 +941,9 @@
 
 
   
-    <article id="post-访问developer-android的办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/访问developer-android的办法/">访问developer.android的办法</a>
-    </h1>
-  
-
-        
-        
-
-
-
-<a href="/2019/11/01/访问developer-android的办法/" class="archive-article-date">
-  	<time datetime="2019-11-01T07:17:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
-</a>
-        
-		<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">57字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-		
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>不可访问<br><a href="https://source.android.com" target="_blank" rel="noopener">https://source.android.com</a><br><a href="https://developer.android.com" target="_blank" rel="noopener">https://developer.android.com</a></p>
-</li>
-<li><p>可以访问<br><a href="https://source.android.google.cn" target="_blank" rel="noopener">https://source.android.google.cn</a><br><a href="https://developer.android.google.cn" target="_blank" rel="noopener">https://developer.android.google.cn</a></p>
-</li>
-<li><p>例子：<br><a href="https://source.android.com/devices/automotive/audio" target="_blank" rel="noopener">https://source.android.com/devices/automotive/audio</a>  无法访问，改成如下形式即可：<br><a href="https://source.android.google.cn/devices/automotive/audio" target="_blank" rel="noopener">https://source.android.google.cn/devices/automotive/audio</a> —正常访问</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">快捷</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/01/访问developer-android的办法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -794,7 +955,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 云上的风筝
+    		&copy; 2020 云上的风筝
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -908,27 +1069,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">HandlerThread</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">jetpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jetpack</a>
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -940,6 +1089,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">blog - studio - 工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -948,15 +1113,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mvp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -972,7 +1129,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">studio插件</a>
+                <a href="javascript:void(0)" class="js-tag color1">定制rom</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -980,7 +1137,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">andorid</a>
+                <a href="javascript:void(0)" class="js-tag color4">studio插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -993,6 +1150,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">快捷</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">andorid</a>
               </li>
              
               <li class="article-tag-list-item">
