@@ -17,3 +17,11 @@ hexo new post_name
 确保hexo deploy推送的是master分支，hexo目录下的_config.yml文件通常会配置deploy推送的目标地址，这个一般在最初使用hexo时，就会配置为master，不用改动：
 
 ```
+
+## 删除master中的文件
+
+``` 
+删除master中的文件，master中静态文件直接pull不下来，执行下面的命令
+刷新master：git pull --allow-unrelated-histories 
+
+```
