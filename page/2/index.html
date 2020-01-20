@@ -72,7 +72,7 @@
 			<img src="/uploads/tuyrt7.jpeg" class="js-avatar">
 		</a>
 		<hgroup>
-			<h1 class="header-author"><a href="/">云上的风筝</a></h1>
+			<h1 class="header-author"><a href="/">风追着云</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">我想要两颗西柚</p>
@@ -162,7 +162,7 @@
 				</a>
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">云上的风筝</h1>
+			  <h1 class="header-author js-header-author">风追着云</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我想要两颗西柚<i class="icon icon-quo-right"></i></p>
@@ -233,7 +233,7 @@
 
 
   
-    <article id="post-Androidstudio引用maven库-jcenter-Google-下载依赖失败的解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-HandlerThread相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -241,7 +241,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/11/04/Androidstudio引用maven库-jcenter-Google-下载依赖失败的解决方法/" target="_blank">Androidstudio引用maven库(jcenter,Google)下载依赖失败的解决方法</a>
+	  <a class="article-title" href="/2019/10/12/HandlerThread相关/" target="_blank">HandlerThread相关</a>
   
     </h1>
   
@@ -249,8 +249,8 @@
 
   
   
-<a href="/2019/11/04/Androidstudio引用maven库-jcenter-Google-下载依赖失败的解决方法/" class="archive-article-date">
-        <time datetime="2019-11-04T02:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
+<a href="/2019/10/12/HandlerThread相关/" class="archive-article-date">
+        <time datetime="2019-10-12T04:58:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-12</time>
 </a>
 
   
@@ -262,15 +262,11 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="Androidstudio引用maven库-jcenter-Google-下载依赖失败的解决方法"><a href="#Androidstudio引用maven库-jcenter-Google-下载依赖失败的解决方法" class="headerlink" title="Androidstudio引用maven库(jcenter,Google)下载依赖失败的解决方法"></a>Androidstudio引用maven库(jcenter,Google)下载依赖失败的解决方法</h1><h1 id="最后解决"><a href="#最后解决" class="headerlink" title="最后解决:"></a>最后解决:</h1><p>在jecnter()前或后加上mavenCentral()</p>
-<h2 id="网上关于这块有两种推荐方式"><a href="#网上关于这块有两种推荐方式" class="headerlink" title="网上关于这块有两种推荐方式"></a>网上关于这块有两种推荐方式</h2><p>加载阿里云仓库服务、华为云服务</p>
-<p>使用华为云服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span><br><span class="line">apply from: &quot;buildsystem/dependences.gradle&quot;</span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123; url &apos;https://mirrors.huaweicloud.com/repository/maven/&apos; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &apos;com.android.tools.build:gradle:3.0.1&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123; url &apos;https://mirrors.huaweicloud.com/repository/maven/&apos; &#125;</span><br><span class="line">        maven &#123; url &quot;https://jitpack.io&quot; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用阿里云服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span><br><span class="line">apply from:&quot;buildsystem/dependences.gradle&quot;</span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123; url &apos;http://maven.aliyun.com/nexus/content/groups/public/&apos; &#125;</span><br><span class="line">        maven &#123; url &apos;http://maven.aliyun.com/nexus/content/repositories/jcenter&apos; &#125;</span><br><span class="line">        google()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &apos;com.android.tools.build:gradle:3.0.1&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123; url &apos;http://maven.aliyun.com/nexus/content/groups/public/&apos; &#125;</span><br><span class="line">        maven &#123; url &apos;http://maven.aliyun.com/nexus/content/repositories/jcenter&apos; &#125;</span><br><span class="line">        maven &#123; url &quot;https://jitpack.io&quot; &#125;</span><br><span class="line">        google()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+    <p>不管是子线程发还是主线程发送消息，接收都在子线程，内部持有looper,不调用其 quit()接口，就一直存在</p>
+<h2 id="子线程和子线程之间的通信："><a href="#子线程和子线程之间的通信：" class="headerlink" title="子线程和子线程之间的通信："></a>子线程和子线程之间的通信：</h2><p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/handler-thread.png" alt="图片"></p>
+    
+    <a class="article-more-a" href="/2019/10/12/HandlerThread相关/#more">more >></a>
+    
     
 
     
@@ -290,7 +286,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发问题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HandlerThread</a>
         		</li>
       		
 		</ul>
@@ -300,7 +296,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/11/04/Androidstudio引用maven库-jcenter-Google-下载依赖失败的解决方法/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/10/12/HandlerThread相关/">展开全文 >></a>
     </p>
     
 
@@ -330,7 +326,7 @@
 
 
   
-    <article id="post-访问developer-android的办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Git新建仓库-命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -338,7 +334,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/11/01/访问developer-android的办法/" target="_blank">访问developer.android的办法</a>
+	  <a class="article-title" href="/2019/10/11/Git新建仓库-命令/" target="_blank">Git新建仓库-命令</a>
   
     </h1>
   
@@ -346,8 +342,8 @@
 
   
   
-<a href="/2019/11/01/访问developer-android的办法/" class="archive-article-date">
-        <time datetime="2019-11-01T07:17:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
+<a href="/2019/10/11/Git新建仓库-命令/" class="archive-article-date">
+        <time datetime="2019-10-11T01:24:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
 </a>
 
   
@@ -359,14 +355,606 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <ol>
-<li><p>不可访问<br><a href="https://source.android.com" target="_blank" rel="noopener">https://source.android.com</a><br><a href="https://developer.android.com" target="_blank" rel="noopener">https://developer.android.com</a></p>
-</li>
-<li><p>可以访问<br><a href="https://source.android.google.cn" target="_blank" rel="noopener">https://source.android.google.cn</a><br><a href="https://developer.android.google.cn" target="_blank" rel="noopener">https://developer.android.google.cn</a></p>
-</li>
-<li><p>例子：<br><a href="https://source.android.com/devices/automotive/audio" target="_blank" rel="noopener">https://source.android.com/devices/automotive/audio</a>  无法访问，改成如下形式即可：<br><a href="https://source.android.google.cn/devices/automotive/audio" target="_blank" rel="noopener">https://source.android.google.cn/devices/automotive/audio</a> —正常访问</p>
-</li>
+    <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h3 id="Command-line-instructions"><a href="#Command-line-instructions" class="headerlink" title="Command line instructions"></a>Command line instructions</h3><p>You can also upload existing files from your computer using the instructions below. </p>
+<h2 id="Git-global-setup"><a href="#Git-global-setup" class="headerlink" title="Git global setup"></a>Git global setup</h2><p>git config –global user.name “符涛”<br>git config –global user.email “<a href="mailto:jasson@bayair.com" target="_blank" rel="noopener">jasson@bayair.com</a>“</p>
+<h2 id="Create-a-new-repository"><a href="#Create-a-new-repository" class="headerlink" title="Create a new repository"></a>Create a new repository</h2><p>git clone git@c73905819740:xiaoke/newdevice.git<br>cd newdevice<br>touch README.md<br>git add README.md<br>git commit -m “add README”<br>git push -u origin master</p>
+    
+    <a class="article-more-a" href="/2019/10/11/Git新建仓库-命令/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/11/Git新建仓库-命令/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-多线程相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/10/09/多线程相关/" target="_blank">多线程相关</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/10/09/多线程相关/" class="archive-article-date">
+        <time datetime="2019-10-09T01:52:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-09</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>##阻塞队列 </p>
+<p>以arrayBlockingQueue为例<br> ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true);<br> LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000);<br> /**</p>
+<ul>
+<li>往队列中放入数据</li>
+<li>/<br>arrayBlockingQueue.offer(new Object());//加入缓存队列，blockingqueue可以容纳返回ture,否则false,不阻塞当前线程<br>try {<br>  //加入缓存队列，设置超时时间<br>  arrayBlockingQueue.offer(new Object(), 5, TimeUnit.SECONDS);<br>  //加入缓存队列，如果队列没有空间，调用方法的线程被阻塞，直到队列里有控件再继续<br>  arrayBlockingQueue.put(new Object());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</li>
+</ul>
+    
+    <a class="article-more-a" href="/2019/10/09/多线程相关/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线程池</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">android基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/09/多线程相关/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-关于mvp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/30/关于mvp/" target="_blank">关于mvp</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/30/关于mvp/" class="archive-article-date">
+        <time datetime="2019-09-30T15:48:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-30</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>model</strong>：数据层、数据层对外接口、业务层</p>
+<p>数据层：实现对外接口、获取数据<br>业务层：持有数据层的接口，具体操作数据（如拼接、组合）<br>    业务层不关心数据怎么取得，只通过持有的接口去拿</p>
+<p><strong>view</strong>:  关注交互，用户事件，显示数据</p>
+<p><strong>presenter</strong>: 中间层处理逻辑业务</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mvp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/30/关于mvp/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-retrofit传递数组参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/24/retrofit传递数组参数/" target="_blank">retrofit传递数组参数</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/24/retrofit传递数组参数/" class="archive-article-date">
+        <time datetime="2019-09-24T02:04:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>关键字：retrofit 数组参数<br>接触Retrofit一段时间后，感觉到Retrofit越来越强大，方便快捷。  </p>
+<p>传数组  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@GET(&quot;v1/enterprise/find&quot;)</span><br><span class="line">Call&lt;ResponseBody&gt; getData(@Query(&quot;id&quot;) String id, @Query(&quot;linked[]&quot;) String... linked);</span><br><span class="line"></span><br><span class="line">//第2种</span><br><span class="line">@FormUrlEncoded</span><br><span class="line">@POST(&quot;matter/app-config&quot;)</span><br><span class="line">Flowable&lt;JsonResponse&gt; toolsConfig(@Field(&quot;idList[]&quot;)  List&lt;String&gt; idList);</span><br><span class="line"></span><br><span class="line">//第3种</span><br><span class="line">@GET</span><br><span class="line">Call&lt;JsonElement&gt; checkIds(@Query(&quot;product_ids[]&quot;) String[] ids);</span><br></pre></td></tr></table></figure>
+
+<p>代码调用： </p>
+<pre><code>String id=&quot;Stay&quot;；
+String[] s = new String[]{&quot;Stay&quot;};
+//调接口
+getData(id, s); </code></pre>
+    
+    <a class="article-more-a" href="/2019/09/24/retrofit传递数组参数/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">retrofit</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/24/retrofit传递数组参数/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Android通过参数动态设置ImageView" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/24/Android通过参数动态设置ImageView/" target="_blank">Android通过参数动态设置ImageView</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/24/Android通过参数动态设置ImageView/" class="archive-article-date">
+        <time datetime="2019-09-24T01:40:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>我在学习的过程中有这样一个情景。比如天气预报。我会根据请求回来的数据进行解析，其中是根据每天或者每小时的不同对天气图标进行更换<br>在这个过程中，我想到得是if语句进行判断，但我觉得这个不现实，也太累赘。我发现我请求回来的数据有可能会有30来个图标，也就是说如果我用if语句判读<br>的话，我要写30个if。。。。。。。。。。。<br>但我得知一个办法，我分享给大家一起学习！！！！</p>
+<p>在drawable 文件夹中创建levellist.xml</p>
+<p>如下图：  </p>
+<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/iv-1.png" alt="图1"></p>
+    
+    <a class="article-more-a" href="/2019/09/24/Android通过参数动态设置ImageView/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ui</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/24/Android通过参数动态设置ImageView/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-被fragment覆盖的控件显示在上层问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/19/被fragment覆盖的控件显示在上层问题/" target="_blank">被fragment覆盖的控件显示在上层问题</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/19/被fragment覆盖的控件显示在上层问题/" class="archive-article-date">
+        <time datetime="2019-09-19T11:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>顶层布局ConstranitLayout,之后直接一个NaviHostFragment，其他控件和fragment平级布置</p>
+<h2 id="显示时fragment："><a href="#显示时fragment：" class="headerlink" title="显示时fragment："></a>显示时fragment：</h2><p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/cover-1.jpg" alt="fragment内容"> </p>
+<h2 id="切换fragment之后的布局："><a href="#切换fragment之后的布局：" class="headerlink" title="切换fragment之后的布局："></a>切换fragment之后的布局：</h2><p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/cover-2.jpg" alt="fragment平级内容"> </p>
+    
+    <a class="article-more-a" href="/2019/09/19/被fragment覆盖的控件显示在上层问题/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ui</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">andorid</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/19/被fragment覆盖的控件显示在上层问题/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-github-clone很慢" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/19/github-clone很慢/" target="_blank">github clone很慢</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/19/github-clone很慢/" class="archive-article-date">
+        <time datetime="2019-09-18T23:51:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>在天朝，经常会出现访问Github 异常慢，尤其在clone远程代码的时候，几KiB/s的速度在遭遇几十上百M的代码后，让大家苦不堪言。</p>
+<p>下面就介绍一种方法，绝对包治百病，亲测速度可以达到接近1M。</p>
+<ol>
+<li>获取Github相关网站的ip</li>
 </ol>
+<p>访问 <a href="https://www.ipaddress.com" target="_blank" rel="noopener">ipaddress</a> ，找到页面中下方的“IP Address Tools - Quick Links”，分别输入github.global.ssl.fastly.net和github.com，查询ip地址。</p>
+<ol start="2">
+<li>修改本地host文件</li>
+</ol>
+<p>以windows为例，打开host文件，c/windows/System32/drivers/etc/hosts</p>
+<ol start="3">
+<li>增加host映射  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.5.194 github.global.ssl.fastly.net</span><br><span class="line">140.82.113.4 github.com</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>更新DNS缓存</li>
+</ol>
+<p>命令行输入：ipconfig /flushdns，使增加的映射生效。</p>
+<ol start="5">
+<li>大功告成</li>
+</ol>
+<p>接下来就可以随意访问Github和clone代码了。</p>
 
     
 
@@ -387,7 +975,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">快捷</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">answer</a>
         		</li>
       		
 		</ul>
@@ -397,7 +989,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/11/01/访问developer-android的办法/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/09/19/github-clone很慢/">展开全文 >></a>
     </p>
     
 
@@ -427,7 +1019,7 @@
 
 
   
-    <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-androidx-v4-v7冲突" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -435,7 +1027,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/10/22/设计模式/" target="_blank">设计模式</a>
+	  <a class="article-title" href="/2019/09/18/androidx-v4-v7冲突/" target="_blank">androidx-v4-v7冲突</a>
   
     </h1>
   
@@ -443,8 +1035,8 @@
 
   
   
-<a href="/2019/10/22/设计模式/" class="archive-article-date">
-        <time datetime="2019-10-22T13:36:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
+<a href="/2019/09/18/androidx-v4-v7冲突/" class="archive-article-date">
+        <time datetime="2019-09-18T12:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
 </a>
 
   
@@ -456,15 +1048,104 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>六大原则：单一职责原则、开放封闭原则、里氏替换原则、依赖倒置原则、迪米特原则、接口隔离原则</p>
-<h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><p>就一个类而言，应该仅有一个能引起它变化的原因<br>开发：避免一个类承担过多的职责</p>
-<h2 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h2><p>类、模块、函数等对扩展开发，对修改关闭<br>开发：面对经常变更的功能可以用抽象或接口的方式来设置抽象功能接口，当修改时，只需要增加抽象接口和接口的子类，具体的实现类不改变</p>
-<h2 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h2><p>所有引用父类的地方都可以使用其子类对象的引用替换，是实现开放封闭原则的具体手段之一<br>开发：程序设计时，尽量把父类设置成抽象或接口，让子类继续或实现父接口，在运行时子类实例替换父类实例</p>
-<h2 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h2><p>高层模块不应该依赖低层模块，两者都应该依赖于抽象；抽象不依赖于细节，细节依赖于抽象<br>开发：模块间的依赖都通过抽象发生，实现类之间不发生直接依赖关系，mvp中view和model间的相互隔离，当之一改变时不影响其他</p>
-<h2 id="迪米特原则"><a href="#迪米特原则" class="headerlink" title="迪米特原则"></a>迪米特原则</h2><p>一个软件实体应该尽可能少的与其他实现发生相互作用<br>引入合理的第三者降低现有两个对象之间的耦合度，</p>
-<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>一个类对另一个类的依赖应该建立在最小的接口上（细化接口，区分接口职责）</p>
+    <h1 id="Androidx和Android-support库共存问题解决"><a href="#Androidx和Android-support库共存问题解决" class="headerlink" title="Androidx和Android support库共存问题解决"></a>Androidx和Android support库共存问题解决</h1><p><a href="https://www.jianshu.com/p/f7a7a8765294" target="_blank" rel="noopener">链接 https://www.jianshu.com/p/f7a7a8765294</a></p>
+<h1 id="support-v4-design-v7依赖的冲突的解决"><a href="#support-v4-design-v7依赖的冲突的解决" class="headerlink" title="support v4/design/v7依赖的冲突的解决"></a>support v4/design/v7依赖的冲突的解决</h1><p><a href="https://www.jianshu.com/p/a492bf61c0e6" target="_blank" rel="noopener">链接 https://www.jianshu.com/p/a492bf61c0e6</a></p>
+
     
-    <a class="article-more-a" href="/2019/10/22/设计模式/#more">more >></a>
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">导包</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">studio</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/18/androidx-v4-v7冲突/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-第一行代码目录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/18/第一行代码目录/" target="_blank">第一行代码目录</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/18/第一行代码目录/" class="archive-article-date">
+        <time datetime="2019-09-18T04:44:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="第1章-开始启程——你的第一行Android代码-1"><a href="#第1章-开始启程——你的第一行Android代码-1" class="headerlink" title="第1章　开始启程——你的第一行Android代码　　1"></a>第1章　开始启程——你的第一行Android代码　　1</h1><p>1.1　了解全貌——Android王国简介　　2<br>1.1.1　Android系统架构　　2<br>1.1.2　Android已发布的版本　　3<br>1.1.3　Android应用开发特色　　4<br>1.2　手把手带你搭建开发环境　　5<br>1.2.1　准备所需要的工具　　5<br>1.2.2　搭建开发环境　　5<br>1.3　创建你的第一个Android项目　　9<br>1.3.1　创建HelloWorld项目　　9<br>1.3.2　启动模拟器　　12<br>1.3.3　运行HelloWorld　　15<br>1.3.4　分析你的第一个Android程序　　16<br>1.3.5　详解项目中的资源　　22<br>1.3.6　详解build.gradle文件　　23<br>1.4　前行必备——掌握日志工具的使用　　26<br>1.4.1　使用Android的日志工具Log　　26<br>1.4.2　为什么使用Log而不使用System.out　　27<br>1.5　小结与点评　　29 </p>
+    
+    <a class="article-more-a" href="/2019/09/18/第一行代码目录/#more">more >></a>
     
     
 
@@ -492,203 +1173,21 @@
 	</div>
 
     
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/10/22/设计模式/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Navigation-BottomNavigationView使用踩坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/10/16/Navigation-BottomNavigationView使用踩坑/" target="_blank">Navigation-BottomNavigationView使用踩坑</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/10/16/Navigation-BottomNavigationView使用踩坑/" class="archive-article-date">
-        <time datetime="2019-10-16T12:47:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="使用Navigation-BottomNavigationView做App导航"><a href="#使用Navigation-BottomNavigationView做App导航" class="headerlink" title="使用Navigation-BottomNavigationView做App导航"></a>使用Navigation-BottomNavigationView做App导航</h1><p>项目中使用Navigation管理Fragment跳转，页面层级非常清晰，通过ActionId跳转，暂时未用到launchSingleTop，deeplink的用法</p>
-<p>好处是大大的，坑也多，也许是我太low了，毕竟才刚刚用起来…</p>
-<p>使用BottomNavigaionView+Navigation的导航页就是在顶级页面，不需要去监听状态然后跳转，然而没有状态可监听就意味着我们无法通过状态判断去完成我们所需要的特定功能</p>
-    
-    <a class="article-more-a" href="/2019/10/16/Navigation-BottomNavigationView使用踩坑/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jetpack</a>
+        			<a href="/categories/android基础//" class="article-tag-list-link color5">android基础</a>
         		</li>
       		
 		</ul>
 	</div>
 
-    
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/10/16/Navigation-BottomNavigationView使用踩坑/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-插件使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/10/12/插件使用/" target="_blank">插件使用</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/10/12/插件使用/" class="archive-article-date">
-        <time datetime="2019-10-12T15:09:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="android-studio"><a href="#android-studio" class="headerlink" title="android studio"></a>android studio</h1><p>添加了几个插件，详情如下</p>
-<h2 id="exynap-Exynap"><a href="#exynap-Exynap" class="headerlink" title="exynap  Exynap"></a>exynap  Exynap</h2><p>Exynap是一个帮助你快速查找和完成代码插入的AndroidStudio插件。你只需输入一个命令按回车就能调出一段代码，而这个命令也不需要你去记，只需输入大致意思就可以了，Exynap提供了上千种智能代码解决方案。</p>
-<p>使用 ctrl+shift+d<br>插件下载地址：<a href="https://plugins.jetbrains.com/plugin/8600?pr=idea" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/8600?pr=idea</a><br>插件主页地址：<a href="http://exynap.com/" target="_blank" rel="noopener">http://exynap.com/</a><br>插件教程地址：<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0908/6606.html" target="_blank" rel="noopener">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0908/6606.html</a></p>
-<h2 id="Android-Styler"><a href="#Android-Styler" class="headerlink" title="Android Styler"></a>Android Styler</h2><p>使用 Ctrl+Shift+D<br>根据xml文件生成style文件的插件<br>插件下载地址：<a href="https://plugins.jetbrains.com/plugin/7972" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/7972</a><br>插件源码地址：<a href="https://github.com/alexzaitsev/android-styler">https://github.com/alexzaitsev/android-styler</a></p>
-    
-    <a class="article-more-a" href="/2019/10/12/插件使用/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">studio插件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/10/12/插件使用/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/09/18/第一行代码目录/">展开全文 >></a>
     </p>
     
 
@@ -720,7 +1219,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -732,7 +1231,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018-2020 <a href="https:/github.com/tuyrt7/tuyrt7.github.io/" target="_blank">云上的风筝</a>
+    		&copy; 2018-2020 <a href="https:/github.com/tuyrt7/tuyrt7.github.io/" target="_blank">风追着云</a>
     	</div>
       	<div class="footer-right">
 			

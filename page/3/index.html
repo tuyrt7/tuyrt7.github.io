@@ -72,7 +72,7 @@
 			<img src="/uploads/tuyrt7.jpeg" class="js-avatar">
 		</a>
 		<hgroup>
-			<h1 class="header-author"><a href="/">云上的风筝</a></h1>
+			<h1 class="header-author"><a href="/">风追着云</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">我想要两颗西柚</p>
@@ -162,7 +162,7 @@
 				</a>
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">云上的风筝</h1>
+			  <h1 class="header-author js-header-author">风追着云</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我想要两颗西柚<i class="icon icon-quo-right"></i></p>
@@ -233,7 +233,7 @@
 
 
   
-    <article id="post-HandlerThread相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-遇到的Android-O-新特性问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -241,7 +241,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/10/12/HandlerThread相关/" target="_blank">HandlerThread相关</a>
+	  <a class="article-title" href="/2019/09/10/遇到的Android-O-新特性问题/" target="_blank">遇到的Android O 新特性问题</a>
   
     </h1>
   
@@ -249,8 +249,8 @@
 
   
   
-<a href="/2019/10/12/HandlerThread相关/" class="archive-article-date">
-        <time datetime="2019-10-12T04:58:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-12</time>
+<a href="/2019/09/10/遇到的Android-O-新特性问题/" class="archive-article-date">
+        <time datetime="2019-09-10T00:02:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
 </a>
 
   
@@ -262,10 +262,10 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>不管是子线程发还是主线程发送消息，接收都在子线程，内部持有looper,不调用其 quit()接口，就一直存在</p>
-<h2 id="子线程和子线程之间的通信："><a href="#子线程和子线程之间的通信：" class="headerlink" title="子线程和子线程之间的通信："></a>子线程和子线程之间的通信：</h2><p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/handler-thread.png" alt="图片"></p>
+    <h1 id="Notification-在android-O-引起的bug"><a href="#Notification-在android-O-引起的bug" class="headerlink" title="Notification 在android O 引起的bug"></a>Notification 在android O 引起的bug</h1><p><strong>现象</strong>:<br><code>notification</code>在<code>lollipop上</code>能显示，在<code>Android Oreo and above</code> 不能显示<br><strong>原因</strong>：<br><code>notitcation</code>在通过<code>new NotificationCompat.Builder().build()</code>这一步中的<code>Builder()</code>方法时，在8及以上版本是必须指定一个<code>channels</code>，在发送通知前，最好在<code>Activity</code>活动<code>oncreate()</code>初始化<code>channel</code>对象  </p>
+<p><strong>解决</strong>：<br>指定<code>channels</code>渠道，对<code>smallIcon</code> 和 <code>largeIcon</code> 有一定的要求，<br>各种手机标准不定。     </p>
     
-    <a class="article-more-a" href="/2019/10/12/HandlerThread相关/#more">more >></a>
+    <a class="article-more-a" href="/2019/09/10/遇到的Android-O-新特性问题/#more">more >></a>
     
     
 
@@ -286,7 +286,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HandlerThread</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">新特性</a>
         		</li>
       		
 		</ul>
@@ -296,7 +300,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/10/12/HandlerThread相关/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/09/10/遇到的Android-O-新特性问题/">展开全文 >></a>
     </p>
     
 
@@ -326,7 +330,7 @@
 
 
   
-    <article id="post-Git新建仓库-命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-蓝牙回顾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -334,7 +338,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/10/11/Git新建仓库-命令/" target="_blank">Git新建仓库-命令</a>
+	  <a class="article-title" href="/2019/09/09/蓝牙回顾/" target="_blank">蓝牙BlueTooth</a>
   
     </h1>
   
@@ -342,8 +346,8 @@
 
   
   
-<a href="/2019/10/11/Git新建仓库-命令/" class="archive-article-date">
-        <time datetime="2019-10-11T01:24:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
+<a href="/2019/09/09/蓝牙回顾/" class="archive-article-date">
+        <time datetime="2019-09-09T13:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
 </a>
 
   
@@ -355,11 +359,12 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h3 id="Command-line-instructions"><a href="#Command-line-instructions" class="headerlink" title="Command line instructions"></a>Command line instructions</h3><p>You can also upload existing files from your computer using the instructions below. </p>
-<h2 id="Git-global-setup"><a href="#Git-global-setup" class="headerlink" title="Git global setup"></a>Git global setup</h2><p>git config –global user.name “符涛”<br>git config –global user.email “<a href="mailto:jasson@bayair.com" target="_blank" rel="noopener">jasson@bayair.com</a>“</p>
-<h2 id="Create-a-new-repository"><a href="#Create-a-new-repository" class="headerlink" title="Create a new repository"></a>Create a new repository</h2><p>git clone git@c73905819740:xiaoke/newdevice.git<br>cd newdevice<br>touch README.md<br>git add README.md<br>git commit -m “add README”<br>git push -u origin master</p>
+    <p>要写蓝牙通信，可以看看下面的博客</p>
+<p>Android蓝牙通信过程详解<a href="https://www.jianshu.com/p/3080fddc315b" target="_blank" rel="noopener">https://www.jianshu.com/p/3080fddc315b</a>  </p>
+<p>android蓝牙BLE（四） —— 实战<a href="https://www.jianshu.com/p/a8adcee1f02e" target="_blank" rel="noopener">https://www.jianshu.com/p/a8adcee1f02e</a>  </p>
+<p>Android蓝牙开发（三）之蓝牙通信<a href="https://blog.csdn.net/huangliniqng/article/details/82189735" target="_blank" rel="noopener">https://blog.csdn.net/huangliniqng/article/details/82189735</a></p>
     
-    <a class="article-more-a" href="/2019/10/11/Git新建仓库-命令/#more">more >></a>
+    <a class="article-more-a" href="/2019/09/09/蓝牙回顾/#more">more >></a>
     
     
 
@@ -380,7 +385,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">蓝牙</a>
         		</li>
       		
 		</ul>
@@ -390,7 +399,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/10/11/Git新建仓库-命令/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/09/09/蓝牙回顾/">展开全文 >></a>
     </p>
     
 
@@ -420,7 +429,7 @@
 
 
   
-    <article id="post-多线程相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-预制视频音乐到sd卡" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -428,7 +437,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/10/09/多线程相关/" target="_blank">多线程相关</a>
+	  <a class="article-title" href="/2019/09/09/预制视频音乐到sd卡/" target="_blank">预制视频音乐到sd卡</a>
   
     </h1>
   
@@ -436,8 +445,8 @@
 
   
   
-<a href="/2019/10/09/多线程相关/" class="archive-article-date">
-        <time datetime="2019-10-09T01:52:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-09</time>
+<a href="/2019/09/09/预制视频音乐到sd卡/" class="archive-article-date">
+        <time datetime="2019-09-09T00:04:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
 </a>
 
   
@@ -449,14 +458,543 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>##阻塞队列 </p>
-<p>以arrayBlockingQueue为例<br> ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2000, true);<br> LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque(2000);<br> /**</p>
+    <p>Rom定制，最常见的就是内置客户提供的视频音乐等文件了，并且要求删除后恢复出厂设置资源还在，对于此类问题，貌似MTK也提供了方法，不过mtk给的方法，代码不好管控   </p>
+<p>我们可以把资源随Rom放到手机里，再拷到storage目录里  </p>
+    
+    <a class="article-more-a" href="/2019/09/09/预制视频音乐到sd卡/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">定制rom</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">music</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/09/预制视频音乐到sd卡/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/08/git/" target="_blank">Git 常用命令</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/08/git/" class="archive-article-date">
+        <time datetime="2019-09-08T05:24:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="Git-常用命令："><a href="#Git-常用命令：" class="headerlink" title="Git 常用命令："></a>Git 常用命令：</h1><p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/git-1.jpg" alt="Git"> </p>
+    
+    <a class="article-more-a" href="/2019/09/08/git/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/work//" class="article-tag-list-link color5">work</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/08/git/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-onNewIntent疑惑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/08/onNewIntent疑惑/" target="_blank">onNewIntent疑惑</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/08/onNewIntent疑惑/" class="archive-article-date">
+        <time datetime="2019-09-07T16:26:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>一直对<code>activity</code>的<code>**onNewIntent**</code>有些困惑，开始时只是知道在<code>activity</code>被重新<code>restart</code>时会进入，后来又发现还不只是这种情况，下面是经过调试后的结论</p>
 <ul>
-<li>往队列中放入数据</li>
-<li>/<br>arrayBlockingQueue.offer(new Object());//加入缓存队列，blockingqueue可以容纳返回ture,否则false,不阻塞当前线程<br>try {<br>  //加入缓存队列，设置超时时间<br>  arrayBlockingQueue.offer(new Object(), 5, TimeUnit.SECONDS);<br>  //加入缓存队列，如果队列没有空间，调用方法的线程被阻塞，直到队列里有控件再继续<br>  arrayBlockingQueue.put(new Object());<br>} catch (InterruptedException e) {<br>  e.printStackTrace();<br>}</li>
+<li>第一种情况：<code>activity launchMode</code>为<code>singleTask</code>或者<code>singleInstance</code></li>
+</ul>
+<blockquote>
+<p>1、activitya start activityb<br>2、activityb start activitya  </p>
+</blockquote>
+<p>在第二步被执行后，<code>activitya</code>就会顺序执行 <code>onNewIntent onRestart onStart onResume</code>  </p>
+    
+    <a class="article-more-a" href="/2019/09/08/onNewIntent疑惑/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/android基础//" class="article-tag-list-link color5">android基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/08/onNewIntent疑惑/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-EventBus源码初探" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/08/EventBus源码初探/" target="_blank">EventBus源码初探</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/08/EventBus源码初探/" class="archive-article-date">
+        <time datetime="2019-09-07T16:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="EventBus构造方法"><a href="#EventBus构造方法" class="headerlink" title="EventBus构造方法"></a>EventBus构造方法</h2><p>当我们使用 EventBus 时，一般都是通过<code>EventBus.getDefault()</code>获取它的实例对象。函数内的实现如下  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static EventBus getDefault() &#123;</span><br><span class="line">	//单例模式，采用双重检查</span><br><span class="line">    if (defaultInstance == null) &#123;</span><br><span class="line">            synchronized (EventBus.class) &#123;</span><br><span class="line">                if (defaultInstance == null) &#123;</span><br><span class="line">                    defaultInstance = new EventBus();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    return defaultInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a" href="/2019/09/08/EventBus源码初探/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">eventbus</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">解读</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/源码//" class="article-tag-list-link color3">源码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/08/EventBus源码初探/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-String-StringBuffer-StringBuilder之间区别2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/08/String-StringBuffer-StringBuilder之间区别2/" target="_blank">String-StringBuffer-StringBuilder之间区别2</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/08/String-StringBuffer-StringBuilder之间区别2/" class="archive-article-date">
+        <time datetime="2019-09-07T16:24:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p><a href="https://www.cnblogs.com/Wilange/p/7570633.html" target="_blank" rel="noopener">https://www.cnblogs.com/Wilange/p/7570633.html</a><br>String,StringBuffer,StringBuilder的区别及其源码分析(一)<br><a href="https://www.cnblogs.com/Wilange/p/7572125.html" target="_blank" rel="noopener">https://www.cnblogs.com/Wilange/p/7572125.html</a><br>String,StringBuffer,StringBuilder的区别及其源码分析(二)    </p>
+    
+    <a class="article-more-a" href="/2019/09/08/String-StringBuffer-StringBuilder之间区别2/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/08/String-StringBuffer-StringBuilder之间区别2/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Studio常用快捷键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/08/Studio常用快捷键/" target="_blank">Studio常用快捷键</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/08/Studio常用快捷键/" class="archive-article-date">
+        <time datetime="2019-09-07T16:23:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="Android-Studio常用快捷键"><a href="#Android-Studio常用快捷键" class="headerlink" title="Android Studio常用快捷键"></a>Android Studio常用快捷键</h1><p>Android Studio 是谷歌基于IntelliJ IDEA开发的安卓开发工具，有点类似 Eclipse ADT，Android Studio 提供了集成的 Android 开发工具用于开发和调试，基于Gradle的构建支持。  </p>
+<p>Android Studio常用快捷键   </p>
+<ul>
+<li><p>Ctrl+D： 集合了复制和粘贴两个操作，如果有选中的部分就复制选中的部分，并在选中部分的后面 粘贴出来，如果没有选中的部分，就复制光标所在的行，并在此行的下面粘贴出来。 </p>
+</li>
+<li><p>Ctrl+空格： 输入代码时按此组合键会列出与之相匹配的类、方法名、成员变量等，起智能提示的作用。 在编辑XML文件一样有用。</p>
+</li>
+<li><p>Ctrl+向下箭头 或Ctrl+向上箭头：在有自动匹配下拉列表时，此快捷键会自动关掉下拉列表， 光标移动到下/上一行。 </p>
+</li>
 </ul>
     
-    <a class="article-more-a" href="/2019/10/09/多线程相关/#more">more >></a>
+    <a class="article-more-a" href="/2019/09/08/Studio常用快捷键/#more">more >></a>
     
     
 
@@ -473,21 +1011,28 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线程池</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">android基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">blog - studio - 工具</a>
         		</li>
       		
 		</ul>
 	</div>
 
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/快捷键//" class="article-tag-list-link color4">快捷键</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/10/09/多线程相关/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/09/08/Studio常用快捷键/">展开全文 >></a>
     </p>
     
 
@@ -517,7 +1062,7 @@
 
 
   
-    <article id="post-关于mvp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-实现view的滑动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -525,7 +1070,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/09/30/关于mvp/" target="_blank">关于mvp</a>
+	  <a class="article-title" href="/2019/09/08/实现view的滑动/" target="_blank">View的滑动</a>
   
     </h1>
   
@@ -533,8 +1078,8 @@
 
   
   
-<a href="/2019/09/30/关于mvp/" class="archive-article-date">
-        <time datetime="2019-09-30T15:48:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-30</time>
+<a href="/2019/09/08/实现view的滑动/" class="archive-article-date">
+        <time datetime="2019-09-07T16:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
 </a>
 
   
@@ -546,11 +1091,10 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p><strong>model</strong>：数据层、数据层对外接口、业务层</p>
-<p>数据层：实现对外接口、获取数据<br>业务层：持有数据层的接口，具体操作数据（如拼接、组合）<br>    业务层不关心数据怎么取得，只通过持有的接口去拿</p>
-<p><strong>view</strong>:  关注交互，用户事件，显示数据</p>
-<p><strong>presenter</strong>: 中间层处理逻辑业务</p>
-
+    <h1 id="实现View滑动的方式"><a href="#实现View滑动的方式" class="headerlink" title="实现View滑动的方式"></a>实现View滑动的方式</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. layout()方法  </span><br><span class="line">2. offsetLeftAndRight()和offsetTopAndBotton()  </span><br><span class="line">3. LayoutParams改变其属性，最后setLayoutParams()  </span><br><span class="line">4. 动画平移(view动画setAnimations() ，属性动画ObjescAnimator.ofLoad())  </span><br><span class="line">5. scrollTo(x,y)移动到坐标点 和 scrollBy(x,y) 移动x,y的负增量  </span><br><span class="line">6. scroller配合computeScroll()平滑移动</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a" href="/2019/09/08/实现view的滑动/#more">more >></a>
+    
     
 
     
@@ -570,17 +1114,32 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mvp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">view</a>
         		</li>
       		
 		</ul>
 	</div>
 
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/android//" class="article-tag-list-link color3">android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/09/30/关于mvp/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/09/08/实现view的滑动/">展开全文 >></a>
     </p>
     
 
@@ -610,7 +1169,7 @@
 
 
   
-    <article id="post-retrofit传递数组参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-修改sd卡权限" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -618,7 +1177,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/09/24/retrofit传递数组参数/" target="_blank">retrofit传递数组参数</a>
+	  <a class="article-title" href="/2019/09/08/修改sd卡权限/" target="_blank">修改sd卡权限</a>
   
     </h1>
   
@@ -626,8 +1185,8 @@
 
   
   
-<a href="/2019/09/24/retrofit传递数组参数/" class="archive-article-date">
-        <time datetime="2019-09-24T02:04:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+<a href="/2019/09/08/修改sd卡权限/" class="archive-article-date">
+        <time datetime="2019-09-07T16:19:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
 </a>
 
   
@@ -639,17 +1198,12 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>关键字：retrofit 数组参数<br>接触Retrofit一段时间后，感觉到Retrofit越来越强大，方便快捷。  </p>
-<p>传数组  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@GET(&quot;v1/enterprise/find&quot;)</span><br><span class="line">Call&lt;ResponseBody&gt; getData(@Query(&quot;id&quot;) String id, @Query(&quot;linked[]&quot;) String... linked);</span><br><span class="line"></span><br><span class="line">//第2种</span><br><span class="line">@FormUrlEncoded</span><br><span class="line">@POST(&quot;matter/app-config&quot;)</span><br><span class="line">Flowable&lt;JsonResponse&gt; toolsConfig(@Field(&quot;idList[]&quot;)  List&lt;String&gt; idList);</span><br><span class="line"></span><br><span class="line">//第3种</span><br><span class="line">@GET</span><br><span class="line">Call&lt;JsonElement&gt; checkIds(@Query(&quot;product_ids[]&quot;) String[] ids);</span><br></pre></td></tr></table></figure>
-
-<p>代码调用： </p>
-<pre><code>String id=&quot;Stay&quot;；
-String[] s = new String[]{&quot;Stay&quot;};
-//调接口
-getData(id, s); </code></pre>
+    <h1 id="修改sd卡权限"><a href="#修改sd卡权限" class="headerlink" title="修改sd卡权限"></a>修改sd卡权限</h1><ul>
+<li>前提是手机须Root。</li>
+<li>用具有Root读写权限的文件管理器 编辑<code>root/system/etc/permissions/platform.xml</code>文件。增加一行代码：<br>查找代码：  </li>
+</ul>
     
-    <a class="article-more-a" href="/2019/09/24/retrofit传递数组参数/#more">more >></a>
+    <a class="article-more-a" href="/2019/09/08/修改sd卡权限/#more">more >></a>
     
     
 
@@ -670,17 +1224,28 @@ getData(id, s); </code></pre>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">retrofit</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">定制rom</a>
         		</li>
       		
 		</ul>
 	</div>
 
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/android定制//" class="article-tag-list-link color5">android定制</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/09/24/retrofit传递数组参数/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/09/08/修改sd卡权限/">展开全文 >></a>
     </p>
     
 
@@ -712,7 +1277,7 @@ getData(id, s); </code></pre>
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -724,7 +1289,7 @@ getData(id, s); </code></pre>
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018-2020 <a href="https:/github.com/tuyrt7/tuyrt7.github.io/" target="_blank">云上的风筝</a>
+    		&copy; 2018-2020 <a href="https:/github.com/tuyrt7/tuyrt7.github.io/" target="_blank">风追着云</a>
     	</div>
       	<div class="footer-right">
 			
