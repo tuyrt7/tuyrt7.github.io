@@ -144,7 +144,7 @@
       
       
       <a class="forkMe" style="position:absolute;z-index:999;top:0;right:0.5em;" 
-        href="https://github.com/tuyrt7" target="_blank">
+        href="https://github.com/tuyrt7/tuyrt7.github.io" target="_blank">
         <img src="/img/forkme.png"
           class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
       
@@ -224,6 +224,99 @@
           </div>
           <div id="js-content" class="content-ll">
             
+
+  
+    <article id="post-HandlerThread相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/10/12/HandlerThread相关/" target="_blank">HandlerThread相关</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/10/12/HandlerThread相关/" class="archive-article-date">
+        <time datetime="2019-10-12T04:58:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-12</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>不管是子线程发还是主线程发送消息，接收都在子线程，内部持有looper,不调用其 quit()接口，就一直存在</p>
+<h2 id="子线程和子线程之间的通信："><a href="#子线程和子线程之间的通信：" class="headerlink" title="子线程和子线程之间的通信："></a>子线程和子线程之间的通信：</h2><p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/handler-thread.png" alt="图片"></p>
+    
+    <a class="article-more-a" href="/2019/10/12/HandlerThread相关/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HandlerThread</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/12/HandlerThread相关/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
 
   
     <article id="post-Git新建仓库-命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -581,101 +674,6 @@ getData(id, s); </code></pre>
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2019/09/24/retrofit传递数组参数/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Android通过参数动态设置ImageView" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/09/24/Android通过参数动态设置ImageView/" target="_blank">Android通过参数动态设置ImageView</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/09/24/Android通过参数动态设置ImageView/" class="archive-article-date">
-        <time datetime="2019-09-24T01:40:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>我在学习的过程中有这样一个情景。比如天气预报。我会根据请求回来的数据进行解析，其中是根据每天或者每小时的不同对天气图标进行更换<br>在这个过程中，我想到得是if语句进行判断，但我觉得这个不现实，也太累赘。我发现我请求回来的数据有可能会有30来个图标，也就是说如果我用if语句判读<br>的话，我要写30个if。。。。。。。。。。。<br>但我得知一个办法，我分享给大家一起学习！！！！</p>
-<p>在drawable 文件夹中创建levellist.xml</p>
-<p>如下图：  </p>
-<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/iv-1.png" alt="图1"></p>
-    
-    <a class="article-more-a" href="/2019/09/24/Android通过参数动态设置ImageView/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ui</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/09/24/Android通过参数动态设置ImageView/">展开全文 >></a>
     </p>
     
 
