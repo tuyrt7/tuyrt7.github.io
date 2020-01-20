@@ -2,40 +2,22 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
-subnav:
-  github: "https://github.com/tuyrt7"
-  weibo: "https://weibo.com/u/3990073822/home?topnav=1&wvr=6&mod=logo"
-  jianshu: "https://www.jianshu.com/u/a95b69d667d1"
-  #zhihu: "#"
-  mail: "mailto:tuyrt7@163.com"
-  #weixin: "#"
-  #rss: "#"
-  #douban: "#"
-  #segmentfault: "#"
-  #bilibili: "#"
-  #acfun: "#"
-  #qq: "#"
-  #facebook: "#"
-  #google: "#"
-  #twitter: "#"
-  #linkedin: "#"
-
-rss: /atom.xml
 
 # Site
 title: 风追着云
 subtitle: 我想要两颗西柚
 description: 风筝追随着风，风追着云
 keywords:
-author: 云上的风筝
+author: 风追着云
 language: zh-Hans # en
-timezone:
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://github.com/tuyrt7/tuyrt7.github.io/
 root: /
 permalink: :year/:month/:day/:title/
+#permalink: :category/:title/
 permalink_defaults:
 
 # Directory
@@ -46,7 +28,21 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+
+# 跳过 hexo 渲染
+skip_render:  
+  - screenshots/**
+  - anires/**
+  - screenshots/**
+  - gitment/**
+  - baidu_sitepush/**
+  - canvas_nest/**
+  - '*.html'
+  - '*.js'
+  - README.md
+  - '*.sh'
+  - '*.txt'
+  - '*.md'
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -70,10 +66,12 @@ highlight:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 5
+  per_page: 10
   pagination_dir: page
   order_by: -date
-  
+   #top: 1
+   #date: -1
+    
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -88,7 +86,7 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 5
+per_page: 10
 pagination_dir: page
 
 # Extensions
@@ -115,6 +113,21 @@ jsonContent:
       categories: false
       tags: true
 
+# Extensions
+plugins:
+  hexo-generator-feed
+
+# Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+# https://github.com/JoeyBling/hexo-filter-image
+filter_image:
+   # 日志是否启用
+   #   log: true
+   
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
