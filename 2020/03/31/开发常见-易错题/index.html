@@ -6,24 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/tuyrt7/tuyrt7.github.io">
-  <title>EventBus源码初探 | 风追着云</title>
+  <title>开发常见-易错题 | 风追着云</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="EventBus构造方法当我们使用 EventBus 时，一般都是通过EventBus.getDefault()获取它的实例对象。函数内的实现如下   1234567891011public static EventBus getDefault() &amp;#123;	//单例模式，采用双重检查    if (defaultInstance == null) &amp;#123;            sync">
-<meta name="keywords" content="blog,eventbus,解读">
+  <meta name="description" content="问题1 ：view 测量模式我们一起来看看大家对这个知识的掌握程度吧。 在早期的博客的里面，很多时候，见到有如下的介绍：  如果你的 View 设置了 match_parent，则在onMeasure 中得到的测量模式为：EXACTLY;   如果设置了 wrap_conent，则对应测量模式为：AT_MOST；   还剩下一个 UNSPECIFIED大家不用管，不常用；    上述描述每句话都可">
+<meta name="keywords" content="blog,面试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EventBus源码初探">
-<meta property="og:url" content="https://github.com/tuyrt7/tuyrt7.github.io/2019/09/08/EventBus源码初探/index.html">
+<meta property="og:title" content="开发常见-易错题">
+<meta property="og:url" content="https://github.com/tuyrt7/tuyrt7.github.io/2020/03/31/开发常见-易错题/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="EventBus构造方法当我们使用 EventBus 时，一般都是通过EventBus.getDefault()获取它的实例对象。函数内的实现如下   1234567891011public static EventBus getDefault() &amp;#123;	//单例模式，采用双重检查    if (defaultInstance == null) &amp;#123;            sync">
+<meta property="og:description" content="问题1 ：view 测量模式我们一起来看看大家对这个知识的掌握程度吧。 在早期的博客的里面，很多时候，见到有如下的介绍：  如果你的 View 设置了 match_parent，则在onMeasure 中得到的测量模式为：EXACTLY;   如果设置了 wrap_conent，则对应测量模式为：AT_MOST；   还剩下一个 UNSPECIFIED大家不用管，不常用；    上述描述每句话都可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/eventbus.png">
-<meta property="og:updated_time" content="2020-01-19T09:10:05.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/view-%E5%AE%BD%E9%AB%98%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%BC%8F.jpg">
+<meta property="og:updated_time" content="2020-03-31T03:18:08.918Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EventBus源码初探">
-<meta name="twitter:description" content="EventBus构造方法当我们使用 EventBus 时，一般都是通过EventBus.getDefault()获取它的实例对象。函数内的实现如下   1234567891011public static EventBus getDefault() &amp;#123;	//单例模式，采用双重检查    if (defaultInstance == null) &amp;#123;            sync">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/eventbus.png">
+<meta name="twitter:title" content="开发常见-易错题">
+<meta name="twitter:description" content="问题1 ：view 测量模式我们一起来看看大家对这个知识的掌握程度吧。 在早期的博客的里面，很多时候，见到有如下的介绍：  如果你的 View 设置了 match_parent，则在onMeasure 中得到的测量模式为：EXACTLY;   如果设置了 wrap_conent，则对应测量模式为：AT_MOST；   还剩下一个 UNSPECIFIED大家不用管，不常用；    上述描述每句话都可">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/view-%E5%AE%BD%E9%AB%98%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%BC%8F.jpg">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -223,14 +223,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-EventBus源码初探" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-开发常见-易错题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      EventBus源码初探
+      开发常见-易错题
     </h1>
   
 
@@ -242,8 +242,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/09/08/EventBus源码初探/" class="archive-article-date">
-        <time datetime="2019-09-07T16:24:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+<a href="/2020/03/31/开发常见-易错题/" class="archive-article-date">
+        <time datetime="2020-03-31T03:08:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
 </a>
 
   
@@ -256,7 +256,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.4k字</span>
+      <span class="post-count">527字</span>
     </span>
   </span>
 
@@ -265,7 +265,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">11分</span>
+      <span class="post-count">2分</span>
     </span>
   </span>
 </div>
@@ -276,312 +276,72 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="EventBus构造方法"><a href="#EventBus构造方法" class="headerlink" title="EventBus构造方法"></a>EventBus构造方法</h2><p>当我们使用 EventBus 时，一般都是通过<code>EventBus.getDefault()</code>获取它的实例对象。函数内的实现如下  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static EventBus getDefault() &#123;</span><br><span class="line">	//单例模式，采用双重检查</span><br><span class="line">    if (defaultInstance == null) &#123;</span><br><span class="line">            synchronized (EventBus.class) &#123;</span><br><span class="line">                if (defaultInstance == null) &#123;</span><br><span class="line">                    defaultInstance = new EventBus();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    return defaultInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <h2 id="问题1-：view-测量模式"><a href="#问题1-：view-测量模式" class="headerlink" title="问题1 ：view 测量模式"></a>问题1 ：view 测量模式</h2><p><strong>我们一起来看看大家对这个知识的掌握程度吧。</strong></p>
+<p>在早期的博客的里面，很多时候，见到有如下的介绍：</p>
+<ul>
+<li>如果你的 View 设置了 match_parent，则在onMeasure 中得到的测量模式为：EXACTLY;  </li>
+<li>如果设置了 wrap_conent，则对应测量模式为：AT_MOST；  </li>
+<li>还剩下一个 UNSPECIFIED大家不用管，不常用；  </li>
+</ul>
+<p><strong>上述描述每句话都可以认为是错的</strong>  </p>
+<p>自定义ViewGroup过程中，需要在onMeasure里面对子View进行测量。</p>
+<p>调用ViewGroup的静态方法getChildMeasureSpec来直接获取目标子View的MeasureSpec，然后手动measure（比如ScrollView、NestedScrollView、DrawerLayout、TabLayout、ConstraintLayout）。</p>
+<p>其实，measureChild和measureChildWithMargins里面也是会通过getChildMeasureSpec方法来获取MeasureSpec的，也就是说，上面提到的这些容器，在测量它们的子View之前，都是先通过getChildMeasureSpec方法来获取子View的宽高MeasureSpec，然后传给子View的measure方法的。</p>
+<a id="more"></a>
 
-
-
-<a id="more"></a>  
-
-<p>在此进入其构造函数看看：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public EventBus() &#123;</span><br><span class="line">    this(DEFAULT_BUILDER);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里<code>DEFAULT_BUILDER</code>默认时<code>EventBusBuilder</code>,用来构造<code>EventBus</code>:  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">private static final EventBusBuilder DEFAULT_BUILDER = new EventBusBuilder();  ```  </span><br><span class="line"></span><br><span class="line">`this`调用了`EventBus`的另一个有参构造方法：  </span><br><span class="line">  </span><br><span class="line">```  </span><br><span class="line">EventBus(EventBusBuilder builder) &#123;</span><br><span class="line">        logger = builder.getLogger();</span><br><span class="line">        subscriptionsByEventType = new HashMap&lt;&gt;();</span><br><span class="line">        typesBySubscriber = new HashMap&lt;&gt;();</span><br><span class="line">        stickyEvents = new ConcurrentHashMap&lt;&gt;();</span><br><span class="line">        mainThreadSupport = builder.getMainThreadSupport();</span><br><span class="line">        mainThreadPoster = mainThreadSupport != null ? mainThreadSupport.createPoster(this) : null;</span><br><span class="line">        backgroundPoster = new BackgroundPoster(this);</span><br><span class="line">        asyncPoster = new AsyncPoster(this);</span><br><span class="line">        indexCount = builder.subscriberInfoIndexes != null ? builder.subscriberInfoIndexes.size() : 0;</span><br><span class="line">        subscriberMethodFinder = new SubscriberMethodFinder(builder.subscriberInfoIndexes,</span><br><span class="line">                builder.strictMethodVerification, builder.ignoreGeneratedIndex);</span><br><span class="line">        logSubscriberExceptions = builder.logSubscriberExceptions;</span><br><span class="line">        logNoSubscriberMessages = builder.logNoSubscriberMessages;</span><br><span class="line">        sendSubscriberExceptionEvent = builder.sendSubscriberExceptionEvent;</span><br><span class="line">        sendNoSubscriberEvent = builder.sendNoSubscriberEvent;</span><br><span class="line">        throwSubscriberException = builder.throwSubscriberException;</span><br><span class="line">        eventInheritance = builder.eventInheritance;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到我们时通过<code>EventBusBuilder</code>来对<code>EventBus</code>进行配置，并初始化一些参数，通过建造者模式。</p>
-<h2 id="订阅者注册"><a href="#订阅者注册" class="headerlink" title="订阅者注册"></a>订阅者注册</h2><p>获取到<code>EventBus</code>的实例后，便可以将订阅者注册到<code>EventBus</code>中，看下<code>register</code>方法：   </p>
-<pre><code>public void register(Object subscriber) {
-        Class&lt;?&gt; subscriberClass = subscriber.getClass();
-        List&lt;SubscriberMethod&gt; subscriberMethods = subscriberMethodFinder.findSubscriberMethods(subscriberClass);//1
-        synchronized (this) {
-            for (SubscriberMethod subscriberMethod : subscriberMethods) {
-                subscribe(subscriber, subscriberMethod);//2
+<p>好，那我们现在来看看getChildMeasureSpec方法里面做了什么：</p>
+<pre><code>public static int getChildMeasureSpec(int spec, int padding, int childDimension) {
+    int specMode = MeasureSpec.getMode(spec);
+    ......
+    switch (specMode) {
+        case MeasureSpec.EXACTLY:
+            if (childDimension &gt;= 0) {
+                ......
+                resultMode = MeasureSpec.EXACTLY;
+            } else if (childDimension == ViewGroup.LayoutParams.MATCH_PARENT) {
+                ......
+                resultMode = MeasureSpec.EXACTLY;
+            } else if (childDimension == ViewGroup.LayoutParams.WRAP_CONTENT) {
+                ......
+                resultMode = MeasureSpec.AT_MOST;
             }
-        }
-    }</code></pre><h3 id="查找订阅者的订阅方法"><a href="#查找订阅者的订阅方法" class="headerlink" title="查找订阅者的订阅方法"></a>查找订阅者的订阅方法</h3><p>注释1处的<code>findSubscriberMethods</code> 方法找出一个 <code>SubscriberMethod</code>的集合，也就是传进来的订阅者的所有订阅方法，接下来就是遍历集合来完成所有订阅者的注册操作。<br>从此可以看出，<code>register</code>方法完成了<strong>两件事</strong>：<br>一是查找订阅者的订阅方法，<br>二是订阅者的注册。  </p>
-<p><code>SubscriberMethod</code>类中主要用来保存的<code>Method</code>对象、线程模式、事件类型、优先级、是否是粘性事件等属性。  </p>
-<p>下面看下<code>findSubscriberMethods</code>方法：  </p>
-<pre><code>
-List&lt;SubscriberMethod&gt; findSubscriberMethods(Class&lt;?&gt; subscriberClass) {
-        List&lt;SubscriberMethod&gt; subscriberMethods = METHOD_CACHE.get(subscriberClass); //1
-        if (subscriberMethods != null) {
-            return subscriberMethods;
-        }
+            break;
 
-        if (ignoreGeneratedIndex) {//这个值是EventBusBuilder的属性传递的
-            subscriberMethods = findUsingReflection(subscriberClass);
-        } else {
-            subscriberMethods = findUsingInfo(subscriberClass); //3
-        }
-        if (subscriberMethods.isEmpty()) {
-            throw new EventBusException(&quot;Subscriber &quot; + subscriberClass
-                    + &quot; and its super classes have no public methods with the @Subscribe annotation&quot;);
-        } else {
-            METHOD_CACHE.put(subscriberClass, subscriberMethods);//2
-            return subscriberMethods;
-        }
+        case MeasureSpec.AT_MOST:
+            if (childDimension &gt;= 0) {
+                ......
+                resultMode = MeasureSpec.EXACTLY;
+            } else if (childDimension == ViewGroup.LayoutParams.MATCH_PARENT) {
+                ......
+                resultMode = MeasureSpec.AT_MOST;
+            } else if (childDimension == ViewGroup.LayoutParams.WRAP_CONTENT) {
+                ......
+                resultMode = MeasureSpec.AT_MOST;
+            }
+            break;
+
+        case MeasureSpec.UNSPECIFIED:
+            if (childDimension &gt;= 0) {
+                ......
+                resultMode = MeasureSpec.EXACTLY;
+            } else if (childDimension == ViewGroup.LayoutParams.MATCH_PARENT) {
+                ......
+                resultMode = MeasureSpec.UNSPECIFIED;
+            } else if (childDimension == ViewGroup.LayoutParams.WRAP_CONTENT) {
+                ......
+                resultMode = MeasureSpec.UNSPECIFIED;
+            }
+            break;
     }
-</code></pre><p>注释1处从缓存中查找订阅方法的集合，找到了就马上返回。如果缓存没有根据<code>ignoreGeneratedIndex</code> 属性的值来选择采用何种方法来查找订阅方法的集合。<code>ignoreGeneratedIndex</code> 的默认值是<code>false</code>,可以通过<code>EventBusBuilder</code> 来设置。  </p>
-<p>注释2处，把找到的订阅方法的集合放入缓存中，防止下次再次查找。<br>我们一般都是用<code>EventBus</code>的单例模式来获取实例，所以<code>ignoreGeneratedIndex</code>值为<code>false</code>,执行<code>if</code>语句的<code>findUsingInfo</code>方法。   </p>
-<pre><code>
-private List&lt;SubscriberMethod&gt; findUsingInfo(Class&lt;?&gt; subscriberClass) {
-        FindState findState = prepareFindState();
-        findState.initForSubscriber(subscriberClass);
-        while (findState.clazz != null) {
-            findState.subscriberInfo = getSubscriberInfo(findState);//1
-            if (findState.subscriberInfo != null) {
-                SubscriberMethod[] array = findState.subscriberInfo.getSubscriberMethods();//2
-                for (SubscriberMethod subscriberMethod : array) {
-                    if (findState.checkAdd(subscriberMethod.method, subscriberMethod.eventType)) {
-                        findState.subscriberMethods.add(subscriberMethod);
-                    }
-                }
-            } else {
-                findUsingReflectionInSingleClass(findState);//3
-            }
-            findState.moveToSuperclass();
-        }
-        return getMethodsAndRelease(findState);
-    }   
-</code></pre><p>注释1处通过<code>getSubscriberInfo</code>获取订阅者信息,如果有就通过订阅者信息去获取所有订阅方法的信息。在我们开始查找订阅方法的时候并没有忽略注解器为我们生成的索引<code>MyEventBusIndex</code>,如果通过<code>EventBusBuilder</code>配置了<code>MyEventBusIndex</code>，<br>执行注释2处的方法，便会获取订阅方法的相关信息；如果没有配置<code>MyEventBusIndex</code>，便会执行注释3处的<code>findUsingReflectionInSingleClass</code>方法，将订阅方法保存到保存到<code>findState</code>中。最后通过<code>getMethodsAndRelease</code>方法对<code>findState</code>进行回收处理并返回订阅方法的<code>list</code>集合。默认是没有配置<code>MyEventBusIndex</code>,所以可以进去<code>findUsingReflectionInSingleClass</code>方法看看执行过程：</p>
-<pre><code>
-private void findUsingReflectionInSingleClass(FindState findState) {
-       Method[] methods;
-       try {
-           methods = findState.clazz.getDeclaredMethods();//1
-       } catch (Throwable th) {
-           methods = findState.clazz.getMethods();
-           findState.skipSuperClasses = true;
-       }
-       for (Method method : methods) {
-           int modifiers = method.getModifiers();
-           if ((modifiers &amp; Modifier.PUBLIC) != 0 &amp;&amp; (modifiers &amp; MODIFIERS_IGNORE) == 0) {
-               Class&lt;?&gt;[] parameterTypes = method.getParameterTypes();
-               if (parameterTypes.length == 1) {
-                   Subscribe subscribeAnnotation = method.getAnnotation(Subscribe.class);
-                   if (subscribeAnnotation != null) {
-                       Class&lt;?&gt; eventType = parameterTypes[0];
-                       if (findState.checkAdd(method, eventType)) {
-                           ThreadMode threadMode = subscribeAnnotation.threadMode();
-                           findState.subscriberMethods.add(new SubscriberMethod(method, eventType, threadMode,
-                                   subscribeAnnotation.priority(), subscribeAnnotation.sticky()));
-                       }
-                   }
-               } 
-
-        ......
-       }
-   }   
-</code></pre><p>注释1处通过反射来获取订阅者中的所有订阅方法，并根据方法的类型、参数、注解来找到订阅方法。找到后把订阅方法的相关信息存储到<code>findState</code>中。  </p>
-<h3 id="订阅者的注册"><a href="#订阅者的注册" class="headerlink" title="订阅者的注册"></a>订阅者的注册</h3><pre><code>
-// Must be called in synchronized block
-   private void subscribe(Object subscriber, SubscriberMethod subscriberMethod) {
-       Class&lt;?&gt; eventType = subscriberMethod.eventType;
-       Subscription newSubscription = new Subscription(subscriber, subscriberMethod);//1
-       CopyOnWriteArrayList&lt;Subscription&gt; subscriptions = subscriptionsByEventType.get(eventType);//2
-       if (subscriptions == null) {
-           subscriptions = new CopyOnWriteArrayList&lt;&gt;();
-           subscriptionsByEventType.put(eventType, subscriptions);
-       } else {
-        //判断订阅者是否已经被注册
-           if (subscriptions.contains(newSubscription)) {
-               throw new EventBusException(&quot;Subscriber &quot; + subscriber.getClass() + &quot; already registered to event &quot;
-                       + eventType);
-           }
-       }
-
-       int size = subscriptions.size();
-       for (int i = 0; i &lt;= size; i++) {
-           if (i == size || subscriberMethod.priority &gt; subscriptions.get(i).subscriberMethod.priority) {
-               subscriptions.add(i, newSubscription);//3
-               break;
-           }
-       }
-
-       List&lt;Class&lt;?&gt;&gt; subscribedEvents = typesBySubscriber.get(subscriber);//4
-       if (subscribedEvents == null) {
-           subscribedEvents = new ArrayList&lt;&gt;();
-           typesBySubscriber.put(subscriber, subscribedEvents);
-       }
-       subscribedEvents.add(eventType);
-
-    //粘性事件的处理
-       if (subscriberMethod.sticky) {
-           if (eventInheritance) {
-               Set&lt;Map.Entry&lt;Class&lt;?&gt;, Object&gt;&gt; entries = stickyEvents.entrySet();
-               for (Map.Entry&lt;Class&lt;?&gt;, Object&gt; entry : entries) {
-                   Class&lt;?&gt; candidateEventType = entry.getKey();
-                   if (eventType.isAssignableFrom(candidateEventType)) {
-                       Object stickyEvent = entry.getValue();
-                       checkPostStickyEventToSubscription(newSubscription, stickyEvent);
-                   }
-               }
-           } else {
-               Object stickyEvent = stickyEvents.get(eventType);
-               checkPostStickyEventToSubscription(newSubscription, stickyEvent);
-           }
-       }
-   }
-</code></pre><p>注释1处根据<code>subscriber</code>（订阅者）和<code>subscriberMethod</code>（订阅方法）创建了一个<code>Subscription</code>(订阅对象)。<br>注释2处根据<code>eventTpye</code>(事件类型)获取所有的<code>Subscription</code>，判断如果为 <code>null</code>则重新创建，并将订阅对象和事件类型保存在<code>subscriptionsByEventType</code>（Map集合）。<br>注释3处按照订阅方法的优先级插入到订阅对象集合中，完成订阅方法的注册。<br>注释4处通过<code>subscriber</code>，获取subscribedEvents<code>(事件类型集合),如果为</code>null<code>则重新创建，并将</code>eventType<code>添加</code>subscribedEventslist<code>集合中，并根据</code>subscriber<code>,将</code>subscribedEvents<code>放进</code>typesBySubscriber<code>（Map集合）  
-如果是粘性事件，则从</code>stickyEvents`事件保存队列中取出该事件类型发送给当前订阅者。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>subscribe()</code>主要完成了两件事。  </p>
-<blockquote>
-<p>1 把订阅对象Subscription根据事件类型eventTpye放进了subscriptionsByEventTypeMap集合，将订阅事件subscribedEvents根据subscriber封装到typesBySubscriberMap集合<br>2 粘性事件的处理  </p>
-</blockquote>
-<h2 id="事件的发送"><a href="#事件的发送" class="headerlink" title="事件的发送"></a>事件的发送</h2><p>在获取到EventBus对象时，通过post()把事件提交  </p>
-<pre><code>
-public void post(Object event) {
-
-        //PostingThreadState 保存着事件队列和线程状态信息
-       PostingThreadState postingState = currentPostingThreadState.get();
-
-    //获取事件队列，并将当前事件插入事件队列
-       List&lt;Object&gt; eventQueue = postingState.eventQueue;
-       eventQueue.add(event);
-
-       if (!postingState.isPosting) {
-           postingState.isMainThread = isMainThread();
-           postingState.isPosting = true;
-           if (postingState.canceled) {
-               throw new EventBusException(&quot;Internal error. Abort state was not reset&quot;);
-           }
-           try {
-            //处理事件队列中的所有事件
-               while (!eventQueue.isEmpty()) {
-                   postSingleEvent(eventQueue.remove(0), postingState);
-               }
-           } finally {
-               postingState.isPosting = false;
-               postingState.isMainThread = false;
-           }
-       }
-   }</code></pre><p>首先从<code>PostingThreadState</code>对象中取出事件队列，然后将当前事件插入进去，最后将队列中所有事件依次交给<code>postSingleEvent()</code>方法处理，并移除该事件。  </p>
-<pre><code>
-private void postSingleEvent(Object event, PostingThreadState postingState) throws Error {
-        Class&lt;?&gt; eventClass = event.getClass();
-        boolean subscriptionFound = false;
-
-        //eventInheritance表示是否向上查找事件的父类，默认为true
-        if (eventInheritance) {
-            List&lt;Class&lt;?&gt;&gt; eventTypes = lookupAllEventTypes(eventClass);
-            int countTypes = eventTypes.size();
-            for (int h = 0; h &lt; countTypes; h++) {
-                Class&lt;?&gt; clazz = eventTypes.get(h);
-                subscriptionFound |= postSingleEventForEventType(event, postingState, clazz);
-            }
-        } else {
-            subscriptionFound = postSingleEventForEventType(event, postingState, eventClass);
-        }
-
-        //表示找不到事件时的异常处理
-        if (!subscriptionFound) {
-            if (logNoSubscriberMessages) {
-                logger.log(Level.FINE, &quot;No subscribers registered for event &quot; + eventClass);
-            }
-            if (sendNoSubscriberEvent &amp;&amp; eventClass != NoSubscriberEvent.class &amp;&amp;
-                    eventClass != SubscriberExceptionEvent.class) {
-                post(new NoSubscriberEvent(this, event));
-            }
-        }
-    }</code></pre><p><code>eventInheritance</code>表示是否向上查找事件的父类，默认为 <code>true</code> ，可以 <code>EventBusBuilder</code> 的构造方法配置。当 <code>eventInheritance</code> 为 <code>true</code> 时，通过 <code>lookupAllEventTypes()</code> 找到所有父类事件并存在<code>list</code>,然后通过<code>postSingleEventForEventType()</code> 对事件逐一处理。  </p>
-<p><code>postSingleEventForEventType</code>方法源码：   </p>
-<pre><code>
-private boolean postSingleEventForEventType(Object event, PostingThreadState postingState, Class&lt;?&gt; eventClass) {
-        CopyOnWriteArrayList&lt;Subscription&gt; subscriptions;
-        synchronized (this) {
-            subscriptions = subscriptionsByEventType.get(eventClass);//1
-        }
-        if (subscriptions != null &amp;&amp; !subscriptions.isEmpty()) {
-            for (Subscription subscription : subscriptions) {//2
-                postingState.event = event;
-                postingState.subscription = subscription;
-                boolean aborted = false;
-                try {
-                    postToSubscription(subscription, event, postingState.isMainThread);
-                    aborted = postingState.canceled;
-                } finally {
-                    postingState.event = null;
-                    postingState.subscription = null;
-                    postingState.canceled = false;
-                }
-                if (aborted) {
-                    break;
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-</code></pre><p>注释1处同步取出所有<code>subscriptions</code>订阅对象集合，然后遍历 将 <code>event</code>事件和 <code>subscription</code> 订阅对象传递给 <code>postingState</code>，并调用 <code>postToSubscription()</code> 方法对事件进行处理。  </p>
-<p><code>postToSubscription</code> 方法代码：  </p>
-<pre><code>
-private void postToSubscription(Subscription subscription, Object event, boolean isMainThread) {
-        switch (subscription.subscriberMethod.threadMode) {
-            case POSTING:
-                invokeSubscriber(subscription, event);
-                break;
-            case MAIN:
-                if (isMainThread) {
-                    invokeSubscriber(subscription, event);
-                } else {
-                    mainThreadPoster.enqueue(subscription, event);
-                }
-                break;
-            case MAIN_ORDERED:
-                if (mainThreadPoster != null) {
-                    mainThreadPoster.enqueue(subscription, event);
-                } else {
-                    // temporary: technically not correct as poster not decoupled from subscriber
-                    invokeSubscriber(subscription, event);
-                }
-                break;
-            case BACKGROUND:
-                if (isMainThread) {
-                    backgroundPoster.enqueue(subscription, event);
-                } else {
-                    invokeSubscriber(subscription, event);
-                }
-                break;
-            case ASYNC:
-                asyncPoster.enqueue(subscription, event);
-                break;
-            default:
-                throw new IllegalStateException(&quot;Unknown thread mode: &quot; + subscription.subscriberMethod.threadMode);
-        }
-    }</code></pre><p>取出订阅方法的 <code>threadMode</code> 线程模式，根据 <code>threadMode</code> 来分别处理，如果时 <code>MAIN</code> ,则直接通过反射直接运行订阅的方法，如果不是主线程，则通过<code>mainThreadPoster</code> 把我们的订阅事件添加到主线程队列中。<code>mainThreadPoster</code> 是 <code>HandlerPoster</code> 类型，继承在<code>Handler</code>,通过 <code>Handler</code> 将订阅方法切换到主线程执行。</p>
-<h2 id="订阅者取消注册"><a href="#订阅者取消注册" class="headerlink" title="订阅者取消注册"></a>订阅者取消注册</h2><p>取消注册调用<code>unregister()</code>方法  </p>
-<pre><code>
-public synchronized void unregister(Object subscriber) {
-        List&lt;Class&lt;?&gt;&gt; subscribedTypes = typesBySubscriber.get(subscriber);//1
-        if (subscribedTypes != null) {
-            for (Class&lt;?&gt; eventType : subscribedTypes) {
-                unsubscribeByEventType(subscriber, eventType);//2
-            }
-            typesBySubscriber.remove(subscriber);//3
-        } else {
-            logger.log(Level.WARNING, &quot;Subscriber to unregister was not registered before: &quot; + subscriber.getClass());
-        }
-    }</code></pre><p>在订阅者注册过程中看到过 typesBySubscriber ，它是一个Map集合。<br>注释1处，通过 subscriber 找到 subscribedTypes 事件类型集合<br>注释3处，把 subscriber 从 subscribedTypes 移除<br>注释2处，遍历 subscribedTypes ，并调用 unsubscribeByEventType()方法   </p>
-<pre><code>
-private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType) {
-        List&lt;Subscription&gt; subscriptions = subscriptionsByEventType.get(eventType);//1
-        if (subscriptions != null) {
-            int size = subscriptions.size();
-            for (int i = 0; i &lt; size; i++) {
-                Subscription subscription = subscriptions.get(i);
-                if (subscription.subscriber == subscriber) {
-                    subscription.active = false;
-                    subscriptions.remove(i);
-                    i--;
-                    size--;
-                }
-            }
-        }
-}</code></pre><p>注释1处通过 <code>eventType</code> 来得到对应 <code>subscriptions</code> 订阅对象集合，并在 <code>for</code> 循环中判断如果订阅对象 <code>Subscription</code> 的属性 <code>subscriber</code>等于传进来的 <code>subscriber</code>,则从<code>subscriptions</code>中移除该订阅对象。`</p>
-<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/eventbus.png" alt="图">  </p>
-<p>终于写完了，跟着别人的思路分析源码只能对该部分有一个大概的了解，自己在经过这个跟进与记录的过程中，能对源码有更深一步的了解。<br>最终的目的是学习别人的编程思想来形成自己一套编写规范，从而影响自己编程人生。   </p>
-<p>fighting!!!  </p>
+    return MeasureSpec.makeMeasureSpec(resultSize, resultMode);
+} </code></pre><p>可以看到：</p>
+<p>在父容器的<strong>specMode为EXACTLY</strong>时，一切正常（子View尺寸指定为match_parent或精确的dimen值时，Mode = EXACTLY，尺寸指定为wrap_content则Mode = AT_MOST）；</p>
+<p>当父容器<strong>specMode为AT_MOST</strong>的时候，呵呵，可以看到，除了指定了dimen值之外，无论设置为match_parent或wrap_content，Mode最终都是会变成AT_MOST；</p>
+<p>如果父容器<strong>specMode是UNSPECIFIED</strong>的话，跟上面的逻辑差不多，都是会变成UNSPECIFIED的，除非指定了精确的dimen值；</p>
+<p>所以，View的onMeasure方法中收到的宽高MeasureSpec，不完全是由xml布局中设置的宽高或LayoutParams的宽高值决定的。</p>
+<p>结论就是：  </p>
+<p><strong>它自身的LayoutParams设置的值 + 父容器的测量模式来决定的。</strong>   </p>
+<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/view-%E5%AE%BD%E9%AB%98%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%BC%8F.jpg" alt="view-宽高测试模式">  </p>
 
     
 
@@ -628,7 +388,7 @@ private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType)
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https:/github.com/tuyrt7/tuyrt7.github.io/2019/09/08/EventBus源码初探/" title="EventBus源码初探" target="_blank">https:/github.com/tuyrt7/tuyrt7.github.io/2019/09/08/EventBus源码初探/</a> 
+          <a href="https:/github.com/tuyrt7/tuyrt7.github.io/2020/03/31/开发常见-易错题/" title="开发常见-易错题" target="_blank">https:/github.com/tuyrt7/tuyrt7.github.io/2020/03/31/开发常见-易错题/</a> 
 		 
         </li>
         
@@ -655,28 +415,13 @@ private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType)
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">eventbus</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">解读</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
 	</div>
 
     
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/源码//" class="article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
     
 
@@ -726,7 +471,7 @@ private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType)
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://github.com/tuyrt7/tuyrt7.github.io/2019/09/08/EventBus源码初探/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://github.com/tuyrt7/tuyrt7.github.io/2020/03/31/开发常见-易错题/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -741,18 +486,9 @@ private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType)
 
 <nav id="article-nav">
   
-    <a href="/2019/09/08/onNewIntent疑惑/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          onNewIntent疑惑
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/09/08/String-StringBuffer-StringBuilder之间区别2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">String-StringBuffer-StringBuilder之间区别2</div>
+    <a href="/2020/03/27/vs快捷键/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VSCode快捷键</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -790,9 +526,9 @@ private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType)
     <script src="/lib/giteement.browser.js"></script>
   
   <script>
-  <!-- id: "EventBus源码初探" -->
+  <!-- id: "开发常见-易错题" -->
   var giteement = new Giteement({
-    id: '20190908002459',
+    id: '20200331110821',
     owner: 'tuyrt007',
     repo: 'hexo-demo',
     backcall_uri: 'https://tuyrt007.gitee.io/hexo-demo',
@@ -817,9 +553,9 @@ private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType)
     <script src="/lib/gitment.js"></script>
   
   <script>
-    <!-- id: "EventBus源码初探" -->
+    <!-- id: "开发常见-易错题" -->
     var gitment = new Gitment({
-      id: "20190908002459",
+      id: "20200331110821",
       owner: 'tuyrt7',
       repo: 'tuyrt7.github.io',
       oauth: {
