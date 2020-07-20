@@ -332,6 +332,117 @@
 
 
   
+    <article id="post-html2canvas生成图片时遇到的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/07/20/html2canvas生成图片时遇到的问题/" target="_blank">微信web使用html2canvas遇到的坑</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/07/20/html2canvas生成图片时遇到的问题/" class="archive-article-date">
+        <time datetime="2020-07-20T05:34:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>解释：</strong></p>
+<p>在微信浏览器使用html2canvas遇到的坑。标签结构在正常显示，用html2canvas生成图片时出现问题如下：</p>
+<p><strong>bug：</strong></p>
+<ol>
+<li><p>input输入框value下移<br><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/input_value_bug.jpg" alt="input_value_bug.jpg"></p>
+</li>
+<li><p>transform属性引起css生成的箭头位置变化<br><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/arrow_bug.jpg" alt="arrow_bug.jpg"></p>
+</li>
+<li><p>android端-微信浏览器：边框丢失<br><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/arrow_border.jpg" alt="arrow_border.png"></p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/tuyrt7/tuyrt7.github.io/master/uploads/img/input_bug.jpg" alt="input_bug.jpg"></p>
+<p><strong>解决：</strong></p>
+<ol>
+<li>input的padding值过大不会改变标签显示位置，生成图片时会影响，尤其事lineheight.</li>
+<li>不用transform属性定位，用其他属性代替。或用图片标签样式</li>
+<li>暂无良好解决方法，不用border画边框线，用其他效果代替</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/07/20/html2canvas生成图片时遇到的问题/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-开发常见-问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1460,103 +1571,6 @@
 
 
   
-    <article id="post-访问developer-android的办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/11/01/访问developer-android的办法/" target="_blank">访问developer.android的办法</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/11/01/访问developer-android的办法/" class="archive-article-date">
-        <time datetime="2019-11-01T07:17:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <ol>
-<li><p>不可访问<br><a href="https://source.android.com" target="_blank" rel="noopener">https://source.android.com</a><br><a href="https://developer.android.com" target="_blank" rel="noopener">https://developer.android.com</a></p>
-</li>
-<li><p>可以访问<br><a href="https://source.android.google.cn" target="_blank" rel="noopener">https://source.android.google.cn</a><br><a href="https://developer.android.google.cn" target="_blank" rel="noopener">https://developer.android.google.cn</a></p>
-</li>
-<li><p>例子：<br><a href="https://source.android.com/devices/automotive/audio" target="_blank" rel="noopener">https://source.android.com/devices/automotive/audio</a>  无法访问，改成如下形式即可：<br><a href="https://source.android.google.cn/devices/automotive/audio" target="_blank" rel="noopener">https://source.android.google.cn/devices/automotive/audio</a> —正常访问</p>
-</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">快捷</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/11/01/访问developer-android的办法/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1823,6 +1837,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">blog - 文档 - 说明介绍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
             
             <div class="clearfix"></div>
