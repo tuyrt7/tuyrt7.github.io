@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/tuyrt7/tuyrt7.github.io">
-  <title>风追着云</title>
+  <title>为定制Android launcher应用提供一种思路 | 风追着云</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="title: 为定制Android launcher应用提供一种思路date: 2021-04-26 11:47:18categories: android定制tags:     - blog     - android定制  为定制Android launcher应用提供一种思路1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 prior">
+  <meta name="description" content="为定制Android launcher应用提供一种思路1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 priority 为 -1，并添加一个 Category ，然后在开发的桌面应用的首 Activity 按照添加过滤器类别 HOME和HOME.TEST12345678如：  &amp;lt;intent-filter android:priori">
+<meta name="keywords" content="blog,android定制">
 <meta property="og:type" content="article">
-<meta property="og:title" content="风追着云">
+<meta property="og:title" content="为定制Android launcher应用提供一种思路">
 <meta property="og:url" content="https://github.com/tuyrt7/tuyrt7.github.io/2021/04/26/为定制Android-launcher应用提供一种思路/index.html">
 <meta property="og:site_name" content="风追着云">
-<meta property="og:description" content="title: 为定制Android launcher应用提供一种思路date: 2021-04-26 11:47:18categories: android定制tags:     - blog     - android定制  为定制Android launcher应用提供一种思路1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 prior">
+<meta property="og:description" content="为定制Android launcher应用提供一种思路1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 priority 为 -1，并添加一个 Category ，然后在开发的桌面应用的首 Activity 按照添加过滤器类别 HOME和HOME.TEST12345678如：  &amp;lt;intent-filter android:priori">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-04-26T03:48:34.419Z">
+<meta property="og:updated_time" content="2021-04-26T05:37:17.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风追着云">
-<meta name="twitter:description" content="title: 为定制Android launcher应用提供一种思路date: 2021-04-26 11:47:18categories: android定制tags:     - blog     - android定制  为定制Android launcher应用提供一种思路1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 prior">
+<meta name="twitter:title" content="为定制Android launcher应用提供一种思路">
+<meta name="twitter:description" content="为定制Android launcher应用提供一种思路1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 priority 为 -1，并添加一个 Category ，然后在开发的桌面应用的首 Activity 按照添加过滤器类别 HOME和HOME.TEST12345678如：  &amp;lt;intent-filter android:priori">
   
     <link rel="alternative" href="/atom.xml" title="风追着云" type="application/atom+xml">
   
@@ -223,12 +224,57 @@
             <article id="post-为定制Android-launcher应用提供一种思路" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+  
+    <h1 class="article-title" itemprop="name">
+      为定制Android launcher应用提供一种思路
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2021/04/26/为定制Android-launcher应用提供一种思路/" class="archive-article-date">
+        <time datetime="2021-04-26T03:47:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-26</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">213字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
-    <hr>
-<p>title: 为定制Android launcher应用提供一种思路<br>date: 2021-04-26 11:47:18<br>categories: android定制<br>tags:<br>     - blog<br>     - android定制</p>
-<hr>
-<h1 id="为定制Android-launcher应用提供一种思路"><a href="#为定制Android-launcher应用提供一种思路" class="headerlink" title="为定制Android launcher应用提供一种思路"></a>为定制Android launcher应用提供一种思路</h1><h3 id="1、可以通过修改-packages-apps-Launcher3-的清单文件，为其主页过滤器设置其优先级-priority-为-1，并添加一个-Category-，然后在开发的桌面应用的首-Activity-按照添加过滤器类别-HOME和HOME-TEST"><a href="#1、可以通过修改-packages-apps-Launcher3-的清单文件，为其主页过滤器设置其优先级-priority-为-1，并添加一个-Category-，然后在开发的桌面应用的首-Activity-按照添加过滤器类别-HOME和HOME-TEST" class="headerlink" title="1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 priority 为 -1，并添加一个 Category ，然后在开发的桌面应用的首 Activity 按照添加过滤器类别 HOME和HOME.TEST"></a>1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 priority 为 -1，并添加一个 Category ，然后在开发的桌面应用的首 Activity 按照添加过滤器类别 HOME和HOME.TEST</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">如：  </span><br><span class="line">&lt;intent-filter android:priority=&quot;-1&quot;&gt;</span><br><span class="line">    &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;  </span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.HOME&quot; /&gt;  </span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.HOME.TEST&quot; /&gt; //添加特殊的类别  </span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;  </span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.MONKEY&quot;/&gt;  </span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
+    <h1 id="为定制Android-launcher应用提供一种思路"><a href="#为定制Android-launcher应用提供一种思路" class="headerlink" title="为定制Android launcher应用提供一种思路"></a>为定制Android launcher应用提供一种思路</h1><h3 id="1、可以通过修改-packages-apps-Launcher3-的清单文件，为其主页过滤器设置其优先级-priority-为-1，并添加一个-Category-，然后在开发的桌面应用的首-Activity-按照添加过滤器类别-HOME和HOME-TEST"><a href="#1、可以通过修改-packages-apps-Launcher3-的清单文件，为其主页过滤器设置其优先级-priority-为-1，并添加一个-Category-，然后在开发的桌面应用的首-Activity-按照添加过滤器类别-HOME和HOME-TEST" class="headerlink" title="1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 priority 为 -1，并添加一个 Category ，然后在开发的桌面应用的首 Activity 按照添加过滤器类别 HOME和HOME.TEST"></a>1、可以通过修改 packages\apps\Launcher3 的清单文件，为其主页过滤器设置其优先级 priority 为 -1，并添加一个 Category ，然后在开发的桌面应用的首 Activity 按照添加过滤器类别 HOME和HOME.TEST</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">如：  </span><br><span class="line">&lt;intent-filter android:priority=&quot;-1&quot;&gt;</span><br><span class="line">    &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;  </span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.HOME&quot; /&gt;  </span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.HOME.TEST&quot; /&gt; //添加特殊的类别  </span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;  </span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.MONKEY&quot;/&gt;  </span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -279,7 +325,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https:/github.com/tuyrt7/tuyrt7.github.io/2021/04/26/为定制Android-launcher应用提供一种思路/" title="" target="_blank">https:/github.com/tuyrt7/tuyrt7.github.io/2021/04/26/为定制Android-launcher应用提供一种思路/</a> 
+          <a href="https:/github.com/tuyrt7/tuyrt7.github.io/2021/04/26/为定制Android-launcher应用提供一种思路/" title="为定制Android launcher应用提供一种思路" target="_blank">https:/github.com/tuyrt7/tuyrt7.github.io/2021/04/26/为定制Android-launcher应用提供一种思路/</a> 
 		 
         </li>
         
@@ -297,6 +343,21 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">android定制</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -402,7 +463,7 @@
     <script src="/lib/giteement.browser.js"></script>
   
   <script>
-  <!-- id: "" -->
+  <!-- id: "为定制Android launcher应用提供一种思路" -->
   var giteement = new Giteement({
     id: '20210426114718',
     owner: 'tuyrt007',
@@ -429,7 +490,7 @@
     <script src="/lib/gitment.js"></script>
   
   <script>
-    <!-- id: "" -->
+    <!-- id: "为定制Android launcher应用提供一种思路" -->
     var gitment = new Gitment({
       id: "20210426114718",
       owner: 'tuyrt7',
